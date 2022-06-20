@@ -19,6 +19,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvWelcomeUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
+            android:text="Hey so-and-so"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="What do you need help with?"
+            app:layout_constraintStart_toStartOf="@+id/tvWelcomeUser"
+            app:layout_constraintTop_toBottomOf="@+id/tvWelcomeUser" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
