@@ -5,7 +5,7 @@
     <string name="messages_fragment_default">This is the Messages fragment</string>
     <string name="profile_fragment_default">This is the Profile fragment</string>
     <string name="home">Home</string>
-    <string name="lesson_schedule">Lesson Schedule</string>
+    <string name="lesson_schedule">Lessons</string>
     <string name="messages">Messages</string>
     <string name="profile">Profile</string>
 

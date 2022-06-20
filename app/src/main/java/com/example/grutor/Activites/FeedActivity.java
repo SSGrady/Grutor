@@ -1,4 +1,4 @@
-package com.example.grutor;
+package com.example.grutor.Activites;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,10 +14,11 @@ import com.example.grutor.Fragments.HomeFragment;
 import com.example.grutor.Fragments.LessonsFragment;
 import com.example.grutor.Fragments.MessagesFragment;
 import com.example.grutor.Fragments.ProfileFragment;
+import com.example.grutor.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity {
+public class FeedActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
@@ -28,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_feed);
+        // TODO: Implement intent from LoginActivity to FeedActivity.
+        // Intent i = new Intent(this, LoginActivity.class);
+        // startActivity(i);
+
         final FragmentManager fragmentManager = getSupportFragmentManager();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -43,15 +49,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_profile:
                         fragment = fragmentProfile;
-                        // Toast.makeText(MainActivity.this, "made it to Home", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(FeedActivity.this, "made it to Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_lessons:
                         fragment = fragmentLessons;
-                        /// Toast.makeText(MainActivity.this, "made it to Compose", Toast.LENGTH_SHORT).show();
+                        /// Toast.makeText(FeedActivity.this, "made it to Compose", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_messages:
                         fragment = fragmentMessages;
-                        // Toast.makeText(MainActivity.this, "made it to Profile", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(FeedActivity.this, "made it to Profile", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_home:
                         fragment = fragmentHome;
