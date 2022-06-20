@@ -32,8 +32,8 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
         // TODO: Implement intent from LoginActivity to FeedActivity.
-        // Intent i = new Intent(this, LoginActivity.class);
-        // startActivity(i);
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
