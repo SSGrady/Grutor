@@ -27,17 +27,28 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="50dp"
             android:text="Hey so-and-so"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvHomeText"
-            android:layout_width="wrap_content"
+            android:layout_width="270sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="What do you need help with?"
+            android:textSize="28sp"
             app:layout_constraintStart_toStartOf="@+id/tvWelcomeUser"
             app:layout_constraintTop_toBottomOf="@+id/tvWelcomeUser" />
+
+        <Button
+            android:id="@+id/btnlogOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Sign Out"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvWelcomeUser" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

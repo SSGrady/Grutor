@@ -1,4 +1,4 @@
-package com.example.grutor.Activites;
+package com.example.grutor.Parse;
 
 import android.app.Application;
 
@@ -10,11 +10,10 @@ public class ParseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // TODO: Register your parse models
+        // TODO: Register parse models
 
-        // ParseObject.registerSubclass(Post.class);
-        // ParseObject.registerSubclass(User.class);
-        // ParseObject.registerSubclass(Comment.class);
+        // ParseObject.registerSubclass(bestAT.class);
+        // ParseObject.registerSubclass(grade.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("44G4lceevcRvp0HJ8yammgYVuc797zfMNMNSEJOe")
