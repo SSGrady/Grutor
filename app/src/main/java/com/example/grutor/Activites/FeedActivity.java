@@ -32,8 +32,10 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
         // TODO: Implement intent from LoginActivity to FeedActivity.
-        // Intent i = new Intent(this, LoginActivity.class);
-        // startActivity(i);
+        // TODO: Comment out these two lines once LoginActivity works
+
+        // hides action bar
+        getSupportActionBar().hide();
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
