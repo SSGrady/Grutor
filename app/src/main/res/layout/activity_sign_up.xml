@@ -8,9 +8,17 @@
     tools:context=".Activites.RegisterActivity">
 
     <FrameLayout
+        android:id="@+id/flContainerSignUp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/flContainerSignUp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tvSignUp"
@@ -57,4 +65,9 @@
         android:text="Next"
         app:layout_constraintStart_toStartOf="@+id/tvSignUp"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

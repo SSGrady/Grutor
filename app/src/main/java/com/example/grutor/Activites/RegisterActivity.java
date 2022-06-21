@@ -55,8 +55,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String username = etUserLogin.getText().toString();
                 String password = etPassword.getText().toString();
 
-                user.setUsername(username);
+                // TODO: Make email et field and findViewById it to send the email to Parse
+               // user.setEmail(email);
                 user.setPassword(password);
+                user.setUsername(username);
                 // Invoke signUpInBackground
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
