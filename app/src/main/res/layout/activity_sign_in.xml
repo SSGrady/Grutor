@@ -12,7 +12,7 @@
         android:layout_width="270sp"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:text="Sign In"
         android:textSize="37sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="130dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email Address"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSignIn"
@@ -52,4 +52,5 @@
         android:text="Sign In"
         app:layout_constraintStart_toStartOf="@+id/tvSignIn"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
