@@ -72,9 +72,9 @@ Grutor is a peer-to-peer tutoring platform where students match with each other 
 
 **Tab Navigation** (Tab to Screen)
 
-*LoginActivity
-    * Sign in
-    * Sign Up
+* Login Activity
+  * Sign in
+  * Sign Up
 * Home
 * Lessons
   * Detail
@@ -84,9 +84,9 @@ Grutor is a peer-to-peer tutoring platform where students match with each other 
 * Profile
 
 **Flow Navigation** (Screen to Screen)
-*LoginActivity
-    * Sign in -> Feed Activity (Home)
-    * Sign Up -> Registration Fragment -> Feed Activity (Home)
+* LoginActivity
+  * Sign in -> Feed Activity (Home)
+  * Sign Up -> Registration Fragment -> Feed Activity (Home)
 * Home -> Details
        -> Lessons/Messaging/Profile
 * Lessons -> Home/Messaging/Profile
