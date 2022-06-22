@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.grutor.R;
+import com.parse.Parse;
+import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -18,6 +20,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // checking if user is already logged in
+        if (ParseUser.getCurrentUser() != null) {
+            goFeedActivity();
+        }
 
         // hides action bar
         getSupportActionBar().hide();
@@ -40,7 +47,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Intent i = new Intent(this, FeedActivity.class);
-        // startActivity(i);
+    }
+
+    private void goFeedActivity() {
+        Intent i = new Intent(LoginActivity.this, FeedActivity.class);
+        startActivity(i);
     }
 }

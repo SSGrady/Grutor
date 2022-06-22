@@ -14,18 +14,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.grutor.Activites.FeedActivity;
+import com.example.grutor.Activites.RegisterActivity;
 import com.example.grutor.R;
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class RegisterFragment extends Fragment {
-    public  Spinner spGrades;
-    public Spinner spSubjects;
-    public Boolean gradeSelect = false;
-    public Boolean subjectSelect = false;
+    private  Spinner spGrades;
+    private Spinner spSubjects;
+    private Boolean gradeSelect = false;
+    private Boolean subjectSelect = false;
     public static final String TAG = "Registration Fragment";
-    protected ParseUser user;
     protected String grade;
-    protected String subject;
+    protected String bestAt;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -90,13 +92,27 @@ public class RegisterFragment extends Fragment {
     }
 
     private void completeRegistration() {
-        user = ParseUser.getCurrentUser();
+        ParseUser user = RegisterActivity.user;
         grade = spGrades.getSelectedItem().toString();
-        subject = spSubjects.getSelectedItem().toString();
+        bestAt = spSubjects.getSelectedItem().toString();
+        user.put("grade", grade);
+        user.put("bestAt", bestAt);
+        // Invoke signUpInBackground
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e != null) {
+                    // Hooray! Let them use the app now.
+                    Log.e(TAG, "Failed to register a user.", e);
+                    return;
+                }
+                Log.i(TAG, "Succeeded to register a user!");
+                goToFeed();
+            }
+        });
+    }
+
+    private void goToFeed() {
         Intent i = new Intent(getContext(), FeedActivity.class);
         startActivity(i);
-
-        // user.setGrade(grade);
-        // user.setSubject(subject);
     }
 }

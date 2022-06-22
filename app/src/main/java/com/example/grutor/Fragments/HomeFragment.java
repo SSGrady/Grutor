@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment {
     public ParseUser currentUser;
     public static final String KEY_PARSE_USER_NAME = "name";
     protected ParseUser user;
+    public static String welcomeMessage = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -48,9 +49,9 @@ public class HomeFragment extends Fragment {
         btnlogOut = view.findViewById(R.id.btnlogOut);
 
         user = ParseUser.getCurrentUser();
-        Log.i("HomeFragment", "Current user is: " + ParseUser.getCurrentUser().get(KEY_PARSE_USER_NAME));
-        // TODO: Check column name on Parse
-       // tvWelcomeUser.setText("Hey " + Objects.requireNonNull(ParseUser.getCurrentUser().get(KEY_PARSE_USER_NAME)) + "!");
+        // displays user's name on the welcome message
+        welcomeMessage = String.format("Hey %s!", user.getUsername());
+       tvWelcomeUser.setText(welcomeMessage);
         btnlogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,9 +62,6 @@ public class HomeFragment extends Fragment {
         });
 
     }
-
-    // TODO: Implement an adapter to smoothly transition this method
-            // Consider using an activity to call this method
     private void goLoginActivity() {
         Intent i = new Intent(getContext(), LoginActivity.class);
         startActivity(i);
