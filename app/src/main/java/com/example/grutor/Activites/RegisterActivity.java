@@ -25,10 +25,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     public  EditText etUserLogin;
     public  EditText etPassword;
+    public EditText etFirstName;
+    public EditText etLastName;
+    public String userFullName;
+
     public Button btnNext;
     final Fragment fragmentRegister = new RegisterFragment();
     public static final String TAG = "RegisterActivity";
-    protected ParseUser user;
+    public static ParseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,9 @@ public class RegisterActivity extends AppCompatActivity {
         etUserLogin = findViewById(R.id.etUserLogin);
         etPassword = findViewById(R.id.etPasswordLogin);
         btnNext = findViewById(R.id.btnNext);
+        etFirstName = findViewById(R.id.etFirstName);
+        etLastName = findViewById(R.id.etLastName);
+
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -49,39 +56,22 @@ public class RegisterActivity extends AppCompatActivity {
                 registerUser();
             }
 
-            private void registerUser() {
+            public void registerUser() {
                 // Create the ParseUser
                 user = new ParseUser();
                 // Set core properties
                 Log.i(TAG, "Inside the registerUser function.");
-                String username = etUserLogin.getText().toString();
+                String email = etUserLogin.getText().toString();
                 String password = etPassword.getText().toString();
-                // TODO: Make email et field and findViewById it to send the email to Parse
-                // user.setEmail(email);
+                String firstName = etFirstName.getText().toString();
+
+                // this is the full name of the user who will be registered to the Parse database.
+                user.put("name", etFirstName.getText().toString() + " " + etLastName.getText().toString());
+                user.setEmail(email);
                 user.setPassword(password);
-                user.setUsername(username);
 
-                // Invoke signUpInBackground
-                user.signUpInBackground(new SignUpCallback() {
-                    public void done(ParseException e) {
-                        if (e != null) {
-                            // Hooray! Let them use the app now.
-                            Log.e(TAG, "Failed to register a user.", e);
-                        }
-                        Log.i(TAG, "Succeeded to register a user!");
-                        setupUser(username, password);
-                    }
-                });
-            }
-
-            private void setupUser(String username, String password) {
-                if (ParseUser.getCurrentUser() != null) {
-                    // Navigate to the Register fragment if the user has registered to parse properly
-                    goRegisterUser(user, username, password);
-                }
-            }
-
-            public void goRegisterUser(ParseUser user, String username, String password) {
+                // username is a required field -- Grutor has not use for one but this field can be used
+                user.setUsername(firstName); // field stores user's first name for the welcome message
                 fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
             }
         });

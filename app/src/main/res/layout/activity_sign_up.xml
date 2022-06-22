@@ -44,17 +44,17 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSignUp"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <EditText
-        android:id="@+id/etPasswordLogin"
-        android:layout_width="280sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/etUserLogin"
-        app:layout_constraintTop_toBottomOf="@+id/etUserLogin"
-        tools:ignore="TouchTargetSizeCheck" />
+            <EditText
+                android:id="@+id/etPasswordLogin"
+                android:layout_width="280sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="@+id/etUserLogin"
+                app:layout_constraintTop_toBottomOf="@+id/etFirstName"
+                tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/btnNext"
@@ -65,6 +65,31 @@
         android:text="Next"
         app:layout_constraintStart_toStartOf="@+id/tvSignUp"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
+
+            <EditText
+                android:id="@+id/etFirstName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:ems="10"
+                android:hint="First Name"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/etUserLogin"
+                app:layout_constraintTop_toBottomOf="@+id/etUserLogin"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/etLastName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:ems="10"
+                android:hint="Last Name"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toEndOf="@+id/etFirstName"
+                app:layout_constraintTop_toTopOf="@+id/etFirstName"
+                tools:ignore="TouchTargetSizeCheck" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
