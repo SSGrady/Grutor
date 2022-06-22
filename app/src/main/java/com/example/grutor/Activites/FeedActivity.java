@@ -31,8 +31,6 @@ public class FeedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-        // TODO: Implement intent from LoginActivity to FeedActivity.
-        // TODO: Comment out these two lines once LoginActivity works
 
         // hides action bar
         getSupportActionBar().hide();

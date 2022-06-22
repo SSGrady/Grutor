@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Activites.LoginActivity;
 import com.example.grutor.R;
+import com.parse.Parse;
 import com.parse.ParseUser;
 
 import java.util.Objects;
@@ -44,7 +46,10 @@ public class HomeFragment extends Fragment {
         tvWelcomeUser = view.findViewById(R.id.tvWelcomeUser);
         btnlogOut = view.findViewById(R.id.btnlogOut);
 
-        tvWelcomeUser.setText("Hey " + Objects.requireNonNull(ParseUser.getCurrentUser().get(KEY_PARSE_USER_NAME)) + "!");
+        ParseUser user = ParseUser.getCurrentUser();
+        Log.i("HomeFragment", "Current user is: " + ParseUser.getCurrentUser().get(KEY_PARSE_USER_NAME));
+        // TODO: Check column name on Parse
+       // tvWelcomeUser.setText("Hey " + Objects.requireNonNull(ParseUser.getCurrentUser().get(KEY_PARSE_USER_NAME)) + "!");
         btnlogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
