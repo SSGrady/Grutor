@@ -21,12 +21,11 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class RegisterFragment extends Fragment {
-    public  Spinner spGrades;
-    public Spinner spSubjects;
-    public Boolean gradeSelect = false;
-    public Boolean subjectSelect = false;
+    private  Spinner spGrades;
+    private Spinner spSubjects;
+    private Boolean gradeSelect = false;
+    private Boolean subjectSelect = false;
     public static final String TAG = "Registration Fragment";
-    // protected ParseUser user;
     protected String grade;
     protected String bestAt;
 
