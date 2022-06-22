@@ -28,6 +28,7 @@ public class HomeFragment extends Fragment {
     public Button btnlogOut;
     public ParseUser currentUser;
     public static final String KEY_PARSE_USER_NAME = "name";
+    protected ParseUser user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment {
         tvWelcomeUser = view.findViewById(R.id.tvWelcomeUser);
         btnlogOut = view.findViewById(R.id.btnlogOut);
 
-        ParseUser user = ParseUser.getCurrentUser();
+        user = ParseUser.getCurrentUser();
         Log.i("HomeFragment", "Current user is: " + ParseUser.getCurrentUser().get(KEY_PARSE_USER_NAME));
         // TODO: Check column name on Parse
        // tvWelcomeUser.setText("Hey " + Objects.requireNonNull(ParseUser.getCurrentUser().get(KEY_PARSE_USER_NAME)) + "!");

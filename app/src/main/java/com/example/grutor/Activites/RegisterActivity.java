@@ -28,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
     public Button btnNext;
     final Fragment fragmentRegister = new RegisterFragment();
     public static final String TAG = "RegisterActivity";
+    protected ParseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,16 +51,16 @@ public class RegisterActivity extends AppCompatActivity {
 
             private void registerUser() {
                 // Create the ParseUser
-                ParseUser user = new ParseUser();
+                user = new ParseUser();
                 // Set core properties
                 Log.i(TAG, "Inside the registerUser function.");
                 String username = etUserLogin.getText().toString();
                 String password = etPassword.getText().toString();
-
                 // TODO: Make email et field and findViewById it to send the email to Parse
-               // user.setEmail(email);
+                // user.setEmail(email);
                 user.setPassword(password);
                 user.setUsername(username);
+
                 // Invoke signUpInBackground
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
@@ -67,24 +69,21 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.e(TAG, "Failed to register a user.", e);
                         }
                         Log.i(TAG, "Succeeded to register a user!");
-                            setupUser(username, password);
+                        setupUser(username, password);
                     }
-
                 });
             }
-                private void setupUser(String username, String password) {
-                    if (ParseUser.getCurrentUser() != null) {
-                        // Navigate to the Register fragment if the user has registered to parse properly
-                        goRegisterUser();
-                    }
+
+            private void setupUser(String username, String password) {
+                if (ParseUser.getCurrentUser() != null) {
+                    // Navigate to the Register fragment if the user has registered to parse properly
+                    goRegisterUser(user, username, password);
                 }
-                // TODO: Change FeedActivity.class to Registration fragment.
-                public void goRegisterUser() {
-                    fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
-//                    Intent i = new Intent(RegisterActivity.this, FeedActivity.class);
-//                    startActivity(i);
-//                    finish();
-                }
+            }
+
+            public void goRegisterUser(ParseUser user, String username, String password) {
+                fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
+            }
         });
     }
 }
