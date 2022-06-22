@@ -11,4 +11,32 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string-array name="grades">
+        <item>Grade</item>
+        <item>1st</item>
+        <item>2nd</item>
+        <item>3rd</item>
+        <item>4th</item>
+        <item>5th</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+        <item>9th</item>
+        <item>10th</item>
+        <item>11th</item>
+        <item>12th</item>
+    </string-array>
+
+    <string-array name="subjects">
+        <item>Subject</item>
+        <item>Math</item>
+        <item>English</item>
+        <item>Biology</item>
+        <item>History</item>
+        <item>Chemistry</item>
+        <item>Physics</item>
+        <item>Economics</item>
+        <item>Government</item>
+    </string-array>
+
 </resources>
