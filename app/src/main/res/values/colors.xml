@@ -13,4 +13,6 @@
     <color name="BEA_cornflower">#79A9F5</color>
     <color name="BEA_baby_blue">#C2E2F5</color>
     <color name="Background_Login">#abd3fb</color>
+    <color name="blueBlack">#111f28</color>
+    <color name="tanAccent">#e3cdb3</color>
 </resources>

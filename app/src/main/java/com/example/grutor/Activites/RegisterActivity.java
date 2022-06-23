@@ -27,12 +27,10 @@ public class RegisterActivity extends AppCompatActivity {
     public  EditText etPassword;
     public EditText etFirstName;
     public EditText etLastName;
-    public String userFullName;
 
     public Button btnNext;
     final Fragment fragmentRegister = new RegisterFragment();
     public static final String TAG = "RegisterActivity";
-    public static ParseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +47,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
+        // hides action bar
+        getSupportActionBar().hide();
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,20 +59,21 @@ public class RegisterActivity extends AppCompatActivity {
 
             public void registerUser() {
                 // Create the ParseUser
-                user = new ParseUser();
+               // user = new ParseUser();
                 // Set core properties
                 Log.i(TAG, "Inside the registerUser function.");
                 String email = etUserLogin.getText().toString();
                 String password = etPassword.getText().toString();
                 String firstName = etFirstName.getText().toString();
+                String fullName = etFirstName.getText().toString() + " " + etLastName.getText().toString();
 
-                // this is the full name of the user who will be registered to the Parse database.
-                user.put("name", etFirstName.getText().toString() + " " + etLastName.getText().toString());
-                user.setEmail(email);
-                user.setPassword(password);
+                Bundle bundle = new Bundle();
+                bundle.putString("email", email);
+                bundle.putString("password", password);
+                bundle.putString("firstName", firstName);
+                bundle.putString("fullName", fullName);
 
-                // username is a required field -- Grutor has not use for one but this field can be used
-                user.setUsername(firstName); // field stores user's first name for the welcome message
+                fragmentRegister.setArguments(bundle);
                 fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
             }
         });

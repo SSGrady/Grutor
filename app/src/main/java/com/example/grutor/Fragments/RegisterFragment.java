@@ -28,11 +28,13 @@ public class RegisterFragment extends Fragment {
     public static final String TAG = "Registration Fragment";
     protected String grade;
     protected String bestAt;
+    private Bundle bundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
+        bundle = this.getArguments();
         return inflater.inflate(R.layout.fragment_register, parent, false);
     }
 
@@ -41,7 +43,6 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
         spGrades = view.findViewById(R.id.spGrade);
         spSubjects = view.findViewById(R.id.spSubjects);
 
@@ -92,11 +93,17 @@ public class RegisterFragment extends Fragment {
     }
 
     private void completeRegistration() {
-        ParseUser user = RegisterActivity.user;
+        ParseUser user = new ParseUser();
         grade = spGrades.getSelectedItem().toString();
         bestAt = spSubjects.getSelectedItem().toString();
+
+        user.setUsername(bundle.getString("firstName"));
+        user.put("name", bundle.getString("fullName"));
+        user.setPassword(bundle.getString("password"));
+        user.setEmail(bundle.getString("email"));
         user.put("grade", grade);
         user.put("bestAt", bestAt);
+
         // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
