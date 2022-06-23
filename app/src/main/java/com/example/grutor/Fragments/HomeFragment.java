@@ -31,13 +31,12 @@ public class HomeFragment extends Fragment {
 
     public TextView tvWelcomeUser;
     public Button btnlogOut;
-    public ParseUser currentUser;
-    public static final String KEY_PARSE_USER_NAME = "name";
+    protected ParseUser currentUser;
     protected ParseUser user;
-    public static String welcomeMessage = "";
-    RecyclerView rvSubjects;
-    List<String> titles;
-    List<Integer> images;
+    private static String welcomeMessage = "";
+    public RecyclerView rvSubjects;
+    private List<String> titles;
+    private List<Integer> images;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -60,15 +59,19 @@ public class HomeFragment extends Fragment {
         titles = new ArrayList<>();
         images = new ArrayList<>();
 
-        titles.add("First Subject");
-        titles.add("Second Subject");
-        titles.add("Third Subject");
-        titles.add("Fourth Subject");
+        titles.add("Math");
+        titles.add("English");
+        titles.add("Science");
+        titles.add("History");
+        titles.add("Government");
+        titles.add("Economics");
 
-        images.add(R.drawable.icons8_chat_bubble_50);
-        images.add(R.drawable.icons8_chat_bubble_51);
-        images.add(R.drawable.user_filled_24);
-        images.add(R.drawable.user_outline_24);
+        images.add(R.drawable.icons8_math_64);
+        images.add(R.drawable.icons8_english_64);
+        images.add(R.drawable.icons8_physics_64);
+        images.add(R.drawable.icons8_history_64);
+        images.add(R.drawable.icons8_government_64);
+        images.add(R.drawable.icons8_stock_share_64);
 
         SubjectAdapter adapter = new SubjectAdapter(getContext(), titles, images);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);

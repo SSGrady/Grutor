@@ -8,8 +8,6 @@
     <string name="lesson_schedule">Lessons</string>
     <string name="messages">Messages</string>
     <string name="profile">Profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="grades">
         <item>Grade</item>
@@ -31,12 +29,10 @@
         <item>Subject</item>
         <item>Math</item>
         <item>English</item>
-        <item>Biology</item>
+        <item>Science</item>
         <item>History</item>
-        <item>Chemistry</item>
-        <item>Physics</item>
-        <item>Economics</item>
         <item>Government</item>
+        <item>Economics</item>
     </string-array>
 
 </resources>

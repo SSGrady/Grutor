@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/gradient_card_textview.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/home_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/lessons_icon.xml" value="0.174" />
         <entry key="app/src/main/res/drawable/messages_icon.xml" value="0.174" />

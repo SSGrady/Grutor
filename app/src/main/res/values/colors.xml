@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gradient_purple">#9a38fc</color>
+    <color name="gradient_pink">#e496fc</color>
     <!-- BEA stands for Beautiful Abstraction. Pallete group credits - Canva   -->
     <color name="BEA_blue">#0000FF</color>
     <color name="BEA_blue_grotto">#4B7BF5</color>

@@ -17,6 +17,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="50dp"
             android:text="Hey so-and-so"
+            android:textColor="@color/blueBlack"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,8 +26,9 @@
             android:id="@+id/tvHomeText"
             android:layout_width="270sp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:text="What do you need help with?"
+            android:textColor="@color/blueBlack"
             android:textSize="28sp"
             app:layout_constraintStart_toStartOf="@+id/tvWelcomeUser"
             app:layout_constraintTop_toBottomOf="@+id/tvWelcomeUser" />
@@ -42,11 +44,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSubjects"
-            android:layout_width="409dp"
-            android:layout_height="400dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="85dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHomeText"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
