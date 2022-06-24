@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Grutor</string>
     <string name="home_fragment_default">This is the Home fragment</string>
     <string name="lessons_fragment_default">This is the Lessons fragment</string>
@@ -43,5 +43,16 @@
     </string-array>
 
     <string name="one_problem">\n\t\t\t\t 1\n\t\tProblem</string>
+    <string name="two_to_nineteen_problems" tools:ignore="TypographyDashes">\n\t\t\t\t2 - 19\n\t\tProblems</string>
+    <string name="twenty_plus_problems">\n\t\t\t\t\t20+\n\t\tProblems</string>
+    <string name="description">Description</string>
+    <string name="urgency">Urgency</string>
+    <string name="add_a_description">Add a description</string>
+    <string name="exam">Exam</string>
+    <string name="other">Other</string>
+    <string name="essay">Essay</string>
+    <string name="homework">Homework</string>
+    <string name="type_textview">Type</string>
+    <string name="topic_textview">Topic</string>
 
 </resources>

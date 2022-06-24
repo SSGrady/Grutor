@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".Activites.FeedActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

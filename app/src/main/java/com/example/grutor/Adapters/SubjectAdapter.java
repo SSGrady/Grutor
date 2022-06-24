@@ -2,6 +2,7 @@ package com.example.grutor.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.grutor.Activites.DetailActivity;
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.R;
 
@@ -22,11 +24,13 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
     List<String> titles;
     List<Integer> images;
     LayoutInflater inflater;
+    Context context;
 
     public SubjectAdapter(Context ctx, List<String> titles, List<Integer> images) {
         this.titles = titles;
         this.images = images;
         this.inflater = LayoutInflater.from(ctx);
+        this.context = ctx;
     }
 
     @NonNull
@@ -75,6 +79,8 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
                     default:
                         break;
                 }
+                Intent i = new Intent(context, DetailActivity.class);
+                context.startActivity(i);
             }
         });
     }
