@@ -1,15 +1,19 @@
 package com.example.grutor.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.R;
 
 import java.util.List;
@@ -33,10 +37,46 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SubjectAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SubjectAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        // TODO: View collapse? look into it for the Detail Activity. tvitem.setVisibility(view.GONE);
+        // TODO Create a list of topics for each subject. Ex: Math - [PreAlgebra, Algebra I, Geometry Trig, Algebra II, Calculus]
         holder.title.setText(titles.get(position));
         holder.gridIcon.setImageResource(images.get(position));
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Display a toast message to the user
+                // Display the title of the card
+                Toast.makeText(inflater.getContext(), "You clicked: " + titles.get(position), Toast.LENGTH_SHORT).show();
+                getTutoringHelp(position);
+            }
+
+            private void getTutoringHelp(int index) {
+                Bundle bundle = new Bundle();
+                switch (titles.get(index)) {
+                    case "Math":
+                        bundle.putString("math", titles.get(index));
+                        break;
+                    case "English":
+                        bundle.putString("english", titles.get(index));
+                        break;
+                    case "Science":
+                        bundle.putString("science", titles.get(index));
+                        break;
+                    case "History":
+                        bundle.putString("history", titles.get(index));
+                        break;
+                    case "Government":
+                        bundle.putString("government", titles.get(index));
+                        break;
+                    case "Economics":
+                        bundle.putString("economics", titles.get(index));
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     @Override

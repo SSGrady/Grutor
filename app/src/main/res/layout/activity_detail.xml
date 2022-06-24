@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activites.DetailActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="45dp"
+        android:text="Type"
+        android:textColor="@color/blueBlack"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnHw"
+        android:layout_width="92dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="10dp"
+        android:text="Homework"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnEssay"
+        android:layout_width="92dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="2dp"
+        android:text="Essay"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="@+id/btnHw"
+        app:layout_constraintTop_toBottomOf="@+id/btnHw"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnOther"
+        android:layout_width="92dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="70dp"
+        android:text="Other"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnEssay"
+        app:layout_constraintTop_toTopOf="@+id/btnEssay"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnExam"
+        android:layout_width="92dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="70dp"
+        android:text="Exam"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnHw"
+        app:layout_constraintTop_toTopOf="@+id/btnHw"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="92dp"
+        android:layout_height="94dp"
+        android:layout_column="2"
+        android:layout_gravity="right|top"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="85dp"
+        android:background="@color/blueBlack"
+        android:padding="5dp"
+        android:text="@string/one_problem"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEssay" />
+</androidx.constraintlayout.widget.ConstraintLayout>

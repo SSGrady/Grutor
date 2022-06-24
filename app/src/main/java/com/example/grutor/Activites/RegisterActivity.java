@@ -6,11 +6,14 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.grutor.Fragments.HomeFragment;
 import com.example.grutor.Fragments.RegisterFragment;
@@ -36,8 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        // TODO: Add Parse Database and allow registration
-
         etUserLogin = findViewById(R.id.etUserLogin);
         etPassword = findViewById(R.id.etPasswordLogin);
         btnNext = findViewById(R.id.btnNext);
@@ -61,20 +62,32 @@ public class RegisterActivity extends AppCompatActivity {
                 // Create the ParseUser
                // user = new ParseUser();
                 // Set core properties
+                String email = "";
                 Log.i(TAG, "Inside the registerUser function.");
-                String email = etUserLogin.getText().toString();
-                String password = etPassword.getText().toString();
-                String firstName = etFirstName.getText().toString();
-                String fullName = etFirstName.getText().toString() + " " + etLastName.getText().toString();
 
-                Bundle bundle = new Bundle();
-                bundle.putString("email", email);
-                bundle.putString("password", password);
-                bundle.putString("firstName", firstName);
-                bundle.putString("fullName", fullName);
+                // if the user's email is invalid
+                if (!isValidEmail(etUserLogin.getText().toString())) {
+                    Toast.makeText(RegisterActivity.this, "Invalid Email. Try again!", Toast.LENGTH_SHORT).show();
+                }
+                // TODO: (stretch feature) Check the username length and password length with a counter
+                else {
+                    email = etUserLogin.getText().toString();
+                    String password = etPassword.getText().toString();
+                    String firstName = etFirstName.getText().toString();
+                    String fullName = etFirstName.getText().toString() + " " + etLastName.getText().toString();
 
-                fragmentRegister.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("email", email);
+                    bundle.putString("password", password);
+                    bundle.putString("firstName", firstName);
+                    bundle.putString("fullName", fullName);
+                    fragmentRegister.setArguments(bundle);
+                    fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
+                }
+            }
+
+            private boolean isValidEmail(String target) {
+                return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
             }
         });
     }

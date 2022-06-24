@@ -33,10 +33,12 @@ public class HomeFragment extends Fragment {
     public Button btnlogOut;
     protected ParseUser currentUser;
     protected ParseUser user;
-    private static String welcomeMessage = "";
+    protected String welcomeMessage = "";
     public RecyclerView rvSubjects;
     private List<String> titles;
     private List<Integer> images;
+    protected SubjectAdapter adapter;
+    protected  GridLayoutManager gridLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -59,22 +61,8 @@ public class HomeFragment extends Fragment {
         titles = new ArrayList<>();
         images = new ArrayList<>();
 
-        titles.add("Math");
-        titles.add("English");
-        titles.add("Science");
-        titles.add("History");
-        titles.add("Government");
-        titles.add("Economics");
+        createCard();
 
-        images.add(R.drawable.icons8_math_64);
-        images.add(R.drawable.icons8_english_64);
-        images.add(R.drawable.icons8_physics_64);
-        images.add(R.drawable.icons8_history_64);
-        images.add(R.drawable.icons8_government_64);
-        images.add(R.drawable.icons8_stock_share_64);
-
-        SubjectAdapter adapter = new SubjectAdapter(getContext(), titles, images);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         rvSubjects.setLayoutManager(gridLayoutManager);
         rvSubjects.setAdapter(adapter);
 
@@ -82,7 +70,7 @@ public class HomeFragment extends Fragment {
 
         // displays user's name on the welcome message
         welcomeMessage = String.format("Hey %s!", user.getUsername());
-       tvWelcomeUser.setText(welcomeMessage);
+        tvWelcomeUser.setText(welcomeMessage);
         btnlogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +81,26 @@ public class HomeFragment extends Fragment {
         });
 
     }
+
+    private void createCard() {
+        titles.add(getString(R.string.math));
+        titles.add(getString(R.string.english));
+        titles.add(getString(R.string.science));
+        titles.add(getString(R.string.history));
+        titles.add(getString(R.string.government));
+        titles.add(getString(R.string.economics));
+
+        images.add(R.drawable.icons8_math_64);
+        images.add(R.drawable.icons8_english_64);
+        images.add(R.drawable.icons8_physics_64);
+        images.add(R.drawable.icons8_history_64);
+        images.add(R.drawable.icons8_government_64);
+        images.add(R.drawable.icons8_stock_share_64);
+
+        adapter = new SubjectAdapter(getContext(), titles, images);
+        gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+    }
+
     private void goLoginActivity() {
         Intent i = new Intent(getContext(), LoginActivity.class);
         startActivity(i);

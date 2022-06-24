@@ -3,22 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_home"
-        android:enabled="true"
-        android:icon="@drawable/home_icon"
-        android:title="@string/home"
-        app:showAsAction="ifRoom" />
-    <item
         android:id="@+id/action_lessons"
         android:enabled="true"
         android:icon="@drawable/lessons_icon"
         android:title="@string/lesson_schedule"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_messages"
+        android:id="@+id/action_home"
         android:enabled="true"
-        android:icon="@drawable/messages_icon"
-        android:title="@string/messages"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_profile"

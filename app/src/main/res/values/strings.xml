@@ -9,6 +9,13 @@
     <string name="messages">Messages</string>
     <string name="profile">Profile</string>
 
+    <string name = "math">Math</string>
+    <string name = "english">English</string>
+    <string name = "science">Science</string>
+    <string name = "history">History</string>
+    <string name = "government">Government</string>
+    <string name = "economics">Economics</string>
+
     <string-array name="grades">
         <item>Grade</item>
         <item>1st</item>
@@ -34,5 +41,7 @@
         <item>Government</item>
         <item>Economics</item>
     </string-array>
+
+    <string name="one_problem">\n\t\t\t\t 1\n\t\tProblem</string>
 
 </resources>

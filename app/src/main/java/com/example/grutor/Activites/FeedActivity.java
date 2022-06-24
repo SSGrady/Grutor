@@ -24,7 +24,6 @@ public class FeedActivity extends AppCompatActivity {
 
     final Fragment fragmentHome = new HomeFragment();
     final Fragment fragmentLessons = new LessonsFragment();
-    final Fragment fragmentMessages = new MessagesFragment();
     final Fragment fragmentProfile = new ProfileFragment();
 
     @Override
@@ -37,8 +36,6 @@ public class FeedActivity extends AppCompatActivity {
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        // define your fragments here
 
         // handle navigation selection
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -55,12 +52,9 @@ public class FeedActivity extends AppCompatActivity {
                         fragment = fragmentLessons;
                         /// Toast.makeText(FeedActivity.this, "made it to Compose", Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.action_messages:
-                        fragment = fragmentMessages;
-                        // Toast.makeText(FeedActivity.this, "made it to Profile", Toast.LENGTH_SHORT).show();
-                        break;
                     case R.id.action_home:
                         fragment = fragmentHome;
+                    // TODO: Create a floating chat icon inside of my lessons fragment to navigate to the messaging fragment
                     default:
                         break;
                 }
