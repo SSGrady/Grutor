@@ -58,28 +58,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
 
             private void getTutoringHelp(int index) {
                 Bundle bundle = new Bundle();
-                switch (titles.get(index)) {
-                    case "Math":
-                        bundle.putString("math", titles.get(index));
-                        break;
-                    case "English":
-                        bundle.putString("english", titles.get(index));
-                        break;
-                    case "Science":
-                        bundle.putString("science", titles.get(index));
-                        break;
-                    case "History":
-                        bundle.putString("history", titles.get(index));
-                        break;
-                    case "Government":
-                        bundle.putString("government", titles.get(index));
-                        break;
-                    case "Economics":
-                        bundle.putString("economics", titles.get(index));
-                    default:
-                        break;
-                }
+                bundle.putString("subject", titles.get(position));
                 Intent i = new Intent(context, DetailActivity.class);
+                // only way to access my bundled String
+                i.putExtras(bundle);
                 context.startActivity(i);
             }
         });

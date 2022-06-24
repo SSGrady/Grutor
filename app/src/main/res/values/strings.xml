@@ -42,6 +42,49 @@
         <item>Economics</item>
     </string-array>
 
+    <string-array name="topic_math">
+        <item>Subject</item>
+        <item>Pre-Algebra</item>
+        <item>Geometry</item>
+        <item>Algebra I</item>
+        <item>Algebra II</item>
+        <item>Trigonometry</item>
+        <item>Calculus</item>
+    </string-array>
+
+    <string-array name="topic_science">
+        <item>Subject</item>
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>Physics</item>
+        <item>Geology</item>
+        <item>Marine Biology</item>
+    </string-array>
+
+    <string-array name="day_of_week">
+        <item>Pick a day</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+
+    <string-array name="topic_history">
+        <item>Subject</item>
+        <item>U.S. History</item>
+        <item>World History</item>
+    </string-array>
+
+    <string-array name="topic_economics">
+        <item>Subject</item>
+        <item>Macroeconomics</item>
+        <item>Microeconomics</item>
+    </string-array>
+
     <string name="one_problem">\n\t\t\t\t 1\n\t\tProblem</string>
     <string name="two_to_nineteen_problems" tools:ignore="TypographyDashes">\n\t\t\t\t2 - 19\n\t\tProblems</string>
     <string name="twenty_plus_problems">\n\t\t\t\t\t20+\n\t\tProblems</string>
