@@ -6,11 +6,14 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.grutor.Fragments.HomeFragment;
 import com.example.grutor.Fragments.RegisterFragment;
@@ -27,19 +30,15 @@ public class RegisterActivity extends AppCompatActivity {
     public  EditText etPassword;
     public EditText etFirstName;
     public EditText etLastName;
-    public String userFullName;
 
     public Button btnNext;
     final Fragment fragmentRegister = new RegisterFragment();
     public static final String TAG = "RegisterActivity";
-    public static ParseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        // TODO: Add Parse Database and allow registration
-
         etUserLogin = findViewById(R.id.etUserLogin);
         etPassword = findViewById(R.id.etPasswordLogin);
         btnNext = findViewById(R.id.btnNext);
@@ -48,6 +47,9 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // hides action bar
+        getSupportActionBar().hide();
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,21 +60,34 @@ public class RegisterActivity extends AppCompatActivity {
 
             public void registerUser() {
                 // Create the ParseUser
-                user = new ParseUser();
+               // user = new ParseUser();
                 // Set core properties
+                String email = "";
                 Log.i(TAG, "Inside the registerUser function.");
-                String email = etUserLogin.getText().toString();
-                String password = etPassword.getText().toString();
-                String firstName = etFirstName.getText().toString();
 
-                // this is the full name of the user who will be registered to the Parse database.
-                user.put("name", etFirstName.getText().toString() + " " + etLastName.getText().toString());
-                user.setEmail(email);
-                user.setPassword(password);
+                // if the user's email is invalid
+                if (!isValidEmail(etUserLogin.getText().toString())) {
+                    Toast.makeText(RegisterActivity.this, "Invalid Email. Try again!", Toast.LENGTH_SHORT).show();
+                }
+                // TODO: (stretch feature) Check the username length and password length with a counter
+                else {
+                    email = etUserLogin.getText().toString();
+                    String password = etPassword.getText().toString();
+                    String firstName = etFirstName.getText().toString();
+                    String fullName = etFirstName.getText().toString() + " " + etLastName.getText().toString();
 
-                // username is a required field -- Grutor has not use for one but this field can be used
-                user.setUsername(firstName); // field stores user's first name for the welcome message
-                fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("email", email);
+                    bundle.putString("password", password);
+                    bundle.putString("firstName", firstName);
+                    bundle.putString("fullName", fullName);
+                    fragmentRegister.setArguments(bundle);
+                    fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
+                }
+            }
+
+            private boolean isValidEmail(String target) {
+                return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
             }
         });
     }
