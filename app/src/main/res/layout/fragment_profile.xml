@@ -12,13 +12,162 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/tvBestSubjectAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profile_fragment_default"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/blueBlack"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/tvBestSubjectProfilePrompt"
+            app:layout_constraintTop_toTopOf="@+id/tvBestSubjectProfilePrompt"
+            tools:text="Math" />
+
+        <Button
+            android:id="@+id/btnlogOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="65dp"
+            android:text="Sign Out"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentGradePrompt"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentGradePrompt" />
+
+        <TextView
+            android:id="@+id/tvCurrentGradeAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/blueBlack"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/tvCurrentGradePrompt"
+            app:layout_constraintTop_toTopOf="@+id/tvCurrentGradePrompt"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/tvTotalHoursAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blueBlack"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@+id/tvBestSubjectAnswer"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalHoursPrompt"
+            tools:text="8" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="49dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="75dp"
+            android:src="@drawable/profile_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="So-and-so"
+            android:textColor="@color/blueBlack"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/tvBestSubjectProfilePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Best Subject:"
+            android:textColor="@color/blueBlack"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/ivBestSubject"
+            app:layout_constraintTop_toTopOf="@+id/ivBestSubject" />
+
+        <TextView
+            android:id="@+id/tvCurrentGradePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Grade:"
+            android:textColor="@color/blueBlack"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/ivGradeProfile"
+            app:layout_constraintTop_toTopOf="@+id/ivGradeProfile" />
+
+        <View
+            android:layout_width="400dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="65dp"
+            android:background="#EB111F28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
+
+        <ImageView
+            android:id="@+id/ivTotalHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="115dp"
+            android:src="@drawable/icons8_clock_48"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <ImageView
+            android:id="@+id/ivBestSubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="115dp"
+            android:src="@drawable/icons8_good_quality_48"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/ivTotalHours" />
+
+        <ImageView
+            android:id="@+id/ivGradeProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="115dp"
+            android:src="@drawable/icons8_backpack_48"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/ivBestSubject" />
+
+        <TextView
+            android:id="@+id/tvTotalHoursPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Hours Studied:"
+            android:textColor="@color/blueBlack"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/ivTotalHours"
+            app:layout_constraintTop_toTopOf="@+id/ivTotalHours" />
+
+        <View
+            android:layout_width="400dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="65dp"
+            android:background="#EB111F28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalHoursPrompt" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="400dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="65dp"
+            android:background="#EB111F28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBestSubjectProfilePrompt" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

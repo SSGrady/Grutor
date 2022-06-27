@@ -42,11 +42,8 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull SubjectAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        // TODO: View collapse? look into it for the Detail Activity. tvitem.setVisibility(view.GONE);
-        // TODO Create a list of topics for each subject. Ex: Math - [PreAlgebra, Algebra I, Geometry Trig, Algebra II, Calculus]
         holder.title.setText(titles.get(position));
         holder.gridIcon.setImageResource(images.get(position));
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
