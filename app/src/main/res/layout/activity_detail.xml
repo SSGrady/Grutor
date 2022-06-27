@@ -74,14 +74,16 @@
         android:layout_gravity="right|top"
         android:layout_marginStart="38dp"
         android:layout_marginTop="55dp"
-        android:background="@color/blueBlack"
+        android:background="@color/blueBlack_light"
         android:padding="5dp"
         android:text="@string/one_problem"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEssay"
-        tools:ignore="RtlHardcoded" />
+        android:onClick="onClick"
+        android:clickable="true"
+        tools:ignore="OnClick,RtlHardcoded" />
 
     <TextView
         android:id="@+id/tvProblem2"
@@ -90,14 +92,16 @@
         android:layout_column="2"
         android:layout_gravity="right|top"
         android:layout_marginStart="38dp"
-        android:background="@color/blueBlack"
+        android:background="@color/blueBlack_light"
         android:padding="5dp"
         android:text="@string/two_to_nineteen_problems"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tvProblem1"
         app:layout_constraintTop_toTopOf="@+id/tvProblem1"
-        tools:ignore="RtlHardcoded" />
+        android:onClick="onClick"
+        android:clickable="true"
+        tools:ignore="OnClick,RtlHardcoded" />
 
     <TextView
         android:id="@+id/tvProblem3"
@@ -106,14 +110,16 @@
         android:layout_column="2"
         android:layout_gravity="right|top"
         android:layout_marginStart="38dp"
-        android:background="@color/blueBlack"
+        android:background="@color/blueBlack_light"
         android:padding="5dp"
         android:text="@string/twenty_plus_problems"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tvProblem2"
         app:layout_constraintTop_toTopOf="@+id/tvProblem2"
-        tools:ignore="RtlHardcoded" />
+        android:onClick="onClick"
+        android:clickable="true"
+        tools:ignore="OnClick,RtlHardcoded" />
 
     <TextView
         android:id="@+id/tvUrgency"

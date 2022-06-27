@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,8 +15,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.grutor.R;
 
@@ -35,10 +38,17 @@ public class DetailActivity extends AppCompatActivity {
     protected TextView tvProblem1;
     protected TextView tvProblem2;
     protected TextView tvProblem3;
+    protected EditText etDescription;
     protected boolean isColor;
+    protected boolean isTextVisible;
     public int KEY_BLUEBLACK;
     public int KEY_BUTTONPRIMARY;
     public int KEY_BLUEBLACK_LIGHT;
+    public String NUM_PROBLEM_KEY;
+    public String TYPE_OF_TUTORING_KEY;
+    public String TUTORING_DESCRIPTION_KEY;
+    public String URGENCY_KEY;
+    public String TOPIC_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +60,10 @@ public class DetailActivity extends AppCompatActivity {
         spDayOfWeek = findViewById(R.id.spDayOfWeek);
         spTopicsList = findViewById(R.id.spTopicsList);
         btnConfirm = findViewById(R.id.btnConfirm);
+        // FIXME: Bundle retrival I, delete later
         bundle = getIntent().getExtras();
 
+        // FIXME: Bundle retrieval II, delete later
         if (bundle != null) {
             desiredSubject = bundle.getString("subject");
         }
@@ -66,10 +78,15 @@ public class DetailActivity extends AppCompatActivity {
         btnExam = findViewById(R.id.btnExam);
         btnEssay = findViewById(R.id.btnEssay);
         btnOther = findViewById(R.id.btnOther);
+        etDescription = findViewById(R.id.etDescription);
         isColor = true;
+        isTextVisible = true;
+
+
 
         createColors();
         btnChangeDisplay();
+        tvChangeDisplay();
 
         dayOfWeekAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         topicsListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -81,7 +98,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!spDayOfWeek.getSelectedItem().toString().equals("Pick a Day")) {
-                    bundle.putString("day", spDayOfWeek.getSelectedItem().toString());
+                    URGENCY_KEY = spDayOfWeek.getSelectedItem().toString();
                 }
             }
 
@@ -93,7 +110,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!spTopicsList.getSelectedItem().toString().equals("Subject")) {
-                    bundle.putString("topic", spTopicsList.getSelectedItem().toString());
+                    TOPIC_KEY = spTopicsList.getSelectedItem().toString();
                 }
             }
 
@@ -103,12 +120,66 @@ public class DetailActivity extends AppCompatActivity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Populate the Lessons fragment with new data.
-                // grab the new data of the Users tutoring session details
-                bundle = getIntent().getExtras();
+                // TODO: Bundle all the User's data for the Lessons fragment.
+                bundle.putString("type", TYPE_OF_TUTORING_KEY);
+                bundle.putString("problem", NUM_PROBLEM_KEY);
+                bundle.putString("urgency", URGENCY_KEY);
+                bundle.putString("topic", TOPIC_KEY);
+                // Description should be stored after
+                TUTORING_DESCRIPTION_KEY = etDescription.getText().toString();
+                bundle.putString("description", TUTORING_DESCRIPTION_KEY);
                 // TODO: Fire an intent from the Detail Activity to the Feed Activity
+                Intent i = new Intent(DetailActivity.this, FeedActivity.class);
+                i.putExtras(bundle);
+                finish();
             }
         });
+
+    }
+
+    private void tvChangeDisplay() {
+        if (isTextVisible) {
+            tvProblem1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tvProblem2.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+                    tvProblem3.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+                    tvProblem1.setBackgroundColor(KEY_BLUEBLACK);
+                    NUM_PROBLEM_KEY = trimProblemCount(tvProblem1.getText().toString());
+                }
+            });
+            tvProblem2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tvProblem1.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+                    tvProblem3.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+                    tvProblem2.setBackgroundColor(KEY_BLUEBLACK);
+                    NUM_PROBLEM_KEY = trimProblemCount(tvProblem2.getText().toString());
+                }
+            });
+            tvProblem3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tvProblem1.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+                    tvProblem2.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+                    tvProblem3.setBackgroundColor(KEY_BLUEBLACK);
+                    NUM_PROBLEM_KEY = trimProblemCount(tvProblem3.getText().toString());
+                }
+            });
+        }
+        else {
+            // reset the textviews and the key
+            tvProblem1.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+            tvProblem2.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+            tvProblem3.setBackgroundColor(KEY_BLUEBLACK_LIGHT);
+            NUM_PROBLEM_KEY = "";
+        }
+    }
+
+    private String trimProblemCount(String s) {
+        String editStr= s.trim();
+        s = editStr.replaceAll("\n"," ");
+        return s;
     }
 
     @SuppressLint("NewApi")
@@ -137,6 +208,7 @@ public class DetailActivity extends AppCompatActivity {
                 tvProblem1.setVisibility(View.VISIBLE);
                 tvProblem2.setVisibility(View.VISIBLE);
                 tvProblem3.setVisibility(View.VISIBLE);
+                TYPE_OF_TUTORING_KEY = btnHw.getText().toString();
             }
         });
         btnExam.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +223,7 @@ public class DetailActivity extends AppCompatActivity {
                 tvProblem1.setVisibility(View.VISIBLE);
                 tvProblem2.setVisibility(View.VISIBLE);
                 tvProblem3.setVisibility(View.VISIBLE);
+                TYPE_OF_TUTORING_KEY = btnExam.getText().toString();
             }
         });
         btnEssay.setOnClickListener(new View.OnClickListener() {
@@ -165,6 +238,9 @@ public class DetailActivity extends AppCompatActivity {
                 tvProblem1.setVisibility(View.GONE);
                 tvProblem2.setVisibility(View.GONE);
                 tvProblem3.setVisibility(View.GONE);
+                TYPE_OF_TUTORING_KEY = btnEssay.getText().toString();
+                isTextVisible = false;
+                tvChangeDisplay();
             }
         });
         btnOther.setOnClickListener(new View.OnClickListener() {
@@ -179,6 +255,9 @@ public class DetailActivity extends AppCompatActivity {
                 tvProblem1.setVisibility(View.GONE);
                 tvProblem2.setVisibility(View.GONE);
                 tvProblem3.setVisibility(View.GONE);
+                TYPE_OF_TUTORING_KEY = btnOther.getText().toString();
+                isTextVisible = false;
+                tvChangeDisplay();
             }
         });
     }
