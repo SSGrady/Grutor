@@ -46,11 +46,9 @@ public class FeedActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_profile:
                         fragment = fragmentProfile;
-                        // Toast.makeText(FeedActivity.this, "made it to Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_lessons:
                         fragment = fragmentLessons;
-                        /// Toast.makeText(FeedActivity.this, "made it to Compose", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_home:
                         fragment = fragmentHome;

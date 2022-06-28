@@ -21,7 +21,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class RegisterFragment extends Fragment {
-    private  Spinner spGrades;
+    private Spinner spGrades;
     private Spinner spSubjects;
     private Boolean gradeSelect = false;
     private Boolean subjectSelect = false;

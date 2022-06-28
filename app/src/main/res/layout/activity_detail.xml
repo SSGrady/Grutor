@@ -74,30 +74,34 @@
         android:layout_gravity="right|top"
         android:layout_marginStart="38dp"
         android:layout_marginTop="55dp"
-        android:background="@color/blueBlack"
+        android:background="@color/blueBlack_light"
         android:padding="5dp"
         android:text="@string/one_problem"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEssay"
-        tools:ignore="RtlHardcoded" />
+        android:onClick="onClick"
+        android:clickable="true"
+        tools:ignore="OnClick,RtlHardcoded" />
 
     <TextView
-        android:id="@+id/tvProbem2"
+        android:id="@+id/tvProblem2"
         android:layout_width="86dp"
         android:layout_height="82dp"
         android:layout_column="2"
         android:layout_gravity="right|top"
         android:layout_marginStart="38dp"
-        android:background="@color/blueBlack"
+        android:background="@color/blueBlack_light"
         android:padding="5dp"
         android:text="@string/two_to_nineteen_problems"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tvProblem1"
         app:layout_constraintTop_toTopOf="@+id/tvProblem1"
-        tools:ignore="RtlHardcoded" />
+        android:onClick="onClick"
+        android:clickable="true"
+        tools:ignore="OnClick,RtlHardcoded" />
 
     <TextView
         android:id="@+id/tvProblem3"
@@ -106,14 +110,16 @@
         android:layout_column="2"
         android:layout_gravity="right|top"
         android:layout_marginStart="38dp"
-        android:background="@color/blueBlack"
+        android:background="@color/blueBlack_light"
         android:padding="5dp"
         android:text="@string/twenty_plus_problems"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/tvProbem2"
-        app:layout_constraintTop_toTopOf="@+id/tvProbem2"
-        tools:ignore="RtlHardcoded" />
+        app:layout_constraintStart_toEndOf="@+id/tvProblem2"
+        app:layout_constraintTop_toTopOf="@+id/tvProblem2"
+        android:onClick="onClick"
+        android:clickable="true"
+        tools:ignore="OnClick,RtlHardcoded" />
 
     <TextView
         android:id="@+id/tvUrgency"
@@ -127,17 +133,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spCalenderDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="255dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUrgency"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvTopic"
@@ -153,11 +148,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spTopicArray"
+        android:id="@+id/spTopicsList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTopic"
@@ -194,4 +188,37 @@
             android:minLines="4" />
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="44dp"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvDescription" />
+
+    <ImageButton
+        android:id="@+id/ibCalendar"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/icons8_calendar_48"
+        app:layout_constraintStart_toEndOf="@+id/tvUrgency"
+        app:layout_constraintTop_toTopOf="@+id/tvUrgency"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvDateSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/blueBlack"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvUrgency"
+        app:layout_constraintTop_toBottomOf="@+id/tvUrgency"
+        tools:text="Date selected" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

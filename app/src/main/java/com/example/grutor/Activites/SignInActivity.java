@@ -36,7 +36,6 @@ public class SignInActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         setContentView(R.layout.activity_sign_in);
-        // TODO: Connect Parse database and login with a registered parse user
 
         etUserLogin = findViewById(R.id.etUserLogin);
         etPasswordLogin = findViewById(R.id.etPasswordLogin);

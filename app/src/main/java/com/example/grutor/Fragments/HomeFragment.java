@@ -30,8 +30,6 @@ import java.util.Objects;
 public class HomeFragment extends Fragment {
 
     public TextView tvWelcomeUser;
-    public Button btnlogOut;
-    protected ParseUser currentUser;
     protected ParseUser user;
     protected String welcomeMessage = "";
     public RecyclerView rvSubjects;
@@ -55,7 +53,6 @@ public class HomeFragment extends Fragment {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
         tvWelcomeUser = view.findViewById(R.id.tvWelcomeUser);
-        btnlogOut = view.findViewById(R.id.btnlogOut);
         // Recycler View population.
         rvSubjects = view.findViewById(R.id.rvSubjects);
         titles = new ArrayList<>();
@@ -71,14 +68,6 @@ public class HomeFragment extends Fragment {
         // displays user's name on the welcome message
         welcomeMessage = String.format("Hey %s!", user.getUsername());
         tvWelcomeUser.setText(welcomeMessage);
-        btnlogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseUser.logOut();
-                currentUser = ParseUser.getCurrentUser(); // now null
-                goLoginActivity();
-            }
-        });
 
     }
 
@@ -99,11 +88,5 @@ public class HomeFragment extends Fragment {
 
         adapter = new SubjectAdapter(getContext(), titles, images);
         gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
-    }
-
-    private void goLoginActivity() {
-        Intent i = new Intent(getContext(), LoginActivity.class);
-        startActivity(i);
-        getActivity().finish();
     }
 }
