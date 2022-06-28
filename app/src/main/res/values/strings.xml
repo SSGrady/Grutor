@@ -43,7 +43,7 @@
     </string-array>
 
     <string-array name="topic_math">
-        <item>Subject</item>
+        <item>Topic</item>
         <item>Pre-Algebra</item>
         <item>Geometry</item>
         <item>Algebra I</item>
@@ -53,7 +53,7 @@
     </string-array>
 
     <string-array name="topic_science">
-        <item>Subject</item>
+        <item>Topic</item>
         <item>Biology</item>
         <item>Chemistry</item>
         <item>Physics</item>
@@ -62,15 +62,31 @@
     </string-array>
 
     <string-array name="topic_history">
-        <item>Subject</item>
+        <item>Topic</item>
         <item>U.S. History</item>
         <item>World History</item>
     </string-array>
 
     <string-array name="topic_economics">
-        <item>Subject</item>
+        <item>Topic</item>
         <item>Macroeconomics</item>
         <item>Microeconomics</item>
+    </string-array>
+
+    <string-array name="topic_english">
+        <item>Topic</item>
+        <item>Phonics</item>
+        <item>Elementary</item>
+        <item>Non-speakers</item>
+        <item>High School</item>
+        <item>University</item>
+    </string-array>
+    <string-array name="topic_government">
+        <item>Topic</item>
+        <item>Bill Writing</item>
+        <item>Three Branches</item>
+        <item>Civics</item>
+        <item>Electoral College</item>
     </string-array>
 
     <string name="one_problem">\n\t\t\t\t 1\n\t\tProblem</string>

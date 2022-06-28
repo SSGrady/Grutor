@@ -25,39 +25,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grutor.Fragments.DatePickerFragment;
+import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class DetailActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    protected Lessons lesson;
+    protected ParseUser currentUser;
     protected Spinner spTopicsList;
     protected String desiredSubject = "";
     protected Bundle bundle;
-    protected Button btnConfirm;
-    protected Button btnHw;
-    protected Button btnExam;
-    protected Button btnEssay;
-    protected Button btnOther;
+    protected Button btnConfirm, btnHw, btnExam, btnEssay, btnOther;
     protected ImageButton ibCalendar;
-    protected TextView tvProblem1;
-    protected TextView tvProblem2;
-    protected TextView tvProblem3;
-    protected TextView tvDateSelected;
+    protected TextView tvProblem1, tvProblem2, tvProblem3, tvDateSelected;
     protected EditText etDescription;
-    protected boolean isColor;
-    protected boolean isTextVisible;
-    public int KEY_BLUEBLACK;
-    public int KEY_BUTTONPRIMARY;
-    public int KEY_BLUEBLACK_LIGHT;
-    public String NUM_PROBLEM_KEY;
-    public String TYPE_OF_TUTORING_KEY;
-    public String TUTORING_DESCRIPTION_KEY;
-    public String URGENCY_KEY;
-    public String TOPIC_KEY;
+    protected boolean isColor, isTextVisible;
+    public static int KEY_BLUEBLACK, KEY_BUTTONPRIMARY, KEY_BLUEBLACK_LIGHT;
+    public String NUM_PROBLEM_KEY, TYPE_OF_TUTORING_KEY, TUTORING_DESCRIPTION_KEY, URGENCY_KEY, TOPIC_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,22 +59,22 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
         // hides action bar
         getSupportActionBar().hide();
 
-        spTopicsList = findViewById(R.id.spTopicsList);
-        btnConfirm = findViewById(R.id.btnConfirm);
-        // FIXME: Bundle retrival I, delete later
-        bundle = getIntent().getExtras();
 
-        // FIXME: Bundle retrieval II, delete later
+        bundle = getIntent().getExtras();
         if (bundle != null) {
             desiredSubject = bundle.getString("subject");
         }
 
+        spTopicsList = findViewById(R.id.spTopicsList);
+        btnConfirm = findViewById(R.id.btnConfirm);
         ArrayAdapter<CharSequence> topicsListAdapter;
+        lesson = new Lessons();
+        currentUser = ParseUser.getCurrentUser();
         topicsListAdapter = checkTopic(desiredSubject);
         tvProblem1 = findViewById(R.id.tvProblem1);
         tvProblem2 = findViewById(R.id.tvProblem2);
         tvProblem3 = findViewById(R.id.tvProblem3);
-       tvDateSelected = findViewById(R.id.tvDateSelected);
+        tvDateSelected = findViewById(R.id.tvDateSelected);
         btnHw = findViewById(R.id.btnHw);
         btnExam = findViewById(R.id.btnExam);
         btnEssay = findViewById(R.id.btnEssay);
@@ -121,7 +114,6 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Bundle all the User's data for the Lessons fragment.
                 bundle.putString("type", TYPE_OF_TUTORING_KEY);
                 bundle.putString("problem", NUM_PROBLEM_KEY);
                 bundle.putString("urgency", URGENCY_KEY);
@@ -129,10 +121,24 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
                 // Description should be stored after
                 TUTORING_DESCRIPTION_KEY = etDescription.getText().toString();
                 bundle.putString("description", TUTORING_DESCRIPTION_KEY);
-                // TODO: Fire an intent from the Detail Activity to the Feed Activity
-                Intent i = new Intent(DetailActivity.this, FeedActivity.class);
-                i.putExtras(bundle);
-                finish();
+                lesson.setTutoringSubject(desiredSubject);
+                lesson.setTypeOfLesson(bundle.getString("type"));
+                lesson.setAssignmentLength(bundle.getString("problem"));
+                lesson.setCalendarDate(bundle.getString("urgency"));
+                lesson.setTutoringTopic(bundle.getString("topic"));
+                lesson.setTutoringDescription(bundle.getString("description"));
+                lesson.setStudent(currentUser);
+                lesson.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e != null) {
+                            Toast.makeText(DetailActivity.this, "Error while saving Lesson.", Toast.LENGTH_SHORT).show();
+                        }
+                        Intent i = new Intent(DetailActivity.this, FeedActivity.class);
+                        i.putExtras(bundle);
+                        finish();
+                    }
+                });
             }
         });
 
@@ -276,8 +282,15 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
             case "History":
                 topicsListAdapter = ArrayAdapter.createFromResource(this, R.array.topic_history, android.R.layout.simple_spinner_item);
                 break;
-            default:
+            case "Government":
+                topicsListAdapter = ArrayAdapter.createFromResource(this, R.array.topic_government, android.R.layout.simple_spinner_item);
+                break;
+            case "Economics":
                 topicsListAdapter = ArrayAdapter.createFromResource(this, R.array.topic_economics, android.R.layout.simple_spinner_item);
+                break;
+
+            default:
+                topicsListAdapter = ArrayAdapter.createFromResource(this, R.array.topic_english, android.R.layout.simple_spinner_item);
                 break;
         }
         return topicsListAdapter;

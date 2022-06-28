@@ -45,10 +45,10 @@ public class ProfileFragment extends Fragment {
         tvUserHoursStudied = view.findViewById(R.id.tvTotalHoursAnswer);
 
         if (currentUser != null)  {
-        tvProfileName.setText(currentUser.get("name").toString());
-        tvUserHoursStudied.setText(currentUser.get("hoursCount").toString());
-        tvUserBestSubject.setText(currentUser.get("bestAt").toString());
-        tvUserCurrentGrade.setText(currentUser.get("grade").toString());
+            tvProfileName.setText(currentUser.get("name").toString());
+            tvUserHoursStudied.setText(currentUser.get("hoursCount").toString());
+            tvUserBestSubject.setText(currentUser.get("bestAt").toString());
+            tvUserCurrentGrade.setText(currentUser.get("grade").toString());
         }
         btnlogOut.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -46,4 +46,10 @@ dependencies {
 
     implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
+
+    // video sdk
+    implementation 'live.videosdk:android-sdk:0.0.16'
+
+    // library to perform Network call to generate a meeting id
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
 }
