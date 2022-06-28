@@ -3,9 +3,11 @@ package com.example.grutor.Activites;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,18 +17,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.grutor.Fragments.DatePickerFragment;
 import com.example.grutor.R;
 
 import org.w3c.dom.Text;
 
-public class DetailActivity extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Calendar;
 
-    protected Spinner spDayOfWeek;
+public class DetailActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
     protected Spinner spTopicsList;
     protected String desiredSubject = "";
     protected Bundle bundle;
@@ -35,9 +42,11 @@ public class DetailActivity extends AppCompatActivity {
     protected Button btnExam;
     protected Button btnEssay;
     protected Button btnOther;
+    protected ImageButton ibCalendar;
     protected TextView tvProblem1;
     protected TextView tvProblem2;
     protected TextView tvProblem3;
+    protected TextView tvDateSelected;
     protected EditText etDescription;
     protected boolean isColor;
     protected boolean isTextVisible;
@@ -57,7 +66,6 @@ public class DetailActivity extends AppCompatActivity {
         // hides action bar
         getSupportActionBar().hide();
 
-        spDayOfWeek = findViewById(R.id.spDayOfWeek);
         spTopicsList = findViewById(R.id.spTopicsList);
         btnConfirm = findViewById(R.id.btnConfirm);
         // FIXME: Bundle retrival I, delete later
@@ -67,44 +75,27 @@ public class DetailActivity extends AppCompatActivity {
         if (bundle != null) {
             desiredSubject = bundle.getString("subject");
         }
-        ArrayAdapter<CharSequence> dayOfWeekAdapter= ArrayAdapter.createFromResource(this, R.array.day_of_week, android.R.layout.simple_spinner_item);
-        ArrayAdapter<CharSequence> topicsListAdapter;
 
+        ArrayAdapter<CharSequence> topicsListAdapter;
         topicsListAdapter = checkTopic(desiredSubject);
         tvProblem1 = findViewById(R.id.tvProblem1);
         tvProblem2 = findViewById(R.id.tvProblem2);
         tvProblem3 = findViewById(R.id.tvProblem3);
+       tvDateSelected = findViewById(R.id.tvDateSelected);
         btnHw = findViewById(R.id.btnHw);
         btnExam = findViewById(R.id.btnExam);
         btnEssay = findViewById(R.id.btnEssay);
         btnOther = findViewById(R.id.btnOther);
+        ibCalendar = findViewById(R.id.ibCalendar);
         etDescription = findViewById(R.id.etDescription);
         isColor = true;
         isTextVisible = true;
-
-
+        topicsListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spTopicsList.setAdapter(topicsListAdapter);
 
         createColors();
         btnChangeDisplay();
         tvChangeDisplay();
-
-        dayOfWeekAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        topicsListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-
-        spDayOfWeek.setAdapter(dayOfWeekAdapter);
-        spTopicsList.setAdapter(topicsListAdapter);
-
-        spDayOfWeek.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!spDayOfWeek.getSelectedItem().toString().equals("Pick a Day")) {
-                    URGENCY_KEY = spDayOfWeek.getSelectedItem().toString();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
 
         spTopicsList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -117,6 +108,16 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+
+
+        ibCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+            }
+        });
+
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -280,5 +281,16 @@ public class DetailActivity extends AppCompatActivity {
                 break;
         }
         return topicsListAdapter;
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        tvDateSelected.setText(currentDateString);
+        URGENCY_KEY = tvDateSelected.getText().toString();
     }
 }
