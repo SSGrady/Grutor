@@ -54,14 +54,11 @@ public class LessonsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_lessons, parent, false);
     }
 
-    // This event is triggered soon after onCreateView().
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
-
         rvLessons = view.findViewById(R.id.rvLessons);
         rvMatches = view.findViewById(R.id.rvMatches);
         lessons = new ArrayList<>();

@@ -11,7 +11,8 @@ import java.util.List;
 public class studentMatcher {
     public ParseUser currentUser;
 
-    // TODO protected final String KEY_BEST_AT = "bestAt";
+    // TODO implement bestAt matching with subject requested
+    //  protected final String KEY_BEST_AT = "bestAt";
     protected String KEY_USER_OBJECT_ID;
     protected final String KEY_OBJECT_ID = "objectId";
     protected final String KEY_GRADE = "grade";
@@ -32,12 +33,5 @@ public class studentMatcher {
         query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
         query.whereNotEqualTo(KEY_OBJECT_ID, KEY_USER_OBJECT_ID);
         matches.addAll(query.find());
-//        query.findInBackground(new FindCallback<ParseUser>() {
-//            @Override
-//            public void done(List<ParseUser> studentMatches, ParseException e) {
-//                // System.out.println(studentMatches.size());
-//                matches.addAll(studentMatches);
-//            }
-//        });
     }
 }
