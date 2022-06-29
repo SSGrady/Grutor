@@ -23,18 +23,21 @@ import android.widget.Toast;
 import com.example.grutor.Adapters.LessonAdapter;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
+import com.example.grutor.Utility.studentMatcher;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LessonsFragment extends Fragment {
-    protected Bundle bundle;
     protected FloatingActionButton fab_main, fabCamera, fabMessages;
     protected Animation fab_open, fab_close, fab_clock, fab_anticlock;
+    ArrayList<ParseUser> users;
+    protected studentMatcher matching;
     TextView tvCallIcon, tvMessagesIcon;
     RecyclerView rvLessons;
     LessonAdapter adapter;
@@ -46,7 +49,6 @@ public class LessonsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        bundle = this.getArguments();
         return inflater.inflate(R.layout.fragment_lessons, parent, false);
     }
 
@@ -57,13 +59,18 @@ public class LessonsFragment extends Fragment {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
 
+        users = new ArrayList<>();
+        matching = new studentMatcher(users);
         rvLessons = view.findViewById(R.id.rvLessons);
         lessons = new ArrayList<>();
         adapter = new LessonAdapter(getContext(), lessons);
         queryLessons();
+        queryUsers();
 
         rvLessons.setLayoutManager(new LinearLayoutManager(getContext()));
         rvLessons.setAdapter(adapter);
+
+        matching.getMyMatches();
 
         fab_main = view.findViewById(R.id.fab);
         fabCamera = view.findViewById(R.id.fabCamera);
@@ -122,8 +129,22 @@ public class LessonsFragment extends Fragment {
             }
         });
 
-        // TODO: Populate the Lessons fragment with new data.
+    }
 
+    private void queryUsers() {
+        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
+        query.setLimit(5);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void done(List<ParseUser> theseUsers, ParseException e) {
+                if (e != null) {
+                    Log.e("Lessons Fragment", "Issue with getting lessons", e);
+                    return;
+                }
+                users.addAll(theseUsers);
+            }
+        });
     }
 
     private void queryLessons() {
