@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grutor.Adapters.LessonAdapter;
+import com.example.grutor.Adapters.MatchesAdapter;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.example.grutor.Utility.studentMatcher;
@@ -39,8 +40,9 @@ public class LessonsFragment extends Fragment {
     ArrayList<ParseUser> users;
     protected studentMatcher matching;
     TextView tvCallIcon, tvMessagesIcon;
-    RecyclerView rvLessons;
+    RecyclerView rvLessons, rvMatches;
     LessonAdapter adapter;
+    MatchesAdapter matcher;
     ArrayList<Lessons> lessons;
 
     Boolean isOpen = false;
@@ -54,23 +56,28 @@ public class LessonsFragment extends Fragment {
 
     // This event is triggered soon after onCreateView().
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
 
-        users = new ArrayList<>();
-        matching = new studentMatcher(users);
         rvLessons = view.findViewById(R.id.rvLessons);
+        rvMatches = view.findViewById(R.id.rvMatches);
         lessons = new ArrayList<>();
         adapter = new LessonAdapter(getContext(), lessons);
         queryLessons();
-        queryUsers();
-
+        matching = new studentMatcher();
+        try {
+            matching.getMyMatches();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        matcher = new MatchesAdapter(getContext(), matching.matches);
+        rvMatches.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvMatches.setAdapter(matcher);
         rvLessons.setLayoutManager(new LinearLayoutManager(getContext()));
         rvLessons.setAdapter(adapter);
-
-        matching.getMyMatches();
 
         fab_main = view.findViewById(R.id.fab);
         fabCamera = view.findViewById(R.id.fabCamera);
@@ -125,26 +132,13 @@ public class LessonsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Call", Toast.LENGTH_SHORT).show();
-
             }
         });
-
     }
 
-    private void queryUsers() {
+    private void queryUsers() throws ParseException {
         ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
-        query.setLimit(5);
-        query.findInBackground(new FindCallback<ParseUser>() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void done(List<ParseUser> theseUsers, ParseException e) {
-                if (e != null) {
-                    Log.e("Lessons Fragment", "Issue with getting lessons", e);
-                    return;
-                }
-                users.addAll(theseUsers);
-            }
-        });
+        users.addAll(query.find());
     }
 
     private void queryLessons() {

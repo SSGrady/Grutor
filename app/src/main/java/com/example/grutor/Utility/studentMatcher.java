@@ -10,7 +10,7 @@ import java.util.List;
 
 public class studentMatcher {
     public ParseUser currentUser;
-    public List<ParseUser> users;
+
     // TODO protected final String KEY_BEST_AT = "bestAt";
     protected String KEY_USER_OBJECT_ID;
     protected final String KEY_OBJECT_ID = "objectId";
@@ -18,24 +18,26 @@ public class studentMatcher {
     protected String KEY_USERS_GRADE;
     public List<ParseUser> matches;
 
-    public studentMatcher(List<ParseUser> users){
-        this.users = users;
+    public studentMatcher(){
+
         this.currentUser = ParseUser.getCurrentUser();
         matches = new ArrayList<>();
         KEY_USER_OBJECT_ID = String.valueOf(currentUser.getObjectId());
         KEY_USERS_GRADE  = String.valueOf(currentUser.get(KEY_GRADE));
     }
 
-    public void getMyMatches() {
+    public void getMyMatches() throws ParseException {
         ParseQuery <ParseUser> query =  ParseQuery.getQuery("_User");
+        query.setLimit(5);
         query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
         query.whereNotEqualTo(KEY_OBJECT_ID, KEY_USER_OBJECT_ID);
-        query.findInBackground(new FindCallback<ParseUser>() {
-            @Override
-            public void done(List<ParseUser> studentMatches, ParseException e) {
-                // System.out.println(studentMatches.size());
-                matches.addAll(studentMatches);
-            }
-        });
+        matches.addAll(query.find());
+//        query.findInBackground(new FindCallback<ParseUser>() {
+//            @Override
+//            public void done(List<ParseUser> studentMatches, ParseException e) {
+//                // System.out.println(studentMatches.size());
+//                matches.addAll(studentMatches);
+//            }
+//        });
     }
 }
