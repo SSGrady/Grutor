@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    tools:context=".Activites.LessonActivity">
+
+        <Button
+            android:id="@+id/btnSubjectTopic"
+            android:layout_width="183dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:background="#00FFFFFF"
+            android:text="Subject · Topic"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/tvNumType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Type · Num Problem(s)"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivSubjectLesson"
+            app:layout_constraintTop_toTopOf="@+id/ivSubjectLesson" />
+
+        <EditText
+            android:id="@+id/etBundledDescription"
+            android:layout_width="160dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Description field"
+            android:inputType="textMultiLine"
+            android:textColor="@color/blueBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivSubjectLesson"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/ivSubjectLesson"
+            android:layout_width="36dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/icons8_math_64"
+            app:layout_constraintStart_toEndOf="@+id/btnSubjectTopic"
+            app:layout_constraintTop_toTopOf="@+id/btnSubjectTopic" />
+
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="204dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
+            android:text="Date time"
+            android:textColor="@color/blueBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/etBundledDescription"
+            app:layout_constraintTop_toTopOf="@+id/etBundledDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

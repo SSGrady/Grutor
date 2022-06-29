@@ -21,7 +21,7 @@ public class Lessons extends ParseObject {
     public void setTypeOfLesson(String lessonType) { put(KEY_TYPE_OF_LESSON, lessonType);}
     public String getAssignmentLength() {return getString(KEY_ASSIGNMENT_LENGTH);}
     public void setAssignmentLength(String numberOfProblems) { put(KEY_ASSIGNMENT_LENGTH, numberOfProblems);}
-    public String getTutoringSubject() { return getString(KEY_TOPIC);}
+    public String getTutoringSubject() { return getString(KEY_SUBJECT);}
     public void setTutoringSubject(String subject) { put(KEY_SUBJECT, subject);}
     public String getTutoringTopic() { return getString(KEY_TOPIC);}
     public void setTutoringTopic(String topic) {put(KEY_TOPIC, topic); }

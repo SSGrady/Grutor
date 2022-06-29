@@ -114,34 +114,38 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bundle.putString("type", TYPE_OF_TUTORING_KEY);
-                bundle.putString("problem", NUM_PROBLEM_KEY);
-                bundle.putString("urgency", URGENCY_KEY);
-                bundle.putString("topic", TOPIC_KEY);
-                // Description should be stored after
-                TUTORING_DESCRIPTION_KEY = etDescription.getText().toString();
-                bundle.putString("description", TUTORING_DESCRIPTION_KEY);
-                lesson.setTutoringSubject(desiredSubject);
-                lesson.setTypeOfLesson(bundle.getString("type"));
-                lesson.setAssignmentLength(bundle.getString("problem"));
-                lesson.setCalendarDate(bundle.getString("urgency"));
-                lesson.setTutoringTopic(bundle.getString("topic"));
-                lesson.setTutoringDescription(bundle.getString("description"));
-                lesson.setStudent(currentUser);
-                lesson.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e != null) {
-                            Toast.makeText(DetailActivity.this, "Error while saving Lesson.", Toast.LENGTH_SHORT).show();
-                        }
-                        Intent i = new Intent(DetailActivity.this, FeedActivity.class);
-                        i.putExtras(bundle);
-                        finish();
-                    }
-                });
+                lessonRequest();
             }
         });
 
+    }
+
+    private void lessonRequest() {
+        bundle.putString("type", TYPE_OF_TUTORING_KEY);
+        bundle.putString("problem", NUM_PROBLEM_KEY);
+        bundle.putString("urgency", URGENCY_KEY);
+        bundle.putString("topic", TOPIC_KEY);
+        // Description should be stored after clicking the confirm button.
+        TUTORING_DESCRIPTION_KEY = etDescription.getText().toString();
+        bundle.putString("description", TUTORING_DESCRIPTION_KEY);
+        lesson.setTutoringSubject(desiredSubject);
+        lesson.setTypeOfLesson(bundle.getString("type"));
+        lesson.setAssignmentLength(bundle.getString("problem"));
+        lesson.setCalendarDate(bundle.getString("urgency"));
+        lesson.setTutoringTopic(bundle.getString("topic"));
+        lesson.setTutoringDescription(bundle.getString("description"));
+        lesson.setStudent(currentUser);
+        lesson.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Toast.makeText(DetailActivity.this, "Error while saving Lesson.", Toast.LENGTH_SHORT).show();
+                }
+                Intent i = new Intent(DetailActivity.this, FeedActivity.class);
+                i.putExtras(bundle);
+                finish();
+            }
+        });
     }
 
     private void tvChangeDisplay() {
