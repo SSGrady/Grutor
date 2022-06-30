@@ -57,4 +57,6 @@ dependencies {
 
     // library to perform Network call to generate a meeting id
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
+
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
 }

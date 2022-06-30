@@ -17,6 +17,8 @@ import com.parse.ParseUser;
 
 import java.util.Objects;
 
+import es.dmoral.toasty.Toasty;
+
 public class SignInActivity extends AppCompatActivity {
 
     public static final String TAG = "LoginActivity";
@@ -54,19 +56,17 @@ public class SignInActivity extends AppCompatActivity {
 
 
         private void loginUser(String username, String password) {
-            Log.i(TAG, "Attempting to login user " + username);
-            // TODO: navigate to main activity if user has signed in properly
             ParseUser.logInInBackground(username, password, new LogInCallback() {
                 @Override
                 public void done(ParseUser user, ParseException e) {
                     if (e!= null) {
                         Log.e(TAG, "Issue with login", e);
-                        Toast.makeText(SignInActivity.this, "Issue with Login!", Toast.LENGTH_SHORT).show();
+                        Toasty.error(SignInActivity.this, "Login failure!", Toast.LENGTH_SHORT, true).show();
                         return;
                     }
+                    Toasty.success(SignInActivity.this, "Success!", Toast.LENGTH_SHORT, true).show();
                     goMainActivity();
-
-                    Toast.makeText(SignInActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+                    Toasty.Config.getInstance().apply(); // required
                 }
             });
 
