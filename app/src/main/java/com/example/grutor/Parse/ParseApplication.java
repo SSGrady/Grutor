@@ -2,6 +2,7 @@ package com.example.grutor.Parse;
 
 import android.app.Application;
 
+import com.example.grutor.Modals.Lessons;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -14,6 +15,7 @@ public class ParseApplication extends Application {
 
         // ParseObject.registerSubclass(bestAT.class);
         // ParseObject.registerSubclass(grade.class);
+        ParseObject.registerSubclass(Lessons.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("44G4lceevcRvp0HJ8yammgYVuc797zfMNMNSEJOe")
