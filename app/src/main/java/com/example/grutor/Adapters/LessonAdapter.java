@@ -23,9 +23,10 @@ import com.parse.ParseUser;
 import java.util.List;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
-    List<Lessons> lessons;
-    LayoutInflater inflater;
-    Context context;
+    public List<Lessons> lessons;
+    protected LayoutInflater inflater;
+    protected Context context;
+    public Lessons requestedLesson;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -33,6 +34,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         public EditText etBundledDescription;
         public ImageView ivSubjectLesson;
         public Button btnSubjectTopic;
+        public boolean clicky;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNumType = itemView.findViewById(R.id.tvNumType);
@@ -40,6 +43,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             etBundledDescription = itemView.findViewById(R.id.etBundledDescription);
             ivSubjectLesson = itemView.findViewById(R.id.ivSubjectLesson);
             btnSubjectTopic = itemView.findViewById(R.id.btnSubjectTopic);
+            clicky = true;
         }
     }
 
@@ -62,6 +66,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         Lessons lesson = lessons.get(position);
         holder.etBundledDescription.setText(lesson.getTutoringDescription());
         holder.btnSubjectTopic.setText(lesson.getTutoringSubject() + " · " + lesson.getTutoringTopic());
+        holder.btnSubjectTopic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLessons(holder, position);
+            }
+        });
         holder.tvDateTime.setText(lesson.getCalendarDate());
         if (lesson.getTypeOfLesson().equals("Essay") || lesson.getTypeOfLesson().equals("Other")) {
             holder.tvNumType.setText(lesson.getTypeOfLesson());
@@ -87,6 +97,29 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             case "Math":
                 holder.ivSubjectLesson.setImageResource(R.drawable.icons8_math_64);
                 break;
+        }
+    }
+
+    private void setLessons(ViewHolder holder, int position) {
+        if (holder.clicky) {
+            holder.ivSubjectLesson.setVisibility(View.VISIBLE);
+            if (!holder.etBundledDescription.getText().toString().isEmpty())
+            {
+                holder.etBundledDescription.setVisibility(View.VISIBLE);
+            }
+            holder.tvNumType.setVisibility(View.VISIBLE);
+            holder.tvDateTime.setVisibility(View.VISIBLE);
+            holder.clicky = false;
+            requestedLesson = lessons.get(position);
+
+        }
+        else {
+            holder.clicky = true;
+            holder.ivSubjectLesson.setVisibility(View.GONE);
+            holder.etBundledDescription.setVisibility(View.INVISIBLE);
+            holder.tvNumType.setVisibility(View.GONE);
+            holder.tvDateTime.setVisibility(View.GONE);
+            requestedLesson = null;
         }
     }
 

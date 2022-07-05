@@ -59,4 +59,7 @@ dependencies {
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
 
     implementation 'com.github.GrenderG:Toasty:1.5.2'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1' // for logging API calls to LogCat
+    implementation 'com.github.parse-community:ParseLiveQuery-Android:1.2.2'
 }

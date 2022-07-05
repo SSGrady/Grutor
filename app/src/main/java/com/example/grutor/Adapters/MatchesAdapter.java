@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.example.grutor.Utility.studentMatcher;
@@ -28,19 +29,19 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     List<ParseUser> users;
     LayoutInflater inflater;
     Context context;
-    protected studentMatcher matching;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvMatchedName;
         public ImageView ivMatchedStudent;
-        public Button btnAccept, btnDelete;
+        public Button btnAccept, btnDelete, btnSubjectTopic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvMatchedName = itemView.findViewById(R.id.tvMatchedName);
             ivMatchedStudent = itemView.findViewById(R.id.ivMatchedStudent);
             btnAccept = itemView.findViewById(R.id.btnAccept);
             btnDelete = itemView.findViewById(R.id.btnDelete);
+            btnSubjectTopic = itemView.findViewById(R.id.btnSubjectTopic);
         }
     }
 
@@ -61,6 +62,16 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MatchesAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvMatchedName.setText(users.get(position).getUsername());
+        Glide.with(context)
+                .load(users.get(position).getParseFile("profilePhoto").getUrl())
+                .circleCrop() // create an effect of a round profile picture
+                .into(holder.ivMatchedStudent);
+//        holder.btnAccept.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     @Override

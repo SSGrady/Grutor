@@ -29,6 +29,7 @@
             android:fontFamily="sans-serif-medium"
             android:text="Type · Num Problem(s)"
             android:textColor="@color/black"
+            android:visibility="invisible"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivSubjectLesson"
@@ -43,6 +44,7 @@
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:hint="Description field"
+            android:visibility="gone"
             android:inputType="textMultiLine"
             android:textColor="@color/blueBlack"
             android:textSize="16sp"
@@ -57,6 +59,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="3dp"
             android:src="@drawable/icons8_math_64"
+            android:visibility="invisible"
             app:layout_constraintStart_toEndOf="@+id/btnSubjectTopic"
             app:layout_constraintTop_toTopOf="@+id/btnSubjectTopic" />
 
@@ -69,6 +72,7 @@
             android:text="Date time"
             android:textColor="@color/blueBlack"
             android:textSize="16sp"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/etBundledDescription"
             app:layout_constraintTop_toTopOf="@+id/etBundledDescription" />
 

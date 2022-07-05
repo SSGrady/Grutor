@@ -54,9 +54,9 @@
             tools:text="8" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="49dp"
-            android:layout_height="44dp"
+            android:id="@+id/ivCurrUserProfile"
+            android:layout_width="57dp"
+            android:layout_height="51dp"
             android:layout_marginStart="45dp"
             android:layout_marginTop="75dp"
             android:src="@drawable/profile_icon"
@@ -68,12 +68,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="So-and-so"
             android:textColor="@color/blueBlack"
             android:textSize="17sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintStart_toEndOf="@+id/ivCurrUserProfile"
+            app:layout_constraintTop_toTopOf="@+id/ivCurrUserProfile" />
 
         <TextView
             android:id="@+id/tvBestSubjectProfilePrompt"
@@ -114,8 +114,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="115dp"
             android:src="@drawable/icons8_clock_48"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintStart_toStartOf="@+id/ivCurrUserProfile"
+            app:layout_constraintTop_toBottomOf="@+id/ivCurrUserProfile" />
 
         <ImageView
             android:id="@+id/ivBestSubject"
@@ -124,7 +124,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="115dp"
             android:src="@drawable/icons8_good_quality_48"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/ivCurrUserProfile"
             app:layout_constraintTop_toBottomOf="@+id/ivTotalHours" />
 
         <ImageView
@@ -133,7 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="115dp"
             android:src="@drawable/icons8_backpack_48"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/ivCurrUserProfile"
             app:layout_constraintTop_toBottomOf="@+id/ivBestSubject" />
 
         <TextView

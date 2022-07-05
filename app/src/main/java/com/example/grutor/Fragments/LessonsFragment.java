@@ -37,7 +37,6 @@ import java.util.List;
 public class LessonsFragment extends Fragment {
     protected FloatingActionButton fab_main, fabCamera, fabMessages;
     protected Animation fab_open, fab_close, fab_clock, fab_anticlock;
-    ArrayList<ParseUser> users;
     protected studentMatcher matching;
     TextView tvCallIcon, tvMessagesIcon;
     RecyclerView rvLessons, rvMatches;
@@ -64,12 +63,15 @@ public class LessonsFragment extends Fragment {
         lessons = new ArrayList<>();
         adapter = new LessonAdapter(getContext(), lessons);
         queryLessons();
-        matching = new studentMatcher();
+        matching = new studentMatcher(adapter.requestedLesson);
         try {
             matching.getMyMatches();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        // TODO [ ] Add onClick listener for btnSubjectTopic that populates the matches adapter with the correct subject,
+        // TODO     this will happen inside studentMatcher.java where queried results are based on btnSubjectTopic's subject
+
         matcher = new MatchesAdapter(getContext(), matching.matches);
         rvMatches.setLayoutManager(new LinearLayoutManager(getContext()));
         rvMatches.setAdapter(matcher);
@@ -133,10 +135,10 @@ public class LessonsFragment extends Fragment {
         });
     }
 
-    private void queryUsers() throws ParseException {
-        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
-        users.addAll(query.find());
-    }
+//   FIXME: REMOVEME private void queryUsers() throws ParseException {
+//        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
+//        users.addAll(query.find());
+//    }
 
     private void queryLessons() {
         ParseQuery<Lessons> query = ParseQuery.getQuery(Lessons.class);

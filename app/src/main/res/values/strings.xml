@@ -15,6 +15,10 @@
     <string name="history">History</string>
     <string name="government">Government</string>
     <string name="economics">Economics</string>
+    <string name="message_hint">Say anything</string>
+    <string name="send">Send</string>
+    <string name="profile_me">My Profile Pic</string>
+    <string name="profile_other">Other profile pic</string>
 
     <string-array name="grades">
         <item>Grade</item>
