@@ -29,7 +29,7 @@
             android:fontFamily="sans-serif-medium"
             android:text="Type · Num Problem(s)"
             android:textColor="@color/black"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivSubjectLesson"
@@ -59,7 +59,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="3dp"
             android:src="@drawable/icons8_math_64"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/btnSubjectTopic"
             app:layout_constraintTop_toTopOf="@+id/btnSubjectTopic" />
 

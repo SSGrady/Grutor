@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,10 +41,10 @@ public class LessonsFragment extends Fragment {
     protected studentMatcher matching;
     TextView tvCallIcon, tvMessagesIcon;
     RecyclerView rvLessons, rvMatches;
-    LessonAdapter adapter;
+    LessonAdapter lessonsAdapter;
     MatchesAdapter matcher;
     ArrayList<Lessons> lessons;
-
+    Button btnMatch;
     Boolean isOpen = false;
 
     @Override
@@ -58,26 +59,47 @@ public class LessonsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
+        btnMatch = view.findViewById(R.id.btnMatch);
         rvLessons = view.findViewById(R.id.rvLessons);
         rvMatches = view.findViewById(R.id.rvMatches);
         lessons = new ArrayList<>();
-        adapter = new LessonAdapter(getContext(), lessons);
-        queryLessons();
-        matching = new studentMatcher(adapter.requestedLesson);
         try {
-            matching.getMyMatches();
+            queryLessons();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        lessonsAdapter = new LessonAdapter(getContext(), lessons);
+//        matching = new studentMatcher(lessonsAdapter.requestedLesson);
+//        try {
+//            matching.getMyMatches();
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         // TODO [ ] Add onClick listener for btnSubjectTopic that populates the matches adapter with the correct subject,
         // TODO     this will happen inside studentMatcher.java where queried results are based on btnSubjectTopic's subject
 
-        matcher = new MatchesAdapter(getContext(), matching.matches);
-        rvMatches.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvMatches.setAdapter(matcher);
+        // matcher = new MatchesAdapter(getContext(), lessonsAdapter.matching.matches);
         rvLessons.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvLessons.setAdapter(adapter);
+        rvLessons.setAdapter(lessonsAdapter);
+        btnMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                matching = new studentMatcher(lessonsAdapter.requestedLesson);
+                try {
+                    matching.getMyMatches();
+                    matcher = new MatchesAdapter(getContext(), matching.matches);
+                    rvMatches.setAdapter(matcher);
+                    rvMatches.setLayoutManager(new LinearLayoutManager(getContext()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+      setFloatingActionButton(view);
+    }
+
+    private void setFloatingActionButton(View view) {
         fab_main = view.findViewById(R.id.fab);
         fabCamera = view.findViewById(R.id.fabCamera);
         fabMessages = view.findViewById(R.id.fabMessages);
@@ -135,25 +157,9 @@ public class LessonsFragment extends Fragment {
         });
     }
 
-//   FIXME: REMOVEME private void queryUsers() throws ParseException {
-//        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
-//        users.addAll(query.find());
-//    }
-
-    private void queryLessons() {
+    private void queryLessons() throws ParseException {
         ParseQuery<Lessons> query = ParseQuery.getQuery(Lessons.class);
         query.setLimit(5);
-        query.findInBackground(new FindCallback<Lessons>() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void done(List<Lessons> theseLessons, ParseException e) {
-                if (e != null) {
-                    Log.e("Lessons Fragment", "Issue with getting lessons", e);
-                    return;
-                }
-                lessons.addAll(theseLessons);
-                adapter.notifyDataSetChanged();
-            }
-        });
+        lessons.addAll(query.find());
     }
 }

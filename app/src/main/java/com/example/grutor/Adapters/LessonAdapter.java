@@ -3,7 +3,7 @@ package com.example.grutor.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
+import com.example.grutor.Utility.studentMatcher;
+import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     public List<Lessons> lessons;
     protected LayoutInflater inflater;
     protected Context context;
-    public Lessons requestedLesson;
+    public String requestedLesson;
+    public studentMatcher matching;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,6 +37,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         public ImageView ivSubjectLesson;
         public Button btnSubjectTopic;
         public boolean clicky;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +75,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 setLessons(holder, position);
             }
         });
+//        matching = new studentMatcher(requestedLesson);
+//        try {
+//            matching.getMyMatches();
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         holder.tvDateTime.setText(lesson.getCalendarDate());
         if (lesson.getTypeOfLesson().equals("Essay") || lesson.getTypeOfLesson().equals("Other")) {
             holder.tvNumType.setText(lesson.getTypeOfLesson());
@@ -107,11 +116,14 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             {
                 holder.etBundledDescription.setVisibility(View.VISIBLE);
             }
+            // Formatting conditional
+            else {
+                holder.etBundledDescription.setVisibility(View.INVISIBLE);
+            }
             holder.tvNumType.setVisibility(View.VISIBLE);
             holder.tvDateTime.setVisibility(View.VISIBLE);
             holder.clicky = false;
-            requestedLesson = lessons.get(position);
-
+            requestedLesson = lessons.get(position).getTutoringSubject();
         }
         else {
             holder.clicky = true;
