@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.example.grutor.Utility.studentMatcher;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
@@ -27,14 +29,16 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     public List<Lessons> lessons;
     protected LayoutInflater inflater;
     protected Context context;
-    public String requestedLesson;
-    public studentMatcher matching;
+    public String requestedLessonString;
+    public Lessons requestedLesson;
+    Boolean isOpen = false;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvNumType, tvDateTime;
         public EditText etBundledDescription;
         public ImageView ivSubjectLesson;
+        protected FloatingActionButton fabChat;
         public Button btnSubjectTopic;
         public boolean clicky;
 
@@ -46,6 +50,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             etBundledDescription = itemView.findViewById(R.id.etBundledDescription);
             ivSubjectLesson = itemView.findViewById(R.id.ivSubjectLesson);
             btnSubjectTopic = itemView.findViewById(R.id.btnSubjectTopic);
+            fabChat = itemView.findViewById(R.id.fabChat);
             clicky = true;
         }
     }
@@ -75,18 +80,48 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 setLessons(holder, position);
             }
         });
-//        matching = new studentMatcher(requestedLesson);
-//        try {
-//            matching.getMyMatches();
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+        setLessonIcons(holder, lesson);
         holder.tvDateTime.setText(lesson.getCalendarDate());
         if (lesson.getTypeOfLesson().equals("Essay") || lesson.getTypeOfLesson().equals("Other")) {
             holder.tvNumType.setText(lesson.getTypeOfLesson());
         } else {
             holder.tvNumType.setText(lesson.getTypeOfLesson() + " · " + lesson.getAssignmentLength());
         }
+    }
+
+    private void setLessons(ViewHolder holder, int position) {
+        if (holder.clicky) {
+            holder.ivSubjectLesson.setVisibility(View.VISIBLE);
+            if (!holder.etBundledDescription.getText().toString().isEmpty())
+            {
+                holder.etBundledDescription.setVisibility(View.VISIBLE);
+            }
+            // Formatting conditional
+            else {
+                holder.etBundledDescription.setVisibility(View.INVISIBLE);
+            }
+            holder.tvNumType.setVisibility(View.VISIBLE);
+            holder.tvDateTime.setVisibility(View.VISIBLE);
+            holder.clicky = false;
+            requestedLessonString = lessons.get(position).getTutoringSubject();
+            requestedLesson = lessons.get(position);
+            if (requestedLesson.getStudentTutor() != null) {
+                holder.fabChat.setVisibility(View.VISIBLE);
+            }
+        }
+        else {
+            holder.clicky = true;
+            holder.ivSubjectLesson.setVisibility(View.GONE);
+            holder.etBundledDescription.setVisibility(View.INVISIBLE);
+            holder.tvNumType.setVisibility(View.GONE);
+            holder.tvDateTime.setVisibility(View.GONE);
+            requestedLessonString = "";
+            requestedLesson = null;
+            holder.fabChat.setVisibility(View.GONE);
+        }
+    }
+
+    private void setLessonIcons(ViewHolder holder, Lessons lesson) {
         switch(lesson.getTutoringSubject()) {
             case "English":
                 holder.ivSubjectLesson.setImageResource(R.drawable.icons8_english_64);
@@ -106,32 +141,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             case "Math":
                 holder.ivSubjectLesson.setImageResource(R.drawable.icons8_math_64);
                 break;
-        }
-    }
-
-    private void setLessons(ViewHolder holder, int position) {
-        if (holder.clicky) {
-            holder.ivSubjectLesson.setVisibility(View.VISIBLE);
-            if (!holder.etBundledDescription.getText().toString().isEmpty())
-            {
-                holder.etBundledDescription.setVisibility(View.VISIBLE);
-            }
-            // Formatting conditional
-            else {
-                holder.etBundledDescription.setVisibility(View.INVISIBLE);
-            }
-            holder.tvNumType.setVisibility(View.VISIBLE);
-            holder.tvDateTime.setVisibility(View.VISIBLE);
-            holder.clicky = false;
-            requestedLesson = lessons.get(position).getTutoringSubject();
-        }
-        else {
-            holder.clicky = true;
-            holder.ivSubjectLesson.setVisibility(View.GONE);
-            holder.etBundledDescription.setVisibility(View.INVISIBLE);
-            holder.tvNumType.setVisibility(View.GONE);
-            holder.tvDateTime.setVisibility(View.GONE);
-            requestedLesson = null;
         }
     }
 

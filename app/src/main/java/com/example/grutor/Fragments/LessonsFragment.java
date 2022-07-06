@@ -69,25 +69,18 @@ public class LessonsFragment extends Fragment {
             e.printStackTrace();
         }
         lessonsAdapter = new LessonAdapter(getContext(), lessons);
-//        matching = new studentMatcher(lessonsAdapter.requestedLesson);
-//        try {
-//            matching.getMyMatches();
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
         // TODO [ ] Add onClick listener for btnSubjectTopic that populates the matches adapter with the correct subject,
         // TODO     this will happen inside studentMatcher.java where queried results are based on btnSubjectTopic's subject
 
-        // matcher = new MatchesAdapter(getContext(), lessonsAdapter.matching.matches);
         rvLessons.setLayoutManager(new LinearLayoutManager(getContext()));
         rvLessons.setAdapter(lessonsAdapter);
         btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                matching = new studentMatcher(lessonsAdapter.requestedLesson);
+                matching = new studentMatcher(lessonsAdapter.requestedLessonString);
                 try {
                     matching.getMyMatches();
-                    matcher = new MatchesAdapter(getContext(), matching.matches);
+                    matcher = new MatchesAdapter(getContext(), matching.matches, lessonsAdapter.requestedLesson);
                     rvMatches.setAdapter(matcher);
                     rvMatches.setLayoutManager(new LinearLayoutManager(getContext()));
                 } catch (ParseException e) {
