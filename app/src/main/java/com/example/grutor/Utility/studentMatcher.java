@@ -15,7 +15,6 @@ public class studentMatcher {
     public ParseUser currentUser;
     public String requestedLessonString;
 
-    // TODO implement bestAt matching with subject requested
     protected final String KEY_BEST_AT = "bestAt";
     protected String KEY_USER_OBJECT_ID;
     protected final String KEY_OBJECT_ID = "objectId";

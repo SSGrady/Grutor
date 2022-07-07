@@ -33,8 +33,6 @@ public class FeedActivity extends AppCompatActivity {
 
         // hides action bar
         getSupportActionBar().hide();
-
-        final FragmentManager fragmentManager = getSupportFragmentManager();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // handle navigation selection
@@ -52,12 +50,11 @@ public class FeedActivity extends AppCompatActivity {
                         break;
                     case R.id.action_home:
                         fragment = fragmentHome;
-                    // TODO: Create a floating chat icon inside of my lessons fragment to navigate to the messaging fragment
                     default:
                         break;
                 }
                 assert fragment != null;
-                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });

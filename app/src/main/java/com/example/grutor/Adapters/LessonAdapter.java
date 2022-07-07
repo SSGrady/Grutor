@@ -4,6 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +18,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.grutor.Activites.FeedActivity;
+import com.example.grutor.Fragments.MessagesFragment;
+import com.example.grutor.Modals.Groupchat;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.example.grutor.Utility.studentMatcher;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
@@ -31,7 +43,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     protected Context context;
     public String requestedLessonString;
     public Lessons requestedLesson;
-    Boolean isOpen = false;
+    protected boolean isGroupChat;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -52,6 +64,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             btnSubjectTopic = itemView.findViewById(R.id.btnSubjectTopic);
             fabChat = itemView.findViewById(R.id.fabChat);
             clicky = true;
+            isGroupChat = true;
         }
     }
 
@@ -87,6 +100,23 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         } else {
             holder.tvNumType.setText(lesson.getTypeOfLesson() + " · " + lesson.getAssignmentLength());
         }
+        holder.fabChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!lesson.getIsGroupChat()) {
+                    Groupchat groupchat = new Groupchat();
+                    ArrayList<ParseUser> participants = new ArrayList<>();
+                    participants.add(lesson.getStudent());
+                    participants.add(lesson.getStudentTutor());
+                    groupchat.setParticipants(participants);
+                    groupchat.saveInBackground();
+                    lesson.setIsGroupChat(true);
+                    lesson.saveInBackground();
+                }
+                Fragment fragment = new MessagesFragment();
+                ((FeedActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
+            }
+        });
     }
 
     private void setLessons(ViewHolder holder, int position) {
