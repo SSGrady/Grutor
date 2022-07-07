@@ -43,7 +43,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     protected Context context;
     public String requestedLessonString;
     public Lessons requestedLesson;
-    protected boolean isGroupChat;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -64,7 +63,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             btnSubjectTopic = itemView.findViewById(R.id.btnSubjectTopic);
             fabChat = itemView.findViewById(R.id.fabChat);
             clicky = true;
-            isGroupChat = true;
         }
     }
 
@@ -87,6 +85,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         Lessons lesson = lessons.get(position);
         holder.etBundledDescription.setText(lesson.getTutoringDescription());
         holder.btnSubjectTopic.setText(lesson.getTutoringSubject() + " · " + lesson.getTutoringTopic());
+        getAppropriateLessons(holder, position);
+
         holder.btnSubjectTopic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +117,20 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 ((FeedActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
             }
         });
+    }
+
+    private void getAppropriateLessons(ViewHolder holder, int position) {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        // Make sure that lessons are allocated to Matched students only.
+        if (lessons.get(position).getStudentTutor() != null) {
+            if (!currentUser.getObjectId().equals(lessons.get(position).getStudentTutor().getObjectId())
+                    && !currentUser.getObjectId().equals(lessons.get(position).getStudent().getObjectId())) {
+                holder.btnSubjectTopic.setVisibility(View.GONE);
+            }
+        } // if there is no studentTutor then this user should not see anyone else's lesson
+        else if (!currentUser.getObjectId().equals(lessons.get(position).getStudent().getObjectId())){
+            holder.btnSubjectTopic.setVisibility(View.GONE);
+        }
     }
 
     private void setLessons(ViewHolder holder, int position) {
