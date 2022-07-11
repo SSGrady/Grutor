@@ -59,8 +59,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             public void registerUser() {
-                // Create the ParseUser
-               // user = new ParseUser();
                 // Set core properties
                 String email = "";
                 Log.i(TAG, "Inside the registerUser function.");

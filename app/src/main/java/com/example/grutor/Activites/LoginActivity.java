@@ -52,5 +52,6 @@ public class LoginActivity extends AppCompatActivity {
     private void goFeedActivity() {
         Intent i = new Intent(LoginActivity.this, FeedActivity.class);
         startActivity(i);
+        finish();
     }
 }

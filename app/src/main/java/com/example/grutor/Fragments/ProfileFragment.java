@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.grutor.Activites.LoginActivity;
 import com.example.grutor.R;
 import com.parse.ParseUser;
@@ -19,10 +21,8 @@ public class ProfileFragment extends Fragment {
 
     public Button btnlogOut;
     protected ParseUser currentUser;
-    protected TextView tvProfileName;
-    protected TextView tvUserBestSubject;
-    protected TextView tvUserCurrentGrade;
-    protected TextView tvUserHoursStudied;
+    protected TextView tvProfileName, tvUserBestSubject, tvUserCurrentGrade, tvUserHoursStudied;
+    protected ImageView ivCurrUserProfile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -43,12 +43,17 @@ public class ProfileFragment extends Fragment {
         tvUserBestSubject = view.findViewById(R.id.tvBestSubjectAnswer);
         tvUserCurrentGrade = view.findViewById(R.id.tvCurrentGradeAnswer);
         tvUserHoursStudied = view.findViewById(R.id.tvTotalHoursAnswer);
+        ivCurrUserProfile = view.findViewById(R.id.ivCurrUserProfile);
 
         if (currentUser != null)  {
             tvProfileName.setText(currentUser.get("name").toString());
             tvUserHoursStudied.setText(currentUser.get("hoursCount").toString());
             tvUserBestSubject.setText(currentUser.get("bestAt").toString());
             tvUserCurrentGrade.setText(currentUser.get("grade").toString());
+            Glide.with(getContext())
+                    .load(currentUser.getParseFile("profilePhoto").getUrl())
+                    .circleCrop() // create an effect of a round profile picture
+                    .into(ivCurrUserProfile);
         }
         btnlogOut.setOnClickListener(new View.OnClickListener() {
             @Override

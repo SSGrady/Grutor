@@ -29,6 +29,7 @@
             android:fontFamily="sans-serif-medium"
             android:text="Type · Num Problem(s)"
             android:textColor="@color/black"
+            android:visibility="gone"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivSubjectLesson"
@@ -36,16 +37,17 @@
 
         <EditText
             android:id="@+id/etBundledDescription"
-            android:layout_width="160dp"
+            android:layout_width="140dp"
             android:layout_height="61dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:hint="Description field"
+            android:visibility="gone"
             android:inputType="textMultiLine"
             android:textColor="@color/blueBlack"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivSubjectLesson"
             tools:ignore="TouchTargetSizeCheck" />
@@ -57,6 +59,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="3dp"
             android:src="@drawable/icons8_math_64"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/btnSubjectTopic"
             app:layout_constraintTop_toTopOf="@+id/btnSubjectTopic" />
 
@@ -68,8 +71,31 @@
             android:layout_marginTop="14dp"
             android:text="Date time"
             android:textColor="@color/blueBlack"
-            android:textSize="16sp"
+            android:textSize="12sp"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/etBundledDescription"
             app:layout_constraintTop_toTopOf="@+id/etBundledDescription" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabChat"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:elevation="16dp"
+            android:focusable="true"
+            android:visibility="invisible"
+            app:backgroundTint="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvDateTime"
+            app:layout_constraintTop_toTopOf="@id/tvDateTime"
+            app:pressedTranslationZ="12dp"
+            app:srcCompat="@drawable/messages_icon" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

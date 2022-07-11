@@ -12,12 +12,12 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvLessonsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="35dp"
-            android:text="Lessons"
+            android:text="@string/lessons"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -45,7 +45,7 @@
             android:clickable="true"
             android:elevation="16dp"
             android:focusable="true"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:backgroundTint="@color/BEA_baby_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
             android:layout_alignParentBottom="true"
             android:background="#212121"
             android:padding="8dp"
-            android:text="Call"
+            android:text="@string/call_fab"
             android:textColor="#ffffff"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -113,7 +113,7 @@
             android:layout_alignParentBottom="true"
             android:background="#212121"
             android:padding="8dp"
-            android:text="Messages"
+            android:text="@string/messages_fab"
             android:textColor="#ffffff"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -128,6 +128,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvLessons" />
+
+        <Button
+            android:id="@+id/btnMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="35dp"
+            android:text="@string/match"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

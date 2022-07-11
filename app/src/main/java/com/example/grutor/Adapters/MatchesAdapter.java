@@ -10,10 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.grutor.Activites.SignInActivity;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.example.grutor.Utility.studentMatcher;
@@ -24,30 +27,34 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
     List<ParseUser> users;
     LayoutInflater inflater;
     Context context;
-    protected studentMatcher matching;
+    Lessons requestedLesson;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvMatchedName;
         public ImageView ivMatchedStudent;
-        public Button btnAccept, btnDelete;
+        public Button btnAccept, btnDelete, btnSubjectTopic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvMatchedName = itemView.findViewById(R.id.tvMatchedName);
             ivMatchedStudent = itemView.findViewById(R.id.ivMatchedStudent);
             btnAccept = itemView.findViewById(R.id.btnAccept);
             btnDelete = itemView.findViewById(R.id.btnDelete);
+            btnSubjectTopic = itemView.findViewById(R.id.btnSubjectTopic);
         }
     }
 
-    public MatchesAdapter(Context ctx, List<ParseUser> users) {
+    public MatchesAdapter(Context ctx, List<ParseUser> users, Lessons requestedLesson) {
         this.users = users;
         this.inflater = LayoutInflater.from(ctx);
         this.context = ctx;
+        this.requestedLesson = requestedLesson;
     }
 
     @NonNull
@@ -61,6 +68,41 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MatchesAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvMatchedName.setText(users.get(position).getUsername());
+        if (users.get(position) != null) {
+            Glide.with(context)
+                    .load(users.get(position).getParseFile("profilePhoto").getUrl())
+                    .circleCrop() // create an effect of a round profile picture
+                    .into(holder.ivMatchedStudent);
+        }
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onClick(View v) {
+                users.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+        holder.btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addStudentTutor(v, position);
+                removeMatches();
+            }
+        });
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void removeMatches() {
+        for (int i = 0; i < users.size(); i++) {
+            users.clear();
+        }
+        notifyDataSetChanged();
+    }
+
+    private void addStudentTutor(View v, int position) {
+        requestedLesson.setStudentTutor(users.get(position));
+        Toasty.success(v.getContext(), "You Matched with " + users.get(position).getUsername() + "!", Toast.LENGTH_SHORT, true).show();
+        requestedLesson.saveInBackground();
     }
 
     @Override
