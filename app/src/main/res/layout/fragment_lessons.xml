@@ -27,7 +27,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLessons"
             android:layout_width="409dp"
-            android:layout_height="354dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +122,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMatches"
             android:layout_width="413dp"
-            android:layout_height="254dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

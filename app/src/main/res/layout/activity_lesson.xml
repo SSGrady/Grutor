@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    tools:context=".Activites.LessonActivity">
+    android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSubjectTopic"
@@ -29,9 +28,9 @@
             android:fontFamily="sans-serif-medium"
             android:text="Type · Num Problem(s)"
             android:textColor="@color/black"
-            android:visibility="gone"
             android:textSize="12sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/ivSubjectLesson"
             app:layout_constraintTop_toTopOf="@+id/ivSubjectLesson" />
 
@@ -44,10 +43,10 @@
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:hint="Description field"
-            android:visibility="gone"
             android:inputType="textMultiLine"
             android:textColor="@color/blueBlack"
             android:textSize="12sp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivSubjectLesson"
             tools:ignore="TouchTargetSizeCheck" />

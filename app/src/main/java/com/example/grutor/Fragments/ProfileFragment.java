@@ -50,10 +50,12 @@ public class ProfileFragment extends Fragment {
             tvUserHoursStudied.setText(currentUser.get("hoursCount").toString());
             tvUserBestSubject.setText(currentUser.get("bestAt").toString());
             tvUserCurrentGrade.setText(currentUser.get("grade").toString());
-            Glide.with(getContext())
-                    .load(currentUser.getParseFile("profilePhoto").getUrl())
-                    .circleCrop() // create an effect of a round profile picture
-                    .into(ivCurrUserProfile);
+            if (currentUser.getParseFile("profilePhoto") != null) {
+                Glide.with(getContext())
+                        .load(currentUser.getParseFile("profilePhoto").getUrl())
+                        .circleCrop() // create an effect of a round profile picture
+                        .into(ivCurrUserProfile);
+            }
         }
         btnlogOut.setOnClickListener(new View.OnClickListener() {
             @Override

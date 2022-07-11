@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
-    public List<Lessons> lessons;
+    private List<Lessons> lessons;
     protected LayoutInflater inflater;
     protected Context context;
     public String requestedLessonString;
@@ -103,6 +104,17 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         holder.fabChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                setupGroupChat();
+                if (lesson != null) {
+                    bundle.putParcelable("Lesson", lesson);
+                }
+                Fragment fragment = new MessagesFragment();
+                fragment.setArguments(bundle);
+                ((FeedActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
+            }
+
+            private void setupGroupChat() {
                 if (!lesson.getIsGroupChat()) {
                     Groupchat groupchat = new Groupchat();
                     ArrayList<ParseUser> participants = new ArrayList<>();
@@ -110,11 +122,10 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     participants.add(lesson.getStudentTutor());
                     groupchat.setParticipants(participants);
                     groupchat.saveInBackground();
+                    lesson.setGroupChatPointer(groupchat);
                     lesson.setIsGroupChat(true);
                     lesson.saveInBackground();
                 }
-                Fragment fragment = new MessagesFragment();
-                ((FeedActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
             }
         });
     }

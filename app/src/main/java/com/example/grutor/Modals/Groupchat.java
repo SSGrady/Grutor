@@ -1,6 +1,7 @@
 package com.example.grutor.Modals;
 
 import com.parse.ParseClassName;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -14,6 +15,13 @@ public class Groupchat extends ParseObject {
 
     public String getGroupchatId() {return getString(KEY_GROUPCHAT_ID);}
     public void setGroupChatId(String groupChatId) {put(KEY_GROUPCHAT_ID, groupChatId);}
-    public List<ParseUser> getParticipants() {return (List<ParseUser>) getJSONArray(KEY_LIST_OF_PARTICIPANTS);}
+    public List<ParseUser> getParticipants() {
+        try {
+            return fetchIfNeeded().getList(KEY_LIST_OF_PARTICIPANTS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return getList(KEY_LIST_OF_PARTICIPANTS);
+    }
     public void setParticipants(ArrayList<ParseUser> participants) {put(KEY_LIST_OF_PARTICIPANTS, participants);}
 }

@@ -87,6 +87,7 @@ public class LessonsFragment extends Fragment {
     private void queryLessons() throws ParseException {
         ParseQuery<Lessons> query = ParseQuery.getQuery(Lessons.class);
         query.setLimit(5);
+        query.orderByDescending("createdAt");
         lessons.addAll(query.find());
     }
 }

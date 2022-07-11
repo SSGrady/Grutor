@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Activites.RegisterActivity;
+import com.example.grutor.Modals.User;
 import com.example.grutor.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -93,7 +94,8 @@ public class RegisterFragment extends Fragment {
     }
 
     private void completeRegistration() {
-        ParseUser user = new ParseUser();
+        // ParseUser user = new ParseUser();
+        User user = new User();
         grade = spGrades.getSelectedItem().toString();
         bestAt = spSubjects.getSelectedItem().toString();
 
