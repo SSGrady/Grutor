@@ -3,6 +3,7 @@ package com.example.grutor.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,7 +67,7 @@ public class MessagesFragment extends Fragment {
         mAdapter = new ChatAdapter(getContext(), userFrom, mMessages);
         rvChat.setAdapter(mAdapter);
 
-        // associate the LayoutManager with the RecylcerView
+        // associate the LayoutManager with the RecyclerView
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, true);
         rvChat.setLayoutManager(linearLayoutManager);
 
@@ -104,6 +105,7 @@ public class MessagesFragment extends Fragment {
         refreshMessages();
     }
 
+
     // Get the userId from the cached currentUser object
     private void startWithCurrentUser() {
         setupMessagePosting();
@@ -126,8 +128,6 @@ public class MessagesFragment extends Fragment {
                     @Override
                     public void done(ParseException e) {
                         if (e == null) {
-                            Toast.makeText(getContext(), "Successfully created message on Parse",
-                                    Toast.LENGTH_SHORT).show();
                             refreshMessages();
                         } else {
                             Log.e("ChatActivity", "Failed to save message", e);
@@ -170,15 +170,12 @@ public class MessagesFragment extends Fragment {
                 if (e == null) {
                     mMessages.clear();
                     mMessages.addAll(messages);
-                    Log.i("hahdbak", mMessages.get(0).getMessage() + " " + mMessages.get(0).getUserFrom().getUsername());
                     mAdapter.notifyDataSetChanged(); // update adapter
                     // Scroll to the bottom of the list on initial load
                     if (mFirstLoad) {
                         rvChat.scrollToPosition(0);
                         mFirstLoad = false;
                     }
-                } else {
-                    Log.e("message", "Error Loading Messages" + e);
                 }
             }
         });

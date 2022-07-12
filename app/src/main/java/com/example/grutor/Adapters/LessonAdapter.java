@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grutor.Activites.FeedActivity;
+import com.example.grutor.Fragments.LessonsFragment;
 import com.example.grutor.Fragments.MessagesFragment;
 import com.example.grutor.Modals.Groupchat;
 import com.example.grutor.Modals.Lessons;
@@ -86,7 +87,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         Lessons lesson = lessons.get(position);
         holder.etBundledDescription.setText(lesson.getTutoringDescription());
         holder.btnSubjectTopic.setText(lesson.getTutoringSubject() + " · " + lesson.getTutoringTopic());
-        getAppropriateLessons(holder, position);
 
         holder.btnSubjectTopic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,20 +128,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 }
             }
         });
-    }
-
-    private void getAppropriateLessons(ViewHolder holder, int position) {
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        // Make sure that lessons are allocated to Matched students only.
-        if (lessons.get(position).getStudentTutor() != null) {
-            if (!currentUser.getObjectId().equals(lessons.get(position).getStudentTutor().getObjectId())
-                    && !currentUser.getObjectId().equals(lessons.get(position).getStudent().getObjectId())) {
-                holder.btnSubjectTopic.setVisibility(View.GONE);
-            }
-        } // if there is no studentTutor then this user should not see anyone else's lesson
-        else if (!currentUser.getObjectId().equals(lessons.get(position).getStudent().getObjectId())){
-            holder.btnSubjectTopic.setVisibility(View.GONE);
-        }
     }
 
     private void setLessons(ViewHolder holder, int position) {
@@ -197,6 +183,20 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 holder.ivSubjectLesson.setImageResource(R.drawable.icons8_math_64);
                 break;
         }
+    }
+
+    public void removeItem(int position) {
+        lessons.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Lessons lesson, int position) {
+        lessons.add(position, lesson);
+        notifyItemInserted(position);
+    }
+
+    public List<Lessons> getData() {
+        return lessons;
     }
 
     @Override
