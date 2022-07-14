@@ -6,6 +6,7 @@ import com.example.grutor.Modals.Groupchat;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.Modals.Message;
 import com.example.grutor.Modals.User;
+import com.example.grutor.R;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.livequery.ParseLiveQueryClient;
@@ -21,8 +22,8 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(Groupchat.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("44G4lceevcRvp0HJ8yammgYVuc797zfMNMNSEJOe")
-                .clientKey("hm8Uh1GcvlYnuy5TMFNe7iv6umwi0MQw3vJvBurQ")
+                .applicationId(getString(R.string.parse_application_id))
+                .clientKey(getString(R.string.parse_client_key))
                 .server("https://parseapi.back4app.com/")
                 .build()
         );

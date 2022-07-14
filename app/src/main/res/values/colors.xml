@@ -23,4 +23,8 @@
     <color name="SkyPalette">#abdbfb</color>
     <color name="CobaltPalette">#2e5fa7</color>
     <color name="maroonPalette">#95373a</color>
+
+    <color name="OctopusDarkBlue">#0c1423</color>
+    <color name="OctopusGreen">#4babab</color>
+    <color name="OctopusWhite">#dcf5f4</color>
 </resources>

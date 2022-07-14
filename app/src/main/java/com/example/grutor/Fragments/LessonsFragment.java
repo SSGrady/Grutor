@@ -42,7 +42,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LessonsFragment extends Fragment {
-    private static final String KEY_STUDENT_QUERY = "student";
+    private static final String KEY_QUERY_BY_STUDENT = "student";
+    private static final String KEY_QUERY_BY_STUDENT_TUTOR = "studentTutor";
     private static final String KEY_CREATED_AT_QUERY = "createdAt";
     protected studentMatcher matching;
     RecyclerView rvLessons, rvMatches;
@@ -125,10 +126,16 @@ public class LessonsFragment extends Fragment {
     }
 
     private void queryLessons() throws ParseException {
-        ParseQuery<Lessons> query = ParseQuery.getQuery(Lessons.class);
-        query.whereEqualTo(KEY_STUDENT_QUERY, ParseUser.getCurrentUser());
-        query.setLimit(5);
-        query.orderByDescending(KEY_CREATED_AT_QUERY);
-        lessons.addAll(query.find());
+        ParseQuery<Lessons> students = ParseQuery.getQuery(Lessons.class);
+        ParseQuery<Lessons> tutors = ParseQuery.getQuery(Lessons.class);
+        students.whereEqualTo(KEY_QUERY_BY_STUDENT, ParseUser.getCurrentUser());
+        tutors.whereEqualTo(KEY_QUERY_BY_STUDENT_TUTOR, ParseUser.getCurrentUser());
+        List<ParseQuery<Lessons>> queries = new ArrayList<ParseQuery<Lessons>>();
+        queries.add(students);
+        queries.add(tutors);
+        ParseQuery<Lessons> mainQuery = ParseQuery.or(queries);
+        mainQuery.setLimit(5);
+        mainQuery.orderByDescending(KEY_CREATED_AT_QUERY);
+        lessons.addAll(mainQuery.find());
     }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
@@ -25,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grutor.Fragments.DatePickerFragment;
+import com.example.grutor.Fragments.LessonsFragment;
+import com.example.grutor.Fragments.MessagesFragment;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.parse.ParseException;

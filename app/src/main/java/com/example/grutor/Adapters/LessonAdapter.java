@@ -90,10 +90,9 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
         holder.btnSubjectTopic.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                setLessons(holder, position);
-            }
+            public void onClick(View v) { setLessons(holder, position); }
         });
+
         setLessonIcons(holder, lesson);
         holder.tvDateTime.setText(lesson.getCalendarDate());
         if (lesson.getTypeOfLesson().equals("Essay") || lesson.getTypeOfLesson().equals("Other")) {
