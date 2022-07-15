@@ -100,9 +100,10 @@ public class RegisterFragment extends Fragment {
         bestAt = spSubjects.getSelectedItem().toString();
 
         user.setUsername(bundle.getString("firstName"));
-        user.put("name", bundle.getString("fullName"));
         user.setPassword(bundle.getString("password"));
         user.setEmail(bundle.getString("email"));
+        user.setZipcode(bundle.getString("zipcode"));
+        user.put("name", bundle.getString("fullName"));
         user.put("grade", grade);
         user.put("bestAt", bestAt);
 

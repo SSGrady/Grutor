@@ -125,6 +125,7 @@ public class LessonsFragment extends Fragment {
         itemTouchhelper.attachToRecyclerView(rvLessons);
     }
 
+
     private void queryLessons() throws ParseException {
         ParseQuery<Lessons> students = ParseQuery.getQuery(Lessons.class);
         ParseQuery<Lessons> tutors = ParseQuery.getQuery(Lessons.class);

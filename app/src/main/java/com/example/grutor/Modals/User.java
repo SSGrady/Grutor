@@ -15,6 +15,7 @@ public class User extends ParseUser {
     public static final String KEY_PARSE_FILE = "profilePhoto";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_EMAIL = "email";
+    public static final String KEY_AREA_CODE = "zipcode";
 
     public String getUsername() {
         try {
@@ -42,12 +43,13 @@ public class User extends ParseUser {
     public void setParseFile(ParseFile file) {
         put(KEY_PARSE_FILE, file);
     }
-
     public void setPassword(String password) {
         put(KEY_PASSWORD, password);
     }
     public void setEmail(String email) {
         put(KEY_EMAIL, email);
     }
+    public String getZipcode(){ return getString(KEY_AREA_CODE);}
+    public void setZipcode(String zipcode){ put(KEY_AREA_CODE, zipcode);}
 
 }

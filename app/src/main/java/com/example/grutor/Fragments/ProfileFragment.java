@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.grutor.Activites.LoginActivity;
+import com.example.grutor.Modals.User;
 import com.example.grutor.R;
 import com.parse.ParseUser;
 
@@ -21,7 +22,7 @@ public class ProfileFragment extends Fragment {
 
     public Button btnlogOut;
     protected ParseUser currentUser;
-    protected TextView tvProfileName, tvUserBestSubject, tvUserCurrentGrade, tvUserHoursStudied;
+    protected TextView tvProfileName, tvUserBestSubject, tvUserCurrentGrade, tvUserAddress;
     protected ImageView ivCurrUserProfile;
 
     @Override
@@ -37,17 +38,17 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
-        currentUser = ParseUser.getCurrentUser();
+        currentUser = (User) ParseUser.getCurrentUser();
         btnlogOut = view.findViewById(R.id.btnlogOut);
         tvProfileName = view.findViewById(R.id.tvProfileName);
         tvUserBestSubject = view.findViewById(R.id.tvBestSubjectAnswer);
         tvUserCurrentGrade = view.findViewById(R.id.tvCurrentGradeAnswer);
-        tvUserHoursStudied = view.findViewById(R.id.tvTotalHoursAnswer);
+        tvUserAddress = view.findViewById(R.id.tvUserAddressAnswer);
         ivCurrUserProfile = view.findViewById(R.id.ivCurrUserProfile);
 
         if (currentUser != null)  {
             tvProfileName.setText(currentUser.get("name").toString());
-            tvUserHoursStudied.setText(currentUser.get("hoursCount").toString());
+            tvUserAddress.setText(currentUser.get("zipcode").toString());
             tvUserBestSubject.setText(currentUser.get("bestAt").toString());
             tvUserCurrentGrade.setText(currentUser.get("grade").toString());
             if (currentUser.getParseFile("profilePhoto") != null) {
@@ -61,7 +62,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ParseUser.logOut();
-                currentUser = ParseUser.getCurrentUser(); // now null
+                currentUser = (User) ParseUser.getCurrentUser(); // now null
                 goLoginActivity();
             }
         });

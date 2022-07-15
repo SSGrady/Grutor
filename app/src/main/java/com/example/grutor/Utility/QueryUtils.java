@@ -11,6 +11,7 @@ import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.RequestParams;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.grutor.Activites.FeedActivity;
+import com.example.grutor.Modals.User;
 import com.example.grutor.R;
 import com.parse.ParseUser;
 
@@ -79,8 +80,8 @@ public class QueryUtils {
     public void getHomeMessage(Context context, JsonHttpResponseHandler jsonHttpResponseHandler) {
         AsyncHttpClient mClient = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        // TODO params.put(POSTAL_CODE, String.valueOf(ParseUser.getCurrentUser().get("postalCode")));
-        params.put(POSTAL_CODE, "33442");
+        User currentUser = (User) ParseUser.getCurrentUser();
+        params.put(POSTAL_CODE, currentUser.getZipcode());
         params.put(API_KEY_PARAM, context.getString(R.string.weatherbit_master_api_key));
         mClient.get(API_URL, params, jsonHttpResponseHandler);
     }

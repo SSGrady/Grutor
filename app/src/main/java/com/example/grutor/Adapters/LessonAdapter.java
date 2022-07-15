@@ -34,6 +34,7 @@ import com.example.grutor.Utility.studentMatcher;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     protected Context context;
     public String requestedLessonString;
     public Lessons requestedLesson;
+    private ParseUser snapshot_removed;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -72,6 +74,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         this.lessons = lessons;
         this.inflater = LayoutInflater.from(ctx);
         this.context = ctx;
+        snapshot_removed = ParseUser.getCurrentUser();
     }
 
     @NonNull
@@ -185,6 +188,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     }
 
     public void removeItem(int position) {
+        if (ParseUser.getCurrentUser().hasSameId(lessons.get(position).getStudentTutor())) {
+            lessons.get(position).setStudentTutor(lessons.get(position).getStudent());
+        } else {
+            lessons.get(position).setStudent(lessons.get(position).getStudentTutor());
+        }
+        lessons.get(position).saveInBackground();
         lessons.remove(position);
         notifyItemRemoved(position);
     }
@@ -192,6 +201,10 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     public void restoreItem(Lessons lesson, int position) {
         lessons.add(position, lesson);
         notifyItemInserted(position);
+        if (lessons.get(position).getStudentTutor().equals(lessons.get(position).getStudent())){
+            lessons.get(position).setStudentTutor(snapshot_removed);
+        }
+        lessons.get(position).saveInBackground();
     }
 
     public List<Lessons> getData() {

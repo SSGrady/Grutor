@@ -44,14 +44,14 @@
             tools:text="10" />
 
         <TextView
-            android:id="@+id/tvTotalHoursAnswer"
+            android:id="@+id/tvUserAddressAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/blueBlack"
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="@+id/tvBestSubjectAnswer"
-            app:layout_constraintTop_toTopOf="@+id/tvTotalHoursPrompt"
-            tools:text="8" />
+            app:layout_constraintTop_toTopOf="@+id/tvUserAddressPrompt"
+            tools:text="33442" />
 
         <ImageView
             android:id="@+id/ivCurrUserProfile"
@@ -109,11 +109,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
 
         <ImageView
-            android:id="@+id/ivTotalHours"
+            android:id="@+id/ivUserAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="115dp"
-            android:src="@drawable/icons8_clock_48"
+            android:src="@drawable/icons8_address_48"
             app:layout_constraintStart_toStartOf="@+id/ivCurrUserProfile"
             app:layout_constraintTop_toBottomOf="@+id/ivCurrUserProfile" />
 
@@ -125,7 +125,7 @@
             android:layout_marginTop="115dp"
             android:src="@drawable/icons8_good_quality_48"
             app:layout_constraintStart_toStartOf="@+id/ivCurrUserProfile"
-            app:layout_constraintTop_toBottomOf="@+id/ivTotalHours" />
+            app:layout_constraintTop_toBottomOf="@+id/ivUserAddress" />
 
         <ImageView
             android:id="@+id/ivGradeProfile"
@@ -137,16 +137,16 @@
             app:layout_constraintTop_toBottomOf="@+id/ivBestSubject" />
 
         <TextView
-            android:id="@+id/tvTotalHoursPrompt"
+            android:id="@+id/tvUserAddressPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
-            android:text="Hours Studied:"
+            android:text="Area code:"
             android:textColor="@color/blueBlack"
             android:textSize="17sp"
-            app:layout_constraintStart_toEndOf="@+id/ivTotalHours"
-            app:layout_constraintTop_toTopOf="@+id/ivTotalHours" />
+            app:layout_constraintStart_toEndOf="@+id/ivUserAddress"
+            app:layout_constraintTop_toTopOf="@+id/ivUserAddress" />
 
         <View
             android:layout_width="400dp"
@@ -156,7 +156,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTotalHoursPrompt" />
+            app:layout_constraintTop_toBottomOf="@+id/tvUserAddressPrompt" />
 
         <View
             android:id="@+id/view"
