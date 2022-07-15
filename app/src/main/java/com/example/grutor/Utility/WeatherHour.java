@@ -8,13 +8,13 @@ public class WeatherHour {
     private String mWeatherIconCode;
     private String mWeatherDescription;
     private String mTimeZone;
-    private double mTemperature;
+    private String mCityName;
     private double mApparentTemperature;
 
     public WeatherHour(String weather_icon_code, String description, String timezone,
-                       double temperature, double feelslike) {
+                       String cityName, double feelslike) {
         mWeatherIconCode = weather_icon_code;
-        mTemperature = temperature;
+        mCityName = cityName;
         mTimeZone = timezone;
         mWeatherDescription = description;
         mApparentTemperature = feelslike;
@@ -30,10 +30,10 @@ public class WeatherHour {
     }
     public void setWeatherDescription(String weatherDescription) { mWeatherDescription = weatherDescription;}
 
-    public double getTemperature() {
-        return mTemperature;
+    public String getCityName() {
+        return mCityName;
     }
-    public void setTemperature(Double temperature) { mTemperature = temperature;}
+    public void setCityName(String cityName) { mCityName = cityName;}
 
     public String getTimeZoneString() {
         return mTimeZone;

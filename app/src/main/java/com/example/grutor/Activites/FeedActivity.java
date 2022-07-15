@@ -17,6 +17,7 @@ import com.example.grutor.Fragments.ProfileFragment;
 import com.example.grutor.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.parse.ParseUser;
 
 public class FeedActivity extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class FeedActivity extends AppCompatActivity {
     final Fragment fragmentHome = new HomeFragment();
     final Fragment fragmentLessons = new LessonsFragment();
     final Fragment fragmentProfile = new ProfileFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

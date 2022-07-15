@@ -30,6 +30,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Activites.LoginActivity;
 import com.example.grutor.Adapters.SubjectAdapter;
+import com.example.grutor.Modals.User;
 import com.example.grutor.R;
 import com.example.grutor.Utility.QueryUtils;
 import com.example.grutor.Utility.WeatherHour;
@@ -54,7 +55,7 @@ import okhttp3.Headers;
 public class HomeFragment extends Fragment {
 
     public TextView tvWelcomeUser;
-    protected ParseUser user;
+    protected User user;
     protected String welcomeMessage = "";
     public RecyclerView rvSubjects;
     private List<String> titles;
@@ -86,6 +87,7 @@ public class HomeFragment extends Fragment {
         images = new ArrayList<>();
         ivWeather = view.findViewById(R.id.ivWeather);
         jsonWeatherHandler = new QueryUtils();
+        user = (User) ParseUser.getCurrentUser();
         setWelcomeMessage();
 
         createCard();
@@ -93,7 +95,6 @@ public class HomeFragment extends Fragment {
         rvSubjects.setLayoutManager(gridLayoutManager);
         rvSubjects.setAdapter(adapter);
 
-        user = ParseUser.getCurrentUser();
 
     }
 
@@ -105,6 +106,11 @@ public class HomeFragment extends Fragment {
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 try {
                     currentForecast = jsonWeatherHandler.extractFeatureFromJson(json.jsonObject);
+                    // checks for null first since it will short-circuit if it is null
+                    if (user.getCity() == null || (user.getCity().isEmpty())) {
+                        user.setCity(currentForecast.getCityName());
+                        user.saveInBackground();
+                    }
                     // note the emulator might have the wrong default time.
                     Date today = new Date();
                     int timeOfDay = today.toInstant().atZone(ZoneId.of(currentForecast.getTimeZoneString())).toLocalDateTime().getHour();

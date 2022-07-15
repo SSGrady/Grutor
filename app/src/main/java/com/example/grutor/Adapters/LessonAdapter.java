@@ -2,39 +2,27 @@ package com.example.grutor.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.database.DataSetObserver;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grutor.Activites.FeedActivity;
-import com.example.grutor.Fragments.LessonsFragment;
 import com.example.grutor.Fragments.MessagesFragment;
 import com.example.grutor.Modals.Groupchat;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
-import com.example.grutor.Utility.studentMatcher;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.parse.ParseException;
-import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -47,6 +35,9 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     public String requestedLessonString;
     public Lessons requestedLesson;
     private ParseUser snapshot_removed;
+    private List<ParseUser> deleted;
+    private ParseQuery<ParseUser> query;
+    private final String KEY_QUERY_BY_USERNAME = "username";
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -75,6 +66,14 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         this.inflater = LayoutInflater.from(ctx);
         this.context = ctx;
         snapshot_removed = ParseUser.getCurrentUser();
+        deleted = new ArrayList<>();
+        query = ParseUser.getQuery();
+        query.whereEqualTo(KEY_QUERY_BY_USERNAME, "Deleted");
+        try {
+            deleted.addAll(query.find());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @NonNull
@@ -189,9 +188,9 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
     public void removeItem(int position) {
         if (ParseUser.getCurrentUser().hasSameId(lessons.get(position).getStudentTutor())) {
-            lessons.get(position).setStudentTutor(lessons.get(position).getStudent());
+            lessons.get(position).setStudentTutor(deleted.get(0));
         } else {
-            lessons.get(position).setStudent(lessons.get(position).getStudentTutor());
+            lessons.get(position).setStudent(deleted.get(0));
         }
         lessons.get(position).saveInBackground();
         lessons.remove(position);
@@ -201,7 +200,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     public void restoreItem(Lessons lesson, int position) {
         lessons.add(position, lesson);
         notifyItemInserted(position);
-        if (lessons.get(position).getStudentTutor().equals(lessons.get(position).getStudent())){
+        if (lessons.get(position).getStudentTutor().equals(deleted.get(0))){
             lessons.get(position).setStudentTutor(snapshot_removed);
         }
         lessons.get(position).saveInBackground();

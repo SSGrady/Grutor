@@ -16,6 +16,7 @@ public class User extends ParseUser {
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_AREA_CODE = "zipcode";
+    public static final String KEY_CITY_NAME = "cityName";
 
     public String getUsername() {
         try {
@@ -51,5 +52,7 @@ public class User extends ParseUser {
     }
     public String getZipcode(){ return getString(KEY_AREA_CODE);}
     public void setZipcode(String zipcode){ put(KEY_AREA_CODE, zipcode);}
+    public String getCity(){return getString(KEY_CITY_NAME);}
+    public void setCity(String city){put(KEY_CITY_NAME, city);}
 
 }

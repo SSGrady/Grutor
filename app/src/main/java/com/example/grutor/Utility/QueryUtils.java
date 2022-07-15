@@ -44,7 +44,7 @@ public class QueryUtils {
 
     public WeatherHour extractFeatureFromJson(JSONObject jsonObject) throws JSONException{
 
-        WeatherHour currentForecast = new WeatherHour("", "", "", 0, 0);
+        WeatherHour currentForecast = new WeatherHour("", "", "", "", 0);
         // If the JSON string is empty or null, then return early.
 
         try {
@@ -57,7 +57,7 @@ public class QueryUtils {
 
             JSONObject weatherCode = currentHour.getJSONObject("weather");
 
-            double temperature = currentHour.getDouble("temp");
+            String cityName = currentHour.getString("city_name");
             double feels_like = currentHour.getDouble("app_temp");
             String timezone = currentHour.getString("timezone");
             String icon_code = weatherCode.getString("icon");
@@ -66,7 +66,7 @@ public class QueryUtils {
            currentForecast.setWeatherIconCode(icon_code);
            currentForecast.setWeatherDescription(description);
            currentForecast.setTimeZone(timezone);
-           currentForecast.setTemperature(temperature);
+           currentForecast.setCityName(cityName);
            currentForecast.setApparentTemperature(feels_like);
 
             // Add the new instance to the list of Weatherhours.

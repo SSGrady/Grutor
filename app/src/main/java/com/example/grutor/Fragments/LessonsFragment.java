@@ -1,7 +1,5 @@
 package com.example.grutor.Fragments;
 
-import static com.parse.Parse.getApplicationContext;
-
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,28 +10,19 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.grutor.Adapters.LessonAdapter;
 import com.example.grutor.Adapters.MatchesAdapter;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.example.grutor.Utility.SwipeToDeleteCallback;
-import com.example.grutor.Utility.studentMatcher;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.grutor.Utility.StudentMatcher;
 import com.google.android.material.snackbar.Snackbar;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -45,7 +34,7 @@ public class LessonsFragment extends Fragment {
     private static final String KEY_QUERY_BY_STUDENT = "student";
     private static final String KEY_QUERY_BY_STUDENT_TUTOR = "studentTutor";
     private static final String KEY_CREATED_AT_QUERY = "createdAt";
-    protected studentMatcher matching;
+    protected StudentMatcher matching;
     RecyclerView rvLessons, rvMatches;
     LessonAdapter lessonsAdapter;
     MatchesAdapter matcher;
@@ -81,7 +70,7 @@ public class LessonsFragment extends Fragment {
         btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                matching = new studentMatcher(lessonsAdapter.requestedLessonString);
+                matching = new StudentMatcher(lessonsAdapter.requestedLessonString);
                 try {
                     matching.getMyMatches();
                     matcher = new MatchesAdapter(getContext(), matching.matches, lessonsAdapter.requestedLesson);
