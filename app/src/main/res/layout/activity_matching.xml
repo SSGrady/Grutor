@@ -57,4 +57,9 @@
         app:layout_constraintTop_toTopOf="@+id/btnAccept"
         tools:ignore="TouchTargetSizeCheck" />
 
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

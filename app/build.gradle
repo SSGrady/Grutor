@@ -53,12 +53,6 @@ dependencies {
     implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
 
-    // video sdk
-    implementation 'live.videosdk:android-sdk:0.0.16'
-
-    // library to perform Network call to generate a meeting id
-    implementation 'com.amitshekhar.android:android-networking:1.0.2'
-
     implementation 'com.github.GrenderG:Toasty:1.5.2'
 
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1' // for logging API calls to LogCat
@@ -70,5 +64,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:30.2.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+    implementation 'nl.dionsegijn:konfetti-compose:2.0.2'
+    implementation 'nl.dionsegijn:konfetti-xml:2.0.2'
 
 }

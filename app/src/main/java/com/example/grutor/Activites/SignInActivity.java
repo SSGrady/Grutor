@@ -64,7 +64,12 @@ public class SignInActivity extends AppCompatActivity {
                         Toasty.error(SignInActivity.this, "Login failure!", Toast.LENGTH_SHORT, true).show();
                         return;
                     }
-                    Toasty.success(SignInActivity.this, "Success!", Toast.LENGTH_SHORT, true).show();
+                    if (ParseUser.getCurrentUser().get("isNewUser").equals(true)) {
+                        Toasty.success(SignInActivity.this, "Welcome " + ParseUser.getCurrentUser().getUsername() + "!", Toast.LENGTH_SHORT, true).show();
+                    }
+                    else {
+                        Toasty.success(SignInActivity.this, "Welcome back " + ParseUser.getCurrentUser().getUsername() + "!", Toast.LENGTH_SHORT, true).show();
+                    }
                     goMainActivity();
                     Toasty.Config.getInstance().apply(); // required
                 }

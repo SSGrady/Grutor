@@ -12,14 +12,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Activites.RegisterActivity;
+import com.example.grutor.Activites.SignInActivity;
 import com.example.grutor.Modals.User;
 import com.example.grutor.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import es.dmoral.toasty.Toasty;
 
 public class RegisterFragment extends Fragment {
     private Spinner spGrades;

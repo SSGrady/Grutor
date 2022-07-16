@@ -36,8 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import live.videosdk.rtc.android.lib.model.Me;
-
 public class MessagesFragment extends Fragment {
 
     protected EditText etMessage;
