@@ -95,7 +95,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             public void onClick(View v) { setLessons(holder, position); }
         });
 
-        setLessonIcons(holder, lesson);
+        setLessonIcons(holder, lesson, position);
         holder.tvDateTime.setText(lesson.getCalendarDate());
         if (lesson.getTypeOfLesson().equals("Essay") || lesson.getTypeOfLesson().equals("Other")) {
             holder.tvNumType.setText(lesson.getTypeOfLesson());
@@ -131,6 +131,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         });
     }
 
+    @SuppressLint("ResourceAsColor")
     private void setLessons(ViewHolder holder, int position) {
         if (holder.clicky) {
             holder.ivSubjectLesson.setVisibility(View.VISIBLE);
@@ -163,7 +164,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         }
     }
 
-    private void setLessonIcons(ViewHolder holder, Lessons lesson) {
+    private void setLessonIcons(ViewHolder holder, Lessons lesson, int position) {
+        if (lessons.get(position).getStudentTutor() != null) {
+            if (lessons.get(position).getStudentTutor().getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
+            holder.btnSubjectTopic.setBackgroundResource(R.drawable.round_shape_btn_tutor);
+            }
+        }
         switch(lesson.getTutoringSubject()) {
             case "English":
                 holder.ivSubjectLesson.setImageResource(R.drawable.icons8_english_64);
@@ -187,8 +193,13 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     }
 
     public void removeItem(int position) {
-        if (ParseUser.getCurrentUser().hasSameId(lessons.get(position).getStudentTutor())) {
-            lessons.get(position).setStudentTutor(deleted.get(0));
+        if (lessons.get(position).getStudentTutor() != null) {
+
+            if (ParseUser.getCurrentUser().hasSameId(lessons.get(position).getStudentTutor())) {
+                lessons.get(position).setStudentTutor(deleted.get(0));
+            } else {
+                lessons.get(position).setStudent(deleted.get(0));
+            }
         } else {
             lessons.get(position).setStudent(deleted.get(0));
         }
@@ -200,8 +211,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     public void restoreItem(Lessons lesson, int position) {
         lessons.add(position, lesson);
         notifyItemInserted(position);
-        if (lessons.get(position).getStudentTutor().equals(deleted.get(0))){
-            lessons.get(position).setStudentTutor(snapshot_removed);
+        if (lessons.get(position).getStudentTutor() != null) {
+            if (lessons.get(position).getStudentTutor().equals(deleted.get(0))){
+                lessons.get(position).setStudentTutor(snapshot_removed);
+            }
+        } else {
+            lessons.get(position).setStudent(snapshot_removed);
         }
         lessons.get(position).saveInBackground();
     }

@@ -21,7 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:textColor="@color/blueBlack"
         app:layout_constraintStart_toEndOf="@+id/ivMatchedStudent"
         app:layout_constraintTop_toTopOf="@+id/ivMatchedStudent"
         tools:text="So-and-so" />
@@ -56,10 +55,5 @@
         app:layout_constraintStart_toEndOf="@+id/btnAccept"
         app:layout_constraintTop_toTopOf="@+id/btnAccept"
         tools:ignore="TouchTargetSizeCheck" />
-
-    <nl.dionsegijn.konfetti.xml.KonfettiView
-        android:id="@+id/konfettiView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
