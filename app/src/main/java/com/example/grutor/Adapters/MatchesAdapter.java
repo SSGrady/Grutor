@@ -1,33 +1,37 @@
 package com.example.grutor.Adapters;
 
+import static com.parse.Parse.getApplicationContext;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.grutor.Activites.SignInActivity;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
-import com.example.grutor.Utility.studentMatcher;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import es.dmoral.toasty.Toasty;
+import nl.dionsegijn.konfetti.core.Party;
+import nl.dionsegijn.konfetti.core.PartyFactory;
+import nl.dionsegijn.konfetti.core.emitter.Emitter;
+import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
+import nl.dionsegijn.konfetti.core.models.Shape;
+import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
     List<ParseUser> users;
@@ -99,6 +103,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         notifyDataSetChanged();
     }
 
+    @SuppressLint("ResourceType")
     private void addStudentTutor(View v, int position) {
         requestedLesson.setStudentTutor(users.get(position));
         Toasty.success(v.getContext(), "You Matched with " + users.get(position).getUsername() + "!", Toast.LENGTH_SHORT, true).show();

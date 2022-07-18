@@ -49,7 +49,7 @@
                 android:id="@+id/etPasswordLogin"
                 android:layout_width="280sp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="95dp"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -71,11 +71,24 @@
                 android:id="@+id/etFirstName"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="55dp"
                 android:ems="10"
                 android:hint="First Name"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/etUserLogin"
+                app:layout_constraintTop_toBottomOf="@+id/etUserLogin"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/etZipcode"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="120dp"
+                android:ems="10"
+                android:hint="Zipcode"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/etFirstName"
                 app:layout_constraintTop_toBottomOf="@+id/etUserLogin"
                 tools:ignore="TouchTargetSizeCheck" />
 

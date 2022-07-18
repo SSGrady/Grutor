@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flLessons"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.LessonsFragment">
@@ -27,7 +28,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLessons"
             android:layout_width="409dp"
-            android:layout_height="354dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +53,7 @@
             app:pressedTranslationZ="12dp"
             app:srcCompat="@drawable/ic_baseline_add_24"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
         <TextView
             android:id="@+id/tvCallIcon"
             android:layout_width="wrap_content"
@@ -122,7 +124,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMatches"
             android:layout_width="413dp"
-            android:layout_height="254dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

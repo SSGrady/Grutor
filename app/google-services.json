@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "780804901127",
+    "project_id": "grutor-push-notifications",
+    "storage_bucket": "grutor-push-notifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780804901127:android:3b4d92409dbad523759da2",
+        "android_client_info": {
+          "package_name": "com.example.grutor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780804901127-h8019kpb7icos3fld88n4ql4q9mmeq1t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6P_M9GBgqzjx6_yfyXODT_IB8ZSBRriY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780804901127-h8019kpb7icos3fld88n4ql4q9mmeq1t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

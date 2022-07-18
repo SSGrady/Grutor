@@ -23,13 +23,12 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import es.dmoral.toasty.Toasty;
+
 public class RegisterActivity extends AppCompatActivity {
 
 
-    public  EditText etUserLogin;
-    public  EditText etPassword;
-    public EditText etFirstName;
-    public EditText etLastName;
+    public EditText etUserLogin, etPassword, etFirstName, etLastName, etZipcode;
 
     public Button btnNext;
     final Fragment fragmentRegister = new RegisterFragment();
@@ -44,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         etFirstName = findViewById(R.id.etFirstName);
         etLastName = findViewById(R.id.etLastName);
+        etZipcode = findViewById(R.id.etZipcode);
 
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
@@ -73,12 +73,14 @@ public class RegisterActivity extends AppCompatActivity {
                     String password = etPassword.getText().toString();
                     String firstName = etFirstName.getText().toString();
                     String fullName = etFirstName.getText().toString() + " " + etLastName.getText().toString();
+                    String zipcode = etZipcode.getText().toString();
 
                     Bundle bundle = new Bundle();
                     bundle.putString("email", email);
                     bundle.putString("password", password);
                     bundle.putString("firstName", firstName);
                     bundle.putString("fullName", fullName);
+                    bundle.putString("zipcode", zipcode);
                     fragmentRegister.setArguments(bundle);
                     fragmentManager.beginTransaction().replace(R.id.flContainerSignUp, fragmentRegister).commit();
                 }

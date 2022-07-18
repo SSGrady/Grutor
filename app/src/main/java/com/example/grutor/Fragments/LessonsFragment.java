@@ -1,34 +1,28 @@
 package com.example.grutor.Fragments;
 
-import static com.parse.Parse.getApplicationContext;
-
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.FrameLayout;
 
 import com.example.grutor.Adapters.LessonAdapter;
 import com.example.grutor.Adapters.MatchesAdapter;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
-import com.example.grutor.Utility.studentMatcher;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.parse.FindCallback;
+import com.example.grutor.Utility.SwipeToDeleteCallback;
+import com.example.grutor.Utility.StudentMatcher;
+import com.google.android.material.snackbar.Snackbar;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -37,12 +31,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LessonsFragment extends Fragment {
-    protected studentMatcher matching;
+    private static final String KEY_QUERY_BY_STUDENT = "student";
+    private static final String KEY_QUERY_BY_STUDENT_TUTOR = "studentTutor";
+    private static final String KEY_CREATED_AT_QUERY = "createdAt";
+    protected StudentMatcher matching;
     RecyclerView rvLessons, rvMatches;
     LessonAdapter lessonsAdapter;
     MatchesAdapter matcher;
     ArrayList<Lessons> lessons;
     Button btnMatch;
+    FrameLayout flLessons;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -59,6 +57,7 @@ public class LessonsFragment extends Fragment {
         btnMatch = view.findViewById(R.id.btnMatch);
         rvLessons = view.findViewById(R.id.rvLessons);
         rvMatches = view.findViewById(R.id.rvMatches);
+        flLessons = view.findViewById(R.id.flLessons);
         lessons = new ArrayList<>();
         try {
             queryLessons();
@@ -71,7 +70,7 @@ public class LessonsFragment extends Fragment {
         btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                matching = new studentMatcher(lessonsAdapter.requestedLessonString);
+                matching = new StudentMatcher(lessonsAdapter.requestedLessonString);
                 try {
                     matching.getMyMatches();
                     matcher = new MatchesAdapter(getContext(), matching.matches, lessonsAdapter.requestedLesson);
@@ -82,11 +81,51 @@ public class LessonsFragment extends Fragment {
                 }
             }
         });
+        enableSwipeToDeleteAndUndo();
     }
 
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+
+                final int position = viewHolder.getAdapterPosition();
+                final Lessons lesson = lessonsAdapter.getData().get(position);
+
+                lessonsAdapter.removeItem(position);
+
+                Snackbar snackbar = Snackbar
+                        .make(flLessons, "Item was removed from the list.", Snackbar.LENGTH_LONG);
+                snackbar.setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        lessonsAdapter.restoreItem(lesson, position);
+                        rvLessons.scrollToPosition(position);
+                    }
+                });
+                snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.show();
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(rvLessons);
+    }
+
+
     private void queryLessons() throws ParseException {
-        ParseQuery<Lessons> query = ParseQuery.getQuery(Lessons.class);
-        query.setLimit(5);
-        lessons.addAll(query.find());
+        ParseQuery<Lessons> students = ParseQuery.getQuery(Lessons.class);
+        ParseQuery<Lessons> tutors = ParseQuery.getQuery(Lessons.class);
+        students.whereEqualTo(KEY_QUERY_BY_STUDENT, ParseUser.getCurrentUser());
+        tutors.whereEqualTo(KEY_QUERY_BY_STUDENT_TUTOR, ParseUser.getCurrentUser());
+        List<ParseQuery<Lessons>> queries = new ArrayList<ParseQuery<Lessons>>();
+        queries.add(students);
+        queries.add(tutors);
+        ParseQuery<Lessons> mainQuery = ParseQuery.or(queries);
+        mainQuery.setLimit(5);
+        mainQuery.orderByDescending(KEY_CREATED_AT_QUERY);
+        lessons.addAll(mainQuery.find());
     }
 }

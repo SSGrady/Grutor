@@ -12,13 +12,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Activites.RegisterActivity;
+import com.example.grutor.Activites.SignInActivity;
+import com.example.grutor.Modals.User;
 import com.example.grutor.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import es.dmoral.toasty.Toasty;
 
 public class RegisterFragment extends Fragment {
     private Spinner spGrades;
@@ -93,14 +98,16 @@ public class RegisterFragment extends Fragment {
     }
 
     private void completeRegistration() {
-        ParseUser user = new ParseUser();
+        // ParseUser user = new ParseUser();
+        User user = new User();
         grade = spGrades.getSelectedItem().toString();
         bestAt = spSubjects.getSelectedItem().toString();
 
         user.setUsername(bundle.getString("firstName"));
-        user.put("name", bundle.getString("fullName"));
         user.setPassword(bundle.getString("password"));
         user.setEmail(bundle.getString("email"));
+        user.setZipcode(bundle.getString("zipcode"));
+        user.put("name", bundle.getString("fullName"));
         user.put("grade", grade);
         user.put("bestAt", bestAt);
 

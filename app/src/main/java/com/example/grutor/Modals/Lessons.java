@@ -4,6 +4,8 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
 @ParseClassName("Lessons")
@@ -16,7 +18,8 @@ public class Lessons extends ParseObject {
     public static final String KEY_URGENCY = "urgency";
     public static final String KEY_STUDENT_POINTER = "student";
     public static final String KEY_STUDENT_TUTOR_POINTER = "studentTutor";
-    public static final String KEY_ISGROUPCHAT = "isGroupChat";
+    public static final String KEY_IS_GROUPCHAT = "isGroupChat";
+    public static final String KEY_GROUPCHAT_POINTER = "groupchat";
 
     public String getTypeOfLesson() {return getString(KEY_TYPE_OF_LESSON);}
     public void setTypeOfLesson(String lessonType) { put(KEY_TYPE_OF_LESSON, lessonType);}
@@ -34,6 +37,8 @@ public class Lessons extends ParseObject {
     public void setStudent(ParseUser student) {put(KEY_STUDENT_POINTER, student);}
     public ParseUser getStudentTutor() {return getParseUser(KEY_STUDENT_TUTOR_POINTER);}
     public void setStudentTutor(ParseUser studentTutor) {put(KEY_STUDENT_TUTOR_POINTER, studentTutor);}
-    public Boolean getIsGroupChat() {return getBoolean(KEY_ISGROUPCHAT);}
-    public void setIsGroupChat(boolean isGroupChat) {put(KEY_ISGROUPCHAT, isGroupChat);}
+    public Boolean getIsGroupChat() {return getBoolean(KEY_IS_GROUPCHAT);}
+    public void setIsGroupChat(boolean isGroupChat) {put(KEY_IS_GROUPCHAT, isGroupChat);}
+    public Groupchat getGroupChat() {return (Groupchat) getParseObject(KEY_GROUPCHAT_POINTER);}
+    public void setGroupChatPointer(Groupchat groupchat) {put(KEY_GROUPCHAT_POINTER, groupchat);}
 }
