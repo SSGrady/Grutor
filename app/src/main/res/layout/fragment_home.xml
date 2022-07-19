@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="70dp"
             android:textColor="@color/black"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,10 +26,10 @@
             android:id="@+id/tvHomeText"
             android:layout_width="270sp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:text="What do you need help with?"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="32sp"
             app:layout_constraintStart_toStartOf="@+id/tvWelcomeUser"
             app:layout_constraintTop_toBottomOf="@+id/tvWelcomeUser" />
 
