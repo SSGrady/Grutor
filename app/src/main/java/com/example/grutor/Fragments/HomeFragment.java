@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,9 +30,11 @@ import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Activites.LoginActivity;
+import com.example.grutor.Activites.OnboardingActivity;
 import com.example.grutor.Adapters.SubjectAdapter;
 import com.example.grutor.Modals.User;
 import com.example.grutor.R;
+import com.example.grutor.Utility.OnboardingItem;
 import com.example.grutor.Utility.QueryUtils;
 import com.example.grutor.Utility.WeatherHour;
 import com.parse.Parse;
@@ -64,6 +67,7 @@ public class HomeFragment extends Fragment {
     protected  GridLayoutManager gridLayoutManager;
     protected QueryUtils jsonWeatherHandler;
     protected ImageView ivWeather;
+    private ImageButton ibOnboardingHelp;
     protected WeatherHour currentForecast;
 
     @Override
@@ -77,6 +81,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         tvWelcomeUser = view.findViewById(R.id.tvWelcomeUser);
+        ibOnboardingHelp = view.findViewById(R.id.ibOnboardingHelp);
         // Recycler View population.
         rvSubjects = view.findViewById(R.id.rvSubjects);
         titles = new ArrayList<>();
@@ -90,6 +95,15 @@ public class HomeFragment extends Fragment {
 
         rvSubjects.setLayoutManager(gridLayoutManager);
         rvSubjects.setAdapter(adapter);
+
+        ibOnboardingHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), OnboardingActivity.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
 
     }

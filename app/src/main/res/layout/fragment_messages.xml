@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="701dp">
+        android:layout_height="709dp">
 
         <EditText
             android:id="@+id/etMessage"
@@ -46,10 +46,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvChat"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="402dp"
+            android:layout_height="602dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toTopOf="@+id/etMessage"
             app:layout_constraintEnd_toEndOf="parent"
