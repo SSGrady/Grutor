@@ -72,7 +72,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MatchesAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvMatchedName.setText(users.get(position).getUsername());
-        if (users.get(position) != null) {
+        if (users.get(position) != null && users.get(position).get("profilePhoto") != null) {
             Glide.with(context)
                     .load(users.get(position).getParseFile("profilePhoto").getUrl())
                     .circleCrop() // create an effect of a round profile picture

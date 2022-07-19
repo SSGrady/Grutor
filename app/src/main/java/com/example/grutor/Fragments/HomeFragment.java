@@ -73,13 +73,9 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, parent, false);
     }
 
-    // This event is triggered soon after onCreateView().
-    // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
         tvWelcomeUser = view.findViewById(R.id.tvWelcomeUser);
         // Recycler View population.
         rvSubjects = view.findViewById(R.id.rvSubjects);
@@ -153,14 +149,7 @@ public class HomeFragment extends Fragment {
         titles.add(getString(R.string.government));
         titles.add(getString(R.string.economics));
 
-        images.add(R.drawable.icons8_math_64);
-        images.add(R.drawable.icons8_english_64);
-        images.add(R.drawable.icons8_physics_64);
-        images.add(R.drawable.icons8_history_64);
-        images.add(R.drawable.icons8_government_64);
-        images.add(R.drawable.icons8_stock_share_64);
-
-        adapter = new SubjectAdapter(getContext(), titles, images);
+        adapter = new SubjectAdapter(getContext(), titles);
         gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
     }
 }
