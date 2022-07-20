@@ -105,8 +105,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
         OnboardingItem itemSubjectCards = new OnboardingItem();
         itemSubjectCards.setTitle("Choose The Subject You Need Help With");
-        // itemPayOnline.setDescription("From Math & Science, to History, English, Government and More!");
-        itemSubjectCards.setImage(R.drawable.onboard_lesson_request);
+        itemSubjectCards.setImage(R.drawable.onboarding_choose_a_subject);
 
         OnboardingItem itemLessonDetails = new OnboardingItem();
         itemLessonDetails.setTitle("Add Lesson Details And Tap Confirm");
@@ -115,12 +114,10 @@ public class OnboardingActivity extends AppCompatActivity {
 
         OnboardingItem itemMatchWithStudents = new OnboardingItem();
         itemMatchWithStudents.setTitle("Match With Other Students");
-        // itemEatTogether.setDescription("Learn from students who get it 24/7. Message them and don't be shy!");
         itemMatchWithStudents.setImage(R.drawable.onboarding_matching);
 
         OnboardingItem itemMessageStudents = new OnboardingItem();
         itemMessageStudents.setTitle("Learn From Students Who Get It 24/7");
-        // itemEatTogether.setDescription("Learn from students who get it 24/7. Message them and don't be shy!");
         itemMessageStudents.setImage(R.drawable.onboard_messaging);
 
         onboardingItems.add(itemSubjectCards);

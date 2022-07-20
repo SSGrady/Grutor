@@ -63,14 +63,14 @@ public class LessonsFragment extends Fragment {
         rvMatches = view.findViewById(R.id.rvMatches);
         flLessons = view.findViewById(R.id.flLessons);
         lessons = new ArrayList<>();
+        lessonsAdapter = new LessonAdapter(getContext(), lessons);
+        rvLessons.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvLessons.setAdapter(lessonsAdapter);
         try {
             queryLessons();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        lessonsAdapter = new LessonAdapter(getContext(), lessons);
-        rvLessons.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvLessons.setAdapter(lessonsAdapter);
         btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

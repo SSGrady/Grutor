@@ -99,9 +99,8 @@ public class HomeFragment extends Fragment {
         ibOnboardingHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), OnboardingActivity.class);
+                Intent i = new Intent((FeedActivity) getContext(), OnboardingActivity.class);
                 startActivity(i);
-                getActivity().finish();
             }
         });
 
