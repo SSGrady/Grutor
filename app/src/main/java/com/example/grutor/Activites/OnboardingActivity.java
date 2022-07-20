@@ -104,7 +104,7 @@ public class OnboardingActivity extends AppCompatActivity {
         List<OnboardingItem> onboardingItems = new ArrayList<>();
 
         OnboardingItem itemSubjectCards = new OnboardingItem();
-        itemSubjectCards.setTitle("Choose The Subject You Need Help With");
+        itemSubjectCards.setTitle("Choose A Subject You Need Help With");
         itemSubjectCards.setImage(R.drawable.onboarding_choose_a_subject);
 
         OnboardingItem itemLessonDetails = new OnboardingItem();
