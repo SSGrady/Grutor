@@ -108,16 +108,17 @@ public class OnboardingActivity extends AppCompatActivity {
         itemSubjectCards.setImage(R.drawable.onboarding_choose_a_subject);
 
         OnboardingItem itemLessonDetails = new OnboardingItem();
-        itemLessonDetails.setTitle("Add Lesson Details And Tap Confirm");
+        itemLessonDetails.setTitle("Add Lesson Details & Tap Confirm");
         // itemOnTheWay.setDescription("Simply add details and tap confirm");
         itemLessonDetails.setImage(R.drawable.onboard_request_help);
 
         OnboardingItem itemMatchWithStudents = new OnboardingItem();
         itemMatchWithStudents.setTitle("Match With Other Students");
+        itemMatchWithStudents.setDescription("Swipe left to delete a lesson");
         itemMatchWithStudents.setImage(R.drawable.onboarding_matching);
 
         OnboardingItem itemMessageStudents = new OnboardingItem();
-        itemMessageStudents.setTitle("Learn From Students Who Get It 24/7");
+        itemMessageStudents.setTitle("Learn From Students Who Get It");
         itemMessageStudents.setImage(R.drawable.onboard_messaging);
 
         onboardingItems.add(itemSubjectCards);

@@ -12,11 +12,11 @@
     <ImageView
         android:id="@+id/imageOnboarding"
         android:layout_width="310dp"
-        android:layout_height="660dp"
+        android:layout_height="560dp"
         android:layout_margin="15dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/app_name"/>
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/textTitle"
