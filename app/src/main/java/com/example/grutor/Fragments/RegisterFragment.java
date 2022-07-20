@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.grutor.Activites.FeedActivity;
+import com.example.grutor.Activites.OnboardingActivity;
 import com.example.grutor.Activites.RegisterActivity;
 import com.example.grutor.Activites.SignInActivity;
 import com.example.grutor.Modals.User;
@@ -126,7 +127,8 @@ public class RegisterFragment extends Fragment {
     }
 
     private void goToFeed() {
-        Intent i = new Intent(getContext(), FeedActivity.class);
+        Intent i = new Intent(getContext(), OnboardingActivity.class);
         startActivity(i);
+        getActivity().finish();
     }
 }

@@ -47,25 +47,6 @@ public class FeedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-        if (ParseUser.getCurrentUser().get("isNewUser").equals(true)) {
-            Toasty.success(this, "Welcome " + ParseUser.getCurrentUser().getUsername() + "!", Toast.LENGTH_SHORT, true).show();
-            final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.icons8_sun_64);
-            Shape drawableShape = new Shape.DrawableShape(drawable, true);
-            final KonfettiView konfettiView = findViewById(R.id.konfettiView);
-            EmitterConfig emitterConfig = new Emitter(5L, TimeUnit.SECONDS).perSecond(50);
-            Party party = new PartyFactory(emitterConfig)
-                    .angle(270)
-                    .spread(90)
-                    .setSpeedBetween(2f, 8f)
-                    .timeToLive(2000L)
-                    .shapes(new Shape.Rectangle(0.2f), drawableShape)
-                    .position(0.0, 0.0, 1.0, 0.0)
-                    .build();
-            konfettiView.start(party);
-            ParseUser.getCurrentUser().put("isNewUser", false);
-            ParseUser.getCurrentUser().saveInBackground();
-        }
-
         // hides action bar
         getSupportActionBar().hide();
         bottomNavigationView = findViewById(R.id.bottom_navigation);

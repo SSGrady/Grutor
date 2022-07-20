@@ -93,7 +93,8 @@ public class OnboardingActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                startActivity(new Intent(getApplicationContext(), FeedActivity.class));
+                Intent  i = new Intent(getApplicationContext(), FeedActivity.class);
+                startActivity(i);
                 finish();
             }
         }.start();
