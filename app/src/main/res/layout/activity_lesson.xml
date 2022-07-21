@@ -3,77 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSubjectTopic"
-            android:layout_width="180dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/round_shape_btn"
-            android:text="Subject · Topic"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <TextView
-            android:id="@+id/tvNumType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="6dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Type · Num Problem(s)"
-            android:textSize="8sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/ivSubjectLesson"
-            app:layout_constraintTop_toTopOf="@+id/ivSubjectLesson" />
-
-        <EditText
-            android:id="@+id/etBundledDescription"
-            android:layout_width="140dp"
-            android:layout_height="61dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="4dp"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="Description field"
-            android:inputType="textMultiLine"
-            android:textSize="12sp"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivSubjectLesson"
-            tools:ignore="TouchTargetSizeCheck" />
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp">
 
         <ImageView
-            android:id="@+id/ivSubjectLesson"
-            android:layout_width="36dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="3dp"
-            android:src="@drawable/icons8_math_64"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/btnSubjectTopic"
-            app:layout_constraintTop_toTopOf="@+id/btnSubjectTopic" />
-
-        <TextView
-            android:id="@+id/tvDateTime"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="14dp"
-            android:text="Date time"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/etBundledDescription"
-            app:layout_constraintTop_toTopOf="@+id/etBundledDescription" />
+            android:id="@+id/ivLessonIcon"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_student_lesson_tab"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabChat"
@@ -82,7 +23,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="20dp"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:elevation="16dp"
@@ -94,5 +35,75 @@
             app:pressedTranslationZ="12dp"
             app:srcCompat="@drawable/messages_icon" />
 
+        <TextView
+            android:id="@+id/tvSubjectTopic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/ivLessonIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivLessonIcon"
+            tools:text="MATH - Algebra II" />
+
+        <TextView
+            android:id="@+id/tvTypeOfNumProblems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tvSubjectTopic"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubjectTopic"
+            tools:text="Homework: 2 - 10 problems" />
+
+        <TextView
+            android:id="@+id/tvNeedByUrgency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvSubjectTopic"
+            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfNumProblems"
+            tools:text="Need by: July 12, 2022" />
+
+        <TextView
+            android:id="@+id/tvMatchStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/waiting_for_a_match"
+            android:textAlignment="viewEnd"
+            android:textColor="@android:color/holo_red_light"
+            app:layout_constraintStart_toStartOf="@+id/tvSubjectTopic"
+            app:layout_constraintTop_toBottomOf="@+id/tvNeedByUrgency" />
+
+        <EditText
+            android:id="@+id/etTutoringDescription"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Description field"
+            android:inputType="textMultiLine"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/ivLessonIcon"
+            app:layout_constraintTop_toBottomOf="@+id/tvMatchStatus" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbtnMatch"
+            android:layout_width="85dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="2dp"
+            android:textSize="13sp"
+            android:text="@string/match"
+            android:textColor="@color/whiter"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTypeOfNumProblems" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

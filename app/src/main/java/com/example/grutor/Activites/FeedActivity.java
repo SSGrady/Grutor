@@ -1,6 +1,7 @@
 package com.example.grutor.Activites;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.Size;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -19,6 +20,7 @@ import com.example.grutor.Fragments.HomeFragment;
 import com.example.grutor.Fragments.LessonsFragment;
 import com.example.grutor.Fragments.MessagesFragment;
 import com.example.grutor.Fragments.ProfileFragment;
+import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -37,6 +39,8 @@ import nl.dionsegijn.konfetti.xml.KonfettiView;
 public class FeedActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    public Lessons requestedLesson;
+    public @NonNull onLessonChangedListener lessonListener;
 
     final Fragment fragmentHome = new HomeFragment();
     final Fragment fragmentLessons = new LessonsFragment();
@@ -76,5 +80,11 @@ public class FeedActivity extends AppCompatActivity {
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.action_home);
+    }
+    public interface onLessonChangedListener {
+        void onLessonChanged(@NonNull Lessons lesson);
+    }
+    public void setOnLessonChangedListener(@Nullable onLessonChangedListener lessonListener) {
+        this.lessonListener = lessonListener;
     }
 }

@@ -18,10 +18,12 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.grutor.Modals.Groupchat;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -50,7 +52,6 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
             ivMatchedStudent = itemView.findViewById(R.id.ivMatchedStudent);
             btnAccept = itemView.findViewById(R.id.btnAccept);
             btnDelete = itemView.findViewById(R.id.btnDelete);
-            btnSubjectTopic = itemView.findViewById(R.id.btnSubjectTopic);
         }
     }
 
@@ -91,8 +92,23 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
             public void onClick(View v) {
                 addStudentTutor(v, position);
                 removeMatches();
+                setupGroupchat(requestedLesson);
             }
         });
+    }
+
+    private void setupGroupchat(Lessons lesson) {
+        if (!lesson.getIsGroupChat()) {
+            Groupchat groupchat = new Groupchat();
+            ArrayList<ParseUser> participants = new ArrayList<>();
+            participants.add(lesson.getStudent());
+            participants.add(lesson.getStudentTutor());
+            groupchat.setParticipants(participants);
+            groupchat.saveInBackground();
+            lesson.setGroupChatPointer(groupchat);
+            lesson.setIsGroupChat(true);
+            lesson.saveInBackground();
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -102,6 +118,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         }
         notifyDataSetChanged();
     }
+
 
     @SuppressLint("ResourceType")
     private void addStudentTutor(View v, int position) {

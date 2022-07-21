@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.Modals.User;
 import com.parse.FindCallback;
@@ -17,7 +18,7 @@ import java.util.List;
 
 import okhttp3.Headers;
 
-public class StudentMatcher {
+public class StudentMatcher{
     public User currentUser;
     public String requestedLessonString;
     public int rank;
@@ -33,7 +34,7 @@ public class StudentMatcher {
     public List<ParseUser> matches;
 
     public StudentMatcher(String requestedLessonString){
-
+        super();
         this.currentUser = (User) ParseUser.getCurrentUser();
         matches = new ArrayList<>();
         KEY_USER_OBJECT_ID = String.valueOf(currentUser.getObjectId());
