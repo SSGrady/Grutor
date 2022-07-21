@@ -1,20 +1,27 @@
 package com.example.grutor.Fragments;
 
+import static androidx.core.content.ContextCompat.getColor;
+
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.example.grutor.Adapters.LessonAdapter;
 import com.example.grutor.Adapters.MatchesAdapter;
@@ -23,6 +30,7 @@ import com.example.grutor.R;
 import com.example.grutor.Utility.SwipeToDeleteCallback;
 import com.example.grutor.Utility.StudentMatcher;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -36,9 +44,11 @@ public class LessonsFragment extends Fragment {
     private static final String KEY_CREATED_AT_QUERY = "createdAt";
     protected StudentMatcher matching;
     RecyclerView rvLessons, rvMatches;
-    LessonAdapter lessonsAdapter;
+    LessonAdapter lessonsAdapter, studentAdapter, tutorAdapter;
     MatchesAdapter matcher;
-    ArrayList<Lessons> lessons;
+    ArrayList<Lessons> studentLessons, tutorLessons;
+    TabLayout tablLesssons;
+    TextView tvLessonsTitle;
     Button btnMatch;
     FrameLayout flLessons;
 
@@ -58,15 +68,14 @@ public class LessonsFragment extends Fragment {
         rvLessons = view.findViewById(R.id.rvLessons);
         rvMatches = view.findViewById(R.id.rvMatches);
         flLessons = view.findViewById(R.id.flLessons);
-        lessons = new ArrayList<>();
-        try {
-            queryLessons();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        lessonsAdapter = new LessonAdapter(getContext(), lessons);
+        tvLessonsTitle = view.findViewById(R.id.tvLessonsTitle);
+        tablLesssons = view.findViewById(R.id.tablLessons);
+        studentLessons = new ArrayList<>();
+        tutorLessons = new ArrayList<>();
         rvLessons.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvLessons.setAdapter(lessonsAdapter);
+        studentAdapter = new LessonAdapter(getContext(), studentLessons);
+        tutorAdapter = new LessonAdapter(getContext(), tutorLessons);
+
         btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +88,54 @@ public class LessonsFragment extends Fragment {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        try {
+            queryStudentLessons();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        lessonsAdapter = new LessonAdapter(getContext(), studentLessons);
+        rvLessons.setAdapter(lessonsAdapter);
+        tablLesssons.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getText().toString().equals("Student")) {
+                    try {
+                        queryStudentLessons();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    tvLessonsTitle.setText(R.string.your_lessons);
+                    lessonsAdapter = new LessonAdapter(getContext(), studentLessons);
+                    rvLessons.setAdapter(lessonsAdapter);
+                    btnMatch.setVisibility(View.VISIBLE);
+                }
+                else if (tab.getText().toString().equals("Tutor")) {
+                    // remove the matching results from tutor view
+                    studentLessons.clear();
+                    studentAdapter = new LessonAdapter(getContext(), studentLessons);
+                    rvMatches.setAdapter(studentAdapter);
+                    // switch the LessonAdapter to the tutor view from student view
+                    lessonsAdapter = new LessonAdapter(getContext(), tutorLessons);
+                    try {
+                        queryTutorLessons();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    tvLessonsTitle.setText(R.string.teach_lessons);
+                    rvLessons.setAdapter(lessonsAdapter);
+                    btnMatch.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
         enableSwipeToDeleteAndUndo();
@@ -114,18 +171,20 @@ public class LessonsFragment extends Fragment {
         itemTouchhelper.attachToRecyclerView(rvLessons);
     }
 
-
-    private void queryLessons() throws ParseException {
+    private void queryStudentLessons() throws ParseException {
         ParseQuery<Lessons> students = ParseQuery.getQuery(Lessons.class);
-        ParseQuery<Lessons> tutors = ParseQuery.getQuery(Lessons.class);
         students.whereEqualTo(KEY_QUERY_BY_STUDENT, ParseUser.getCurrentUser());
+        students.setLimit(5);
+        students.orderByDescending(KEY_CREATED_AT_QUERY);
+        studentLessons.clear();
+        studentLessons.addAll(students.find());
+    }
+    private void queryTutorLessons() throws ParseException {
+        ParseQuery<Lessons> tutors = ParseQuery.getQuery(Lessons.class);
         tutors.whereEqualTo(KEY_QUERY_BY_STUDENT_TUTOR, ParseUser.getCurrentUser());
-        List<ParseQuery<Lessons>> queries = new ArrayList<ParseQuery<Lessons>>();
-        queries.add(students);
-        queries.add(tutors);
-        ParseQuery<Lessons> mainQuery = ParseQuery.or(queries);
-        mainQuery.setLimit(5);
-        mainQuery.orderByDescending(KEY_CREATED_AT_QUERY);
-        lessons.addAll(mainQuery.find());
+        tutors.setLimit(5);
+        tutors.orderByDescending(KEY_CREATED_AT_QUERY);
+        tutorLessons.clear();
+        tutorLessons.addAll(tutors.find());
     }
 }

@@ -12,11 +12,11 @@
 
         <TextView
             android:id="@+id/tvWelcomeUser"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
-            android:textColor="@color/blueBlack"
+            android:layout_marginTop="70dp"
+            android:textColor="@color/black"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -26,33 +26,43 @@
             android:id="@+id/tvHomeText"
             android:layout_width="270sp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:text="What do you need help with?"
-            android:textColor="@color/blueBlack"
-            android:textSize="28sp"
+            android:textColor="@color/black"
+            android:textSize="32sp"
             app:layout_constraintStart_toStartOf="@+id/tvWelcomeUser"
             app:layout_constraintTop_toBottomOf="@+id/tvWelcomeUser" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSubjects"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="85dp"
+            android:layout_width="414dp"
+            android:layout_height="354dp"
+            android:layout_marginTop="45dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHomeText"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.508" />
 
         <ImageView
             android:id="@+id/ivWeather"
-            android:layout_width="72dp"
-            android:layout_height="69dp"
+            android:layout_width="68dp"
+            android:layout_height="65dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ibOnboardingHelp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/ic_help_onboarding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvHomeText"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

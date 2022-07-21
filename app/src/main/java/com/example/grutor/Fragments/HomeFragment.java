@@ -16,22 +16,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Activites.LoginActivity;
+import com.example.grutor.Activites.OnboardingActivity;
 import com.example.grutor.Adapters.SubjectAdapter;
 import com.example.grutor.Modals.User;
 import com.example.grutor.R;
+import com.example.grutor.Utility.OnboardingItem;
 import com.example.grutor.Utility.QueryUtils;
 import com.example.grutor.Utility.WeatherHour;
 import com.parse.Parse;
@@ -64,6 +61,7 @@ public class HomeFragment extends Fragment {
     protected  GridLayoutManager gridLayoutManager;
     protected QueryUtils jsonWeatherHandler;
     protected ImageView ivWeather;
+    private ImageButton ibOnboardingHelp;
     protected WeatherHour currentForecast;
 
     @Override
@@ -73,14 +71,11 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, parent, false);
     }
 
-    // This event is triggered soon after onCreateView().
-    // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
         tvWelcomeUser = view.findViewById(R.id.tvWelcomeUser);
+        ibOnboardingHelp = view.findViewById(R.id.ibOnboardingHelp);
         // Recycler View population.
         rvSubjects = view.findViewById(R.id.rvSubjects);
         titles = new ArrayList<>();
@@ -94,6 +89,14 @@ public class HomeFragment extends Fragment {
 
         rvSubjects.setLayoutManager(gridLayoutManager);
         rvSubjects.setAdapter(adapter);
+
+        ibOnboardingHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent((FeedActivity) getContext(), OnboardingActivity.class);
+                startActivity(i);
+            }
+        });
 
 
     }
@@ -153,14 +156,7 @@ public class HomeFragment extends Fragment {
         titles.add(getString(R.string.government));
         titles.add(getString(R.string.economics));
 
-        images.add(R.drawable.icons8_math_64);
-        images.add(R.drawable.icons8_english_64);
-        images.add(R.drawable.icons8_physics_64);
-        images.add(R.drawable.icons8_history_64);
-        images.add(R.drawable.icons8_government_64);
-        images.add(R.drawable.icons8_stock_share_64);
-
-        adapter = new SubjectAdapter(getContext(), titles, images);
+        adapter = new SubjectAdapter(getContext(), titles);
         gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
     }
 }

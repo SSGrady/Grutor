@@ -5,19 +5,27 @@
       <map>
         <entry key="app/src/main/res/drawable/background.xml" value="0.278" />
         <entry key="app/src/main/res/drawable/gradient_card_textview.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/history_card_background.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/home_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_best_subject_v.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_grade_v.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_zipcode_vector.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/lessons_icon.xml" value="0.174" />
         <entry key="app/src/main/res/drawable/message_incoming.xml" value="0.3495" />
         <entry key="app/src/main/res/drawable/message_outgoing.xml" value="0.3495" />
         <entry key="app/src/main/res/drawable/messages_icon.xml" value="0.174" />
+        <entry key="app/src/main/res/drawable/onboarding_indicator_active.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/onboarding_indicator_inactive.xml" value="0.2745" />
         <entry key="app/src/main/res/drawable/profile_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_shape_btn.xml" value="0.2105" />
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.45" />
-        <entry key="app/src/main/res/layout/activity_feed.xml" value="0.49907407407407406" />
+        <entry key="app/src/main/res/drawable/round_shape_btn_tutor.xml" value="0.1455" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_feed.xml" value="0.45" />
         <entry key="app/src/main/res/layout/activity_lesson.xml" value="0.4287037037037037" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.42775665399239543" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.7276923076923076" />
         <entry key="app/src/main/res/layout/activity_matching.xml" value="0.6675925925925926" />
+        <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.7536458333333333" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.4351851851851852" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.4351851851851852" />
         <entry key="app/src/main/res/layout/fragment_economics.xml" value="0.5175925925925926" />
@@ -25,16 +33,18 @@
         <entry key="app/src/main/res/layout/fragment_government.xml" value="0.5175925925925926" />
         <entry key="app/src/main/res/layout/fragment_history.xml" value="0.5175925925925926" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3097412109375" />
-        <entry key="app/src/main/res/layout/fragment_lessons.xml" value="0.5059021922428331" />
+        <entry key="app/src/main/res/layout/fragment_lessons.xml" value="0.31086142322097376" />
         <entry key="app/src/main/res/layout/fragment_math.xml" value="0.5175925925925926" />
         <entry key="app/src/main/res/layout/fragment_messages.xml" value="0.47625" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.49907407407407406" />
         <entry key="app/src/main/res/layout/fragment_science.xml" value="0.5175925925925926" />
+        <entry key="app/src/main/res/layout/item_container_onboarding.xml" value="0.7526041666666666" />
         <entry key="app/src/main/res/layout/message_incoming.xml" value="0.37115631103515623" />
         <entry key="app/src/main/res/layout/message_outgoing.xml" value="0.39069264729817704" />
-        <entry key="app/src/main/res/layout/subject_card_grid_layout.xml" value="0.3858974358974359" />
+        <entry key="app/src/main/res/layout/subject_card_grid_layout.xml" value="0.285" />
         <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.45" />
+        <entry key="app/src/main/res/xml/fileprovider.xml" value="0.4817708333333333" />
       </map>
     </option>
   </component>
@@ -43,5 +53,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.375" />
+      </ProjectState>
+    </option>
   </component>
 </project>

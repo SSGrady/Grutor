@@ -68,9 +68,11 @@ public class StudentMatcher {
 
     public void getMyMatches() throws ParseException {
         List<ParseUser> studentTutors = new ArrayList<>();
+        Boolean matched = false;
         for (int i = 1; i < 3; i++) {
-            if (studentTutors.size() > 0) {
-                break;
+            if (studentTutors.size() > 0 && i >=1) {
+                matches.addAll(studentTutors);
+                matched = true;
             }
             if (i == 1) {
                 priorityMatches(i);
@@ -80,8 +82,7 @@ public class StudentMatcher {
                 studentTutors.addAll(query.find());
             }
         }
-        if (studentTutors.size() > 0) {
-            matches.addAll(studentTutors);
+        if (studentTutors.size() > 0 && matched) {
             return;
         }
         // else if rank 3: query should reinflate with student tutor's who's best subject equals requested lesson

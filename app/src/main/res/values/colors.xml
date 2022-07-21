@@ -16,9 +16,14 @@
     <color name="BEA_cornflower">#79A9F5</color>
     <color name="BEA_baby_blue">#C2E2F5</color>
     <color name="Background_Login">#abd3fb</color>
+    <color name="blacker">#111f28</color>
+    <color name="whiter">#FFFFFF</color>
     <color name="blueBlack">#111f28</color>
     <color name="blueBlack_light">#6D111F28</color>
     <color name="tanAccent">#e3cdb3</color>
+
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
 
     <color name="SkyPalette">#abdbfb</color>
     <color name="CobaltPalette">#2e5fa7</color>

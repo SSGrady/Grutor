@@ -8,6 +8,7 @@ import com.example.grutor.Modals.Message;
 import com.example.grutor.Modals.User;
 import com.example.grutor.R;
 import com.parse.Parse;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.livequery.ParseLiveQueryClient;
 
@@ -28,5 +29,9 @@ public class ParseApplication extends Application {
                 .build()
         );
         ParseLiveQueryClient parseLiveQueryClient = ParseLiveQueryClient.Factory.getClient();
+
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        installation.put("GCMSenderId", "780804901127");
+        installation.saveInBackground();
     }
 }
