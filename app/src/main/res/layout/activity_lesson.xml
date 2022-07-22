@@ -69,14 +69,26 @@
             app:layout_constraintTop_toBottomOf="@+id/tvTypeOfNumProblems"
             tools:text="Need by: July 12, 2022" />
 
+        <dots.animation.textview.TextAndAnimationView
+            android:id="@+id/tvMatchStatusDots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:setText="h"
+            app:setTextSize="14"
+            app:numberOfDots="3"
+            android:textAlignment="viewEnd"
+            app:layout_constraintStart_toEndOf="@+id/tvMatchStatus"
+            app:layout_constraintTop_toBottomOf="@+id/tvNeedByUrgency"
+            />
+
         <TextView
             android:id="@+id/tvMatchStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="@string/waiting_for_a_match"
+            android:text="Waiting for a matc"
             android:textAlignment="viewEnd"
-            android:textColor="@android:color/holo_red_light"
             app:layout_constraintStart_toStartOf="@+id/tvSubjectTopic"
             app:layout_constraintTop_toBottomOf="@+id/tvNeedByUrgency" />
 

@@ -39,6 +39,8 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import dots.animation.textview.DotAnimatedTextView;
+
 public class LessonsFragment extends Fragment implements FeedActivity.onLessonChangedListener{
     private static final String KEY_QUERY_BY_STUDENT = "student";
     private static final String KEY_QUERY_BY_STUDENT_TUTOR = "studentTutor";

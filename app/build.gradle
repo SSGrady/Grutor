@@ -81,4 +81,6 @@ dependencies {
     // New Material Design
     implementation 'com.google.android.material:material:1.6.1'
 
+    implementation 'com.github.rajputkapil:textviewdotsanimation:v1.0'
+
 }

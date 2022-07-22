@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +32,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import dots.animation.textview.DotAnimatedTextView;
+import dots.animation.textview.TextAndAnimationView;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
     private List<Lessons> lessons;
@@ -51,6 +56,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvSubjectTopic, tvTypeOfNumProblems, tvNeedByUrgency, tvMatchStatus;
+        public TextAndAnimationView tvMatchStatusDots;
         public EditText etTutoringDescription;
         public ImageView ivLessonIcon;
         protected FloatingActionButton fabChat;
@@ -64,6 +70,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             tvTypeOfNumProblems = itemView.findViewById(R.id.tvTypeOfNumProblems);
             tvNeedByUrgency = itemView.findViewById(R.id.tvNeedByUrgency);
             tvMatchStatus = itemView.findViewById(R.id.tvMatchStatus);
+            tvMatchStatusDots = itemView.findViewById(R.id.tvMatchStatusDots);
             mbtnMatch = itemView.findViewById(R.id.mbtnMatch);
             etTutoringDescription = itemView.findViewById(R.id.etTutoringDescription);
             fabChat = itemView.findViewById(R.id.fabChat);
@@ -112,7 +119,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 instance.lessonListener.onLessonChanged(lesson);
             }
         });
-
         if (lesson.getTypeOfLesson().equals("Essay") || lesson.getTypeOfLesson().equals("Other")) {
             holder.tvTypeOfNumProblems.setText(lesson.getTypeOfLesson());
         } else {
@@ -125,6 +131,9 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 holder.tvMatchStatus.setText(lesson.getGroupChat().getParticipants().get(0).getUsername());
             }
             holder.tvMatchStatus.setTextColor(Color.parseColor("#4CAF50"));
+            holder.tvMatchStatusDots.noOfDots(0);
+            holder.tvMatchStatusDots.stopAnimation();
+            holder.tvMatchStatusDots.setVisibility(View.GONE);
         } else {
             holder.mbtnMatch.setVisibility(View.VISIBLE);
         }
@@ -220,7 +229,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
     public void removeItem(int position) {
         if (lessons.get(position).getStudentTutor() != null) {
-
             if (ParseUser.getCurrentUser().hasSameId(lessons.get(position).getStudentTutor())) {
                 lessons.get(position).setStudentTutor(deleted.get(0));
             } else {
@@ -236,15 +244,24 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
     public void restoreItem(Lessons lesson, int position) {
         lessons.add(position, lesson);
-        notifyItemInserted(position);
         if (lessons.get(position).getStudentTutor() != null) {
-            if (lessons.get(position).getStudentTutor().equals(deleted.get(0))){
+            if (lessons.get(position).getStudentTutor().hasSameId(deleted.get(0))){
                 lessons.get(position).setStudentTutor(snapshot_removed);
+            } else {
+                lessons.get(position).setStudent(snapshot_removed);
             }
         } else {
             lessons.get(position).setStudent(snapshot_removed);
         }
-        lessons.get(position).saveInBackground();
+        notifyItemInserted(position);
+        lessons.get(position).saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e("LESSON ADAPT", "ERROR: " + e);
+                }
+            }
+        });
     }
 
     public List<Lessons> getData() {

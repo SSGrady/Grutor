@@ -53,8 +53,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLessons"
-            android:layout_width="378dp"
-            android:layout_height="300dp"
+            android:layout_width="383dp"
+            android:layout_height="277dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="184dp"
             android:layout_marginEnd="10dp"
