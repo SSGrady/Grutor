@@ -41,7 +41,7 @@ import java.util.List;
 
 import dots.animation.textview.DotAnimatedTextView;
 
-public class LessonsFragment extends Fragment implements FeedActivity.onLessonChangedListener{
+public class LessonsFragment extends Fragment implements FeedActivity.onLessonChangedListener, FeedActivity.onMatchAcceptedListener{
     private static final String KEY_QUERY_BY_STUDENT = "student";
     private static final String KEY_QUERY_BY_STUDENT_TUTOR = "studentTutor";
     private static final String KEY_CREATED_AT_QUERY = "createdAt";
@@ -79,6 +79,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
         tutorAdapter = new LessonAdapter(getContext(), tutorLessons);
         instance = (FeedActivity) getContext();
         instance.setOnLessonChangedListener(this);
+        instance.setOnMatchedListener(this);
         try {
             queryStudentLessons();
         } catch (ParseException e) {
@@ -193,5 +194,10 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
     @Override
     public void onLessonChanged(@NonNull Lessons lesson) {
         doMatchStudents();
+    }
+
+    @Override
+    public void onMatched(@NonNull Lessons lesson) {
+        lessonsAdapter.setMatchStatus(instance.holder, lesson);
     }
 }

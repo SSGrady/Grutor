@@ -117,6 +117,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 setLessons(holder, position);
                 holder.mbtnMatch.setVisibility(View.GONE);
                 instance.lessonListener.onLessonChanged(lesson);
+                instance.holder = holder;
             }
         });
         if (lesson.getTypeOfLesson().equals("Essay") || lesson.getTypeOfLesson().equals("Other")) {
@@ -124,19 +125,9 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         } else {
             holder.tvTypeOfNumProblems.setText(lesson.getTypeOfLesson() + " · " + lesson.getAssignmentLength());
         }
-        if (holder.fabChat.getVisibility() == View.VISIBLE && lesson.getIsGroupChat()) {
-            if (lesson.getGroupChat().getParticipants().get(0).getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
-                holder.tvMatchStatus.setText(lesson.getGroupChat().getParticipants().get(1).getUsername());
-            } else {
-                holder.tvMatchStatus.setText(lesson.getGroupChat().getParticipants().get(0).getUsername());
-            }
-            holder.tvMatchStatus.setTextColor(Color.parseColor("#4CAF50"));
-            holder.tvMatchStatusDots.noOfDots(0);
-            holder.tvMatchStatusDots.stopAnimation();
-            holder.tvMatchStatusDots.setVisibility(View.GONE);
-        } else {
-            holder.mbtnMatch.setVisibility(View.VISIBLE);
-        }
+
+        setMatchStatus(holder, lesson);
+
         holder.fabChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,6 +142,32 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         });
     }
 
+    public void setMatchStatus(ViewHolder holder, Lessons lesson) {
+       setFabChatVisibility(holder);
+        if (holder.fabChat.getVisibility() == View.VISIBLE && lesson.getIsGroupChat()) {
+            if (lesson.getGroupChat().getParticipants().get(0).getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
+                holder.tvMatchStatus.setText(lesson.getGroupChat().getParticipants().get(1).getUsername());
+            } else {
+                holder.tvMatchStatus.setText(lesson.getGroupChat().getParticipants().get(0).getUsername());
+            }
+            holder.tvMatchStatus.setTextColor(Color.parseColor("#4CAF50"));
+            holder.tvMatchStatusDots.noOfDots(0);
+            holder.tvMatchStatusDots.stopAnimation();
+            holder.tvMatchStatusDots.setVisibility(View.GONE);
+        } else {
+            holder.mbtnMatch.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void setFabChatVisibility(ViewHolder holder) {
+        if (requestedLesson.getStudentTutor() != null) {
+            holder.fabChat.setVisibility(View.VISIBLE);
+            instance.requestedLesson = null;
+        } else {
+            instance.requestedLesson = requestedLesson;
+        }
+    }
+
 
     @SuppressLint("ResourceAsColor")
     private void setLessons(ViewHolder holder, int position) {
@@ -160,12 +177,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         }
         requestedLessonString = lessons.get(position).getTutoringSubject();
         requestedLesson = lessons.get(position);
-        if (requestedLesson.getStudentTutor() != null) {
-            holder.fabChat.setVisibility(View.VISIBLE);
-            instance.requestedLesson = null;
-        } else {
-            instance.requestedLesson = requestedLesson;
-        }
+        setFabChatVisibility(holder);
     }
 
     private void setLessonIcons(ViewHolder holder, Lessons lesson) {

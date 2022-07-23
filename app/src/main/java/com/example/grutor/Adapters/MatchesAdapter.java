@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Modals.Groupchat;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
@@ -40,6 +41,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     LayoutInflater inflater;
     Context context;
     Lessons requestedLesson;
+    private FeedActivity instance;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -60,6 +62,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         this.inflater = LayoutInflater.from(ctx);
         this.context = ctx;
         this.requestedLesson = requestedLesson;
+        instance = (FeedActivity) ctx;
     }
 
     @NonNull
@@ -123,6 +126,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     @SuppressLint("ResourceType")
     private void addStudentTutor(View v, int position) {
         requestedLesson.setStudentTutor(users.get(position));
+        instance.matchAcceptedListener.onMatched(requestedLesson);
         Toasty.success(v.getContext(), "You Matched with " + users.get(position).getUsername() + "!", Toast.LENGTH_SHORT, true).show();
         requestedLesson.saveInBackground();
     }

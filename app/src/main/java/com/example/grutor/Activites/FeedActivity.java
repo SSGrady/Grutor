@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.grutor.Adapters.LessonAdapter;
+import com.example.grutor.Adapters.MatchesAdapter;
 import com.example.grutor.Fragments.HomeFragment;
 import com.example.grutor.Fragments.LessonsFragment;
 import com.example.grutor.Fragments.MessagesFragment;
@@ -40,7 +42,9 @@ public class FeedActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     public Lessons requestedLesson;
+    public LessonAdapter.ViewHolder holder;
     public @NonNull onLessonChangedListener lessonListener;
+    public @NonNull onMatchAcceptedListener matchAcceptedListener;
 
     final Fragment fragmentHome = new HomeFragment();
     final Fragment fragmentLessons = new LessonsFragment();
@@ -81,6 +85,14 @@ public class FeedActivity extends AppCompatActivity {
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
+    public interface onMatchAcceptedListener {
+        void onMatched(@NonNull Lessons lesson);
+    }
+
+    public void setOnMatchedListener(@Nullable onMatchAcceptedListener matchAcceptedListener) {
+        this.matchAcceptedListener = matchAcceptedListener;
+    }
+
     public interface onLessonChangedListener {
         void onLessonChanged(@NonNull Lessons lesson);
     }
