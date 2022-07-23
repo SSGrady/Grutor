@@ -83,7 +83,7 @@ public class StudentMatcher{
                 studentTutors.addAll(query.find());
             }
         }
-        if (studentTutors.size() > 0 && matched) {
+        if (studentTutors.size() > 2 && matched) {
             return;
         }
         // else if rank 3: query should reinflate with student tutor's who's best subject equals requested lesson

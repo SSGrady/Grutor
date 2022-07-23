@@ -198,6 +198,10 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
 
     @Override
     public void onMatched(@NonNull Lessons lesson) {
-        lessonsAdapter.setMatchStatus(instance.holder, lesson);
+        if (lesson.getStudentTutor() != null) {
+            lessonsAdapter.setMatchStatus(instance.holder, lesson);
+        } else {
+            lessonsAdapter.makeMatchButtonVisible(instance.holder);
+        }
     }
 }

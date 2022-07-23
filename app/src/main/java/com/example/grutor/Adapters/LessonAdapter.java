@@ -168,6 +168,11 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         }
     }
 
+    // for matching interface
+    public void makeMatchButtonVisible(ViewHolder holder) {
+        holder.mbtnMatch.setVisibility(View.VISIBLE);
+    }
+
 
     @SuppressLint("ResourceAsColor")
     private void setLessons(ViewHolder holder, int position) {
@@ -266,14 +271,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             lessons.get(position).setStudent(snapshot_removed);
         }
         notifyItemInserted(position);
-        lessons.get(position).saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e != null) {
-                    Log.e("LESSON ADAPT", "ERROR: " + e);
-                }
-            }
-        });
+        lessons.get(position).saveInBackground();
     }
 
     public List<Lessons> getData() {

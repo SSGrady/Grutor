@@ -88,6 +88,9 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
             public void onClick(View v) {
                 users.remove(position);
                 notifyDataSetChanged();
+                if (users.isEmpty() && instance.requestedLesson != null) {
+                    instance.matchAcceptedListener.onMatched(requestedLesson);
+                }
             }
         });
         holder.btnAccept.setOnClickListener(new View.OnClickListener() {
