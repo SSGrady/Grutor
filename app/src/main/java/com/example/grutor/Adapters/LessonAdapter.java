@@ -133,7 +133,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 }
                 Fragment fragment = new MessagesFragment();
                 fragment.setArguments(bundle);
-                ((FeedActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
+                ((FeedActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment, "Messages").commit();
             }
         });
     }

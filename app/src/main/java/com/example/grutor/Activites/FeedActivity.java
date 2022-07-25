@@ -2,6 +2,7 @@ package com.example.grutor.Activites;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.Size;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +47,7 @@ public class FeedActivity extends AppCompatActivity {
     public LessonAdapter.ViewHolder holder;
     public @NonNull onLessonChangedListener lessonListener;
     public @NonNull onMatchAcceptedListener matchAcceptedListener;
+    private String TAG;
 
     final Fragment fragmentHome = new HomeFragment();
     final Fragment fragmentLessons = new LessonsFragment();
@@ -68,17 +71,20 @@ public class FeedActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_profile:
                         fragment = fragmentProfile;
+                        TAG = "Profile";
                         break;
                     case R.id.action_lessons:
                         fragment = fragmentLessons;
+                        TAG = "Lessons";
                         break;
                     case R.id.action_home:
                         fragment = fragmentHome;
+                        TAG = "Home";
                     default:
                         break;
                 }
                 assert fragment != null;
-                getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment,TAG).commit();
                 return true;
             }
         });
@@ -98,5 +104,22 @@ public class FeedActivity extends AppCompatActivity {
     }
     public void setOnLessonChangedListener(@Nullable onLessonChangedListener lessonListener) {
         this.lessonListener = lessonListener;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, FeedActivity.class);
+        if (getSupportFragmentManager().getFragments().get(1).getTag() != null) {
+            if (getSupportFragmentManager().getFragments().get(1).getTag().equals("Messages")) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragmentLessons).commit();
+            } else {
+                startActivity(i);
+                finish();
+            }
+        } else {
+            startActivity(i);
+            finish();
+        }
+        System.out.println(getSupportFragmentManager().getFragments().get(1).getTag());
     }
 }

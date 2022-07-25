@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -196,7 +197,14 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
 
     @Override
     public void onLessonChanged(@NonNull Lessons lesson) {
+
         doMatchStudents();
+//        FIXME
+//         ViewGroup.LayoutParams params = rvLessons.getLayoutParams();
+//         float height = R.dimen.lessons_recycler_view_height;
+//         params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, rvLessons.getResources().getDisplayMetrics());
+//         params.height = 3000;
+//         rvLessons.setLayoutParams(params);
     }
 
     @Override

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/flLessons"
+    android:tag="Lesson"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.LessonsFragment">
@@ -24,7 +25,6 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        '
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablLessons"
