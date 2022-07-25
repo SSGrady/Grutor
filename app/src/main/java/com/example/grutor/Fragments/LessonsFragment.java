@@ -129,6 +129,8 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
         enableSwipeToDeleteAndUndo();
     }
 
+    // function that matches a student with a student tutor for the correct or desired lesson,
+    // rather than match with current and previous lessons
     public void doMatchStudents() {
         if (instance.requestedLesson != null) {
             matching = new StudentMatcher(lessonsAdapter.requestedLessonString);
@@ -166,6 +168,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
                     }
                 });
                 snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.setAnchorView(instance.bottomNavigationView);
                 snackbar.show();
             }
         };
@@ -198,10 +201,11 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
 
     @Override
     public void onMatched(@NonNull Lessons lesson) {
-        if (lesson.getStudentTutor() != null) {
-            lessonsAdapter.setMatchStatus(instance.holder, lesson);
-        } else {
+        if (lesson.getStudentTutor() == null) {
             lessonsAdapter.makeMatchButtonVisible(instance.holder);
+            return;
         }
+        lessonsAdapter.setMatchStatus(instance.holder, lesson);
+        lessonsAdapter.notifyDataSetChanged();
     }
 }

@@ -5,11 +5,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,22 +21,18 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Fragments.MessagesFragment;
-import com.example.grutor.Modals.Groupchat;
 import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
-import com.example.grutor.Utility.StudentMatcher;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import dots.animation.textview.DotAnimatedTextView;
 import dots.animation.textview.TextAndAnimationView;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
@@ -109,6 +103,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
         setLessons(holder, position);
         setLessonIcons(holder, lesson);
+        setMatchButton(holder, position);
+
         holder.tvNeedByUrgency.setText(lesson.getCalendarDate());
 
         holder.mbtnMatch.setOnClickListener(new View.OnClickListener() {
@@ -142,9 +138,15 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         });
     }
 
+    private void setMatchButton(ViewHolder holder, int position) {
+        if (lessons.get(position).getStudentTutor() != null) {
+            holder.mbtnMatch.setVisibility(View.GONE);
+        }
+    }
+
     public void setMatchStatus(ViewHolder holder, Lessons lesson) {
-       setFabChatVisibility(holder);
-        if (holder.fabChat.getVisibility() == View.VISIBLE && lesson.getIsGroupChat()) {
+        setFabChatVisibility(holder);
+        if (lesson.getIsGroupChat()) {
             if (lesson.getGroupChat().getParticipants().get(0).getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
                 holder.tvMatchStatus.setText(lesson.getGroupChat().getParticipants().get(1).getUsername());
             } else {
@@ -154,8 +156,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             holder.tvMatchStatusDots.noOfDots(0);
             holder.tvMatchStatusDots.stopAnimation();
             holder.tvMatchStatusDots.setVisibility(View.GONE);
-        } else {
-            holder.mbtnMatch.setVisibility(View.VISIBLE);
         }
     }
 

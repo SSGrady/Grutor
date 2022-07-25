@@ -40,7 +40,7 @@ import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class FeedActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
+    public BottomNavigationView bottomNavigationView;
     public Lessons requestedLesson;
     public LessonAdapter.ViewHolder holder;
     public @NonNull onLessonChangedListener lessonListener;

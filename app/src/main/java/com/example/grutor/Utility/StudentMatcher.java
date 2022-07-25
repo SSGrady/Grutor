@@ -41,57 +41,40 @@ public class StudentMatcher{
         KEY_USERS_GRADE  = String.valueOf(currentUser.get(KEY_GRADE));
         this.requestedLessonString = requestedLessonString;
         query =  ParseQuery.getQuery("_User");
-        rank = 0;
     }
 
-    public void priorityMatches(int rank) {
-        if (rank == 1) {
-            query.setLimit(5);
-            query.whereEqualTo(KEY_CITY_CODE, currentUser.getCity());
-            query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
-            query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
-            query.whereNotEqualTo(KEY_OBJECT_ID, KEY_USER_OBJECT_ID);
-        }
+    public void queryByCity() {
+        query.whereEqualTo(KEY_CITY_CODE, currentUser.getCity());
+        query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
     }
 
     // scope of a zip code is potentially farther in distance between students and student tutors
     // in other words, postal zip code may not represent the same city that users reside in.
-    public void secondaryMatches(int rank) {
-        if (rank == 2) {
-            query = ParseQuery.getQuery("_User");
-            query.setLimit(5);
+    public void queryByAreaCode() {
             query.whereEqualTo(KEY_AREA_CODE, currentUser.getZipcode());
-            query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
             query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
-            query.whereNotEqualTo(KEY_OBJECT_ID, KEY_USER_OBJECT_ID);
-        }
     }
 
     public void getMyMatches() throws ParseException {
         List<ParseUser> studentTutors = new ArrayList<>();
-        Boolean matched = false;
-        for (int i = 1; i < 3; i++) {
-            if (studentTutors.size() > 0 && i >=1) {
-                matches.addAll(studentTutors);
-                matched = true;
-            }
-            if (i == 1) {
-                priorityMatches(i);
-                studentTutors.addAll(query.find());
-            } else if (i == 2) {
-                secondaryMatches(i);
-                studentTutors.addAll(query.find());
-            }
+
+        //setup 1
+        queryByCity();
+        studentTutors.addAll(query.find());
+        // setup2
+        if (studentTutors.size() < 5) {
+            queryByAreaCode();
+            query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
         }
-        if (studentTutors.size() > 2 && matched) {
-            return;
+
+        if (!(studentTutors.size() > 5)) {
+            query =  ParseQuery.getQuery("_User");
+            query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
+            query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
         }
-        // else if rank 3: query should reinflate with student tutor's who's best subject equals requested lesson
-        query = ParseQuery.getQuery("_User");
-        query.setLimit(5);
-        query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
-        query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
+
         query.whereNotEqualTo(KEY_OBJECT_ID, KEY_USER_OBJECT_ID);
+        query.setLimit(5);
         matches.addAll(query.find());
     }
 }
