@@ -123,10 +123,10 @@ public class HomeFragment extends Fragment {
                     if(timeOfDay>=7 && timeOfDay<12){
                         greeting = "Good Morning";
                         res = R.drawable.icon8_morning_icon;
-                    } else if(timeOfDay>=12 && timeOfDay<16){
+                    } else if(timeOfDay>=12 && timeOfDay<17){
                         greeting = "Good Afternoon";
                         res = R.drawable.icons8_sun_64;
-                    } else if(timeOfDay>=16 && timeOfDay<21){
+                    } else if(timeOfDay>=17 && timeOfDay<21){
                         greeting = "Good Evening";
                         res = R.drawable.icons8_dusk_64;
                     } else if((timeOfDay>=21 && timeOfDay<=24) || (timeOfDay>=1 && timeOfDay<7)){
@@ -142,9 +142,7 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-
-            }
+            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {}
         });
     }
 

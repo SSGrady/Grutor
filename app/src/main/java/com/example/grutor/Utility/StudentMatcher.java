@@ -41,8 +41,11 @@ public class StudentMatcher{
         KEY_USERS_GRADE  = String.valueOf(currentUser.get(KEY_GRADE));
         this.requestedLessonString = requestedLessonString;
         query =  ParseQuery.getQuery("_User");
+        // query should not include the current user
+        query.whereNotEqualTo(KEY_OBJECT_ID, KEY_USER_OBJECT_ID);
     }
 
+    // currentUser's city is populated by fetched JSON data from the Weatherbit API
     public void queryByCity() {
         query.whereEqualTo(KEY_CITY_CODE, currentUser.getCity());
         query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
@@ -52,29 +55,35 @@ public class StudentMatcher{
     // in other words, postal zip code may not represent the same city that users reside in.
     public void queryByAreaCode() {
             query.whereEqualTo(KEY_AREA_CODE, currentUser.getZipcode());
-            query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
+            query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
     }
 
     public void getMyMatches() throws ParseException {
-        List<ParseUser> studentTutors = new ArrayList<>();
+        List<ParseUser> priorityStudentTutors = new ArrayList<>();
+        List<ParseUser> otherStudentTutors = new ArrayList<>();
 
         //setup 1
         queryByCity();
-        studentTutors.addAll(query.find());
-        // setup2
-        if (studentTutors.size() < 5) {
+        priorityStudentTutors.addAll(query.find());
+        // setup2: if scope is too large then narrow down the scope
+        if (priorityStudentTutors.size() > 20) {
             queryByAreaCode();
-            query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
         }
 
-        if (!(studentTutors.size() > 5)) {
+        // if no student tutor is found then reset the query and call the default case
+        // default case: students are matched if grades align and their worst subject matches with someones best subject
+        if (priorityStudentTutors.size() <= 1) {
+            priorityStudentTutors.clear();
             query =  ParseQuery.getQuery("_User");
+            query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
             query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
-            query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
+            query.setLimit(5);
+            otherStudentTutors.addAll(query.find());
+            priorityStudentTutors.addAll(otherStudentTutors);
+            matches.addAll(priorityStudentTutors);
+        } else {
+            query.setLimit(5);
+            matches.addAll(priorityStudentTutors);
         }
-
-        query.whereNotEqualTo(KEY_OBJECT_ID, KEY_USER_OBJECT_ID);
-        query.setLimit(5);
-        matches.addAll(query.find());
     }
 }
