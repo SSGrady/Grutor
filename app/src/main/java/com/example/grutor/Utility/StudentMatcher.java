@@ -75,6 +75,7 @@ public class StudentMatcher{
         if (priorityStudentTutors.size() <= 1) {
             priorityStudentTutors.clear();
             query =  ParseQuery.getQuery("_User");
+            query.whereNotEqualTo(KEY_OBJECT_ID, KEY_USER_OBJECT_ID);
             query.whereEqualTo(KEY_GRADE, KEY_USERS_GRADE);
             query.whereEqualTo(KEY_BEST_AT, requestedLessonString);
             query.setLimit(5);
