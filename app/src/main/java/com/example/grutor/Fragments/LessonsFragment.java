@@ -196,16 +196,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
     }
 
     @Override
-    public void onLessonChanged(@NonNull Lessons lesson) {
-
-        doMatchStudents();
-//        FIXME
-//         ViewGroup.LayoutParams params = rvLessons.getLayoutParams();
-//         float height = R.dimen.lessons_recycler_view_height;
-//         params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, rvLessons.getResources().getDisplayMetrics());
-//         params.height = 3000;
-//         rvLessons.setLayoutParams(params);
-    }
+    public void onLessonChanged(@NonNull Lessons lesson) {doMatchStudents();}
 
     @Override
     public void onMatched(@NonNull Lessons lesson) {

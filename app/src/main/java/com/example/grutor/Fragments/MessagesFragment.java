@@ -91,7 +91,7 @@ public class MessagesFragment extends Fragment {
         subscriptionHandling.handleEvent(SubscriptionHandling.Event.CREATE, (query, object) -> {
             mMessages.add(0, object);
 
-//             RecyclerView updates need to be run on the UI thread
+//             RecyclerView updates need to be running on the UI thread
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
