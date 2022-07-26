@@ -66,13 +66,15 @@ public class OnboardingActivity extends AppCompatActivity {
                 if (onboardingViewPager.getCurrentItem() + 1 < onboardingAdapter.getItemCount()) {
                     onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem() + 1);
                 } else {
-                        celebrateOnboarding();
+                        celebrateOnboarding(v);
                     }
                  }
         });
     }
 
-    private void celebrateOnboarding() {
+    private void celebrateOnboarding(View v) {
+        // edge case
+        OnboardingItem.preventTwoClick(v);
         final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.icons8_sun_64);
         Shape drawableShape = new Shape.DrawableShape(drawable, true);
         final KonfettiView konfettiView = findViewById(R.id.konfettiView);

@@ -2,6 +2,7 @@ package com.example.grutor.Activites;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -59,9 +60,6 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        // hides action bar
-        getSupportActionBar().hide();
-
 
         bundle = getIntent().getExtras();
         if (bundle != null) {

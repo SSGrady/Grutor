@@ -1,6 +1,8 @@
 package com.example.grutor.Activites;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.Size;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -10,15 +12,19 @@ import androidx.fragment.app.FragmentManager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.grutor.Adapters.LessonAdapter;
+import com.example.grutor.Adapters.MatchesAdapter;
 import com.example.grutor.Fragments.HomeFragment;
 import com.example.grutor.Fragments.LessonsFragment;
 import com.example.grutor.Fragments.MessagesFragment;
 import com.example.grutor.Fragments.ProfileFragment;
+import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -36,7 +42,12 @@ import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class FeedActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
+    public BottomNavigationView bottomNavigationView;
+    public Lessons requestedLesson;
+    public LessonAdapter.ViewHolder holder;
+    public @NonNull onLessonChangedListener lessonListener;
+    public @NonNull onMatchAcceptedListener matchAcceptedListener;
+    private String TAG;
 
     final Fragment fragmentHome = new HomeFragment();
     final Fragment fragmentLessons = new LessonsFragment();
@@ -60,21 +71,55 @@ public class FeedActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_profile:
                         fragment = fragmentProfile;
+                        TAG = "Profile";
                         break;
                     case R.id.action_lessons:
                         fragment = fragmentLessons;
+                        TAG = "Lessons";
                         break;
                     case R.id.action_home:
                         fragment = fragmentHome;
+                        TAG = "Home";
                     default:
                         break;
                 }
                 assert fragment != null;
-                getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment,TAG).commit();
                 return true;
             }
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.action_home);
+    }
+    public interface onMatchAcceptedListener {
+        void onMatched(@NonNull Lessons lesson);
+    }
+
+    public void setOnMatchedListener(@Nullable onMatchAcceptedListener matchAcceptedListener) {
+        this.matchAcceptedListener = matchAcceptedListener;
+    }
+
+    public interface onLessonChangedListener {
+        void onLessonChanged(@NonNull Lessons lesson);
+    }
+    public void setOnLessonChangedListener(@Nullable onLessonChangedListener lessonListener) {
+        this.lessonListener = lessonListener;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, FeedActivity.class);
+        if (getSupportFragmentManager().getFragments().get(1).getTag() != null) {
+            if (getSupportFragmentManager().getFragments().get(1).getTag().equals("Messages")) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragmentLessons).commit();
+            } else {
+                startActivity(i);
+                finish();
+            }
+        } else {
+            startActivity(i);
+            finish();
+        }
+        System.out.println(getSupportFragmentManager().getFragments().get(1).getTag());
     }
 }

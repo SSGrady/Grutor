@@ -44,7 +44,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
-
     implementation "com.github.parse-community.Parse-SDK-Android:parse:4.0.0"
     implementation "com.github.parse-community.Parse-SDK-Android:fcm:4.0.0"
     implementation 'com.parse.bolts:bolts-android:1.4.0'
@@ -80,5 +79,7 @@ dependencies {
 
     // New Material Design
     implementation 'com.google.android.material:material:1.6.1'
+
+    implementation 'com.github.rajputkapil:textviewdotsanimation:v1.0'
 
 }

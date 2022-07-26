@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +24,7 @@ import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.example.grutor.Activites.FeedActivity;
 import com.example.grutor.Adapters.LessonAdapter;
 import com.example.grutor.Adapters.MatchesAdapter;
 import com.example.grutor.Modals.Lessons;
@@ -38,10 +40,13 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LessonsFragment extends Fragment {
+import dots.animation.textview.DotAnimatedTextView;
+
+public class LessonsFragment extends Fragment implements FeedActivity.onLessonChangedListener, FeedActivity.onMatchAcceptedListener{
     private static final String KEY_QUERY_BY_STUDENT = "student";
     private static final String KEY_QUERY_BY_STUDENT_TUTOR = "studentTutor";
     private static final String KEY_CREATED_AT_QUERY = "createdAt";
+    protected FeedActivity instance;
     protected StudentMatcher matching;
     RecyclerView rvLessons, rvMatches;
     LessonAdapter lessonsAdapter, studentAdapter, tutorAdapter;
@@ -49,7 +54,6 @@ public class LessonsFragment extends Fragment {
     ArrayList<Lessons> studentLessons, tutorLessons;
     TabLayout tablLesssons;
     TextView tvLessonsTitle;
-    Button btnMatch;
     FrameLayout flLessons;
 
     @Override
@@ -64,7 +68,6 @@ public class LessonsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
-        btnMatch = view.findViewById(R.id.btnMatch);
         rvLessons = view.findViewById(R.id.rvLessons);
         rvMatches = view.findViewById(R.id.rvMatches);
         flLessons = view.findViewById(R.id.flLessons);
@@ -75,21 +78,9 @@ public class LessonsFragment extends Fragment {
         rvLessons.setLayoutManager(new LinearLayoutManager(getContext()));
         studentAdapter = new LessonAdapter(getContext(), studentLessons);
         tutorAdapter = new LessonAdapter(getContext(), tutorLessons);
-
-        btnMatch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                matching = new StudentMatcher(lessonsAdapter.requestedLessonString);
-                try {
-                    matching.getMyMatches();
-                    matcher = new MatchesAdapter(getContext(), matching.matches, lessonsAdapter.requestedLesson);
-                    rvMatches.setAdapter(matcher);
-                    rvMatches.setLayoutManager(new LinearLayoutManager(getContext()));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        instance = (FeedActivity) getContext();
+        instance.setOnLessonChangedListener(this);
+        instance.setOnMatchedListener(this);
         try {
             queryStudentLessons();
         } catch (ParseException e) {
@@ -109,7 +100,6 @@ public class LessonsFragment extends Fragment {
                     tvLessonsTitle.setText(R.string.your_lessons);
                     lessonsAdapter = new LessonAdapter(getContext(), studentLessons);
                     rvLessons.setAdapter(lessonsAdapter);
-                    btnMatch.setVisibility(View.VISIBLE);
                 }
                 else if (tab.getText().toString().equals("Tutor")) {
                     // remove the matching results from tutor view
@@ -125,7 +115,6 @@ public class LessonsFragment extends Fragment {
                     }
                     tvLessonsTitle.setText(R.string.teach_lessons);
                     rvLessons.setAdapter(lessonsAdapter);
-                    btnMatch.setVisibility(View.GONE);
                 }
             }
 
@@ -139,6 +128,23 @@ public class LessonsFragment extends Fragment {
             }
         });
         enableSwipeToDeleteAndUndo();
+    }
+
+    // function that matches a student with a student tutor for the correct or desired lesson,
+    // rather than match with current and previous lessons
+    public void doMatchStudents() {
+        if (instance.requestedLesson != null) {
+            matching = new StudentMatcher(lessonsAdapter.requestedLessonString);
+            try {
+                matching.getMyMatches();
+                matcher = new MatchesAdapter(getContext(), matching.matches, lessonsAdapter.requestedLesson);
+                matcher.notifyDataSetChanged();
+                rvMatches.setAdapter(matcher);
+                rvMatches.setLayoutManager(new LinearLayoutManager(getContext()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void enableSwipeToDeleteAndUndo() {
@@ -163,6 +169,7 @@ public class LessonsFragment extends Fragment {
                     }
                 });
                 snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.setAnchorView(instance.bottomNavigationView);
                 snackbar.show();
             }
         };
@@ -186,5 +193,27 @@ public class LessonsFragment extends Fragment {
         tutors.orderByDescending(KEY_CREATED_AT_QUERY);
         tutorLessons.clear();
         tutorLessons.addAll(tutors.find());
+    }
+
+    @Override
+    public void onLessonChanged(@NonNull Lessons lesson) {
+
+        doMatchStudents();
+//        FIXME
+//         ViewGroup.LayoutParams params = rvLessons.getLayoutParams();
+//         float height = R.dimen.lessons_recycler_view_height;
+//         params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, rvLessons.getResources().getDisplayMetrics());
+//         params.height = 3000;
+//         rvLessons.setLayoutParams(params);
+    }
+
+    @Override
+    public void onMatched(@NonNull Lessons lesson) {
+        if (lesson.getStudentTutor() == null) {
+            lessonsAdapter.makeMatchButtonVisible(instance.holder);
+            return;
+        }
+        lessonsAdapter.setMatchStatus(instance.holder, lesson);
+        lessonsAdapter.notifyDataSetChanged();
     }
 }

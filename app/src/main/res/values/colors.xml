@@ -6,6 +6,7 @@
     <!--    Changed the color of teal_200 for a different calendar picker theme-->
     <color name="teal_200">#9a38fc</color>
     <color name="teal_700">#FF018786</color>
+    <color name="green">#4CAF50</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gradient_purple">#9a38fc</color>

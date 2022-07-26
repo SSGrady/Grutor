@@ -120,5 +120,6 @@
     <string name="lessons">Your Lessons</string>
     <string name="teach_lessons">Teach Lessons To Other Students</string>
     <string name="your_lessons">Your Lessons</string>
+    <string name="waiting_for_a_match">[waiting for a match] </string>
 
 </resources>

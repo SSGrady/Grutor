@@ -58,7 +58,8 @@
             android:exported="false" />
         <activity
             android:name=".Activites.DetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Grutor.NoActionBar"/>
         <activity
             android:name=".Activites.SignInActivity"
             android:exported="false" />
