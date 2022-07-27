@@ -3,12 +3,14 @@ package com.example.grutor.Fragments;
 import static androidx.core.content.ContextCompat.getColor;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +33,7 @@ import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.example.grutor.Utility.SwipeToDeleteCallback;
 import com.example.grutor.Utility.StudentMatcher;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.parse.ParseException;
@@ -88,6 +91,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
         }
         lessonsAdapter = new LessonAdapter(getContext(), studentLessons);
         rvLessons.setAdapter(lessonsAdapter);
+        tablLesssons.getTabAt(0).getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
         tablLesssons.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -115,6 +119,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
                     }
                     tvLessonsTitle.setText(R.string.teach_lessons);
                     rvLessons.setAdapter(lessonsAdapter);
+                    tab.getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
                 }
             }
 
@@ -148,15 +153,20 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
     }
 
     private void enableSwipeToDeleteAndUndo() {
+        tablLesssons.getTabAt(tablLesssons.getSelectedTabPosition()).getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
         SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-
 
                 final int position = viewHolder.getAdapterPosition();
                 final Lessons lesson = lessonsAdapter.getData().get(position);
 
                 lessonsAdapter.removeItem(position);
+                if (tablLesssons.getTabAt(tablLesssons.getSelectedTabPosition()).getText().toString().equals("Student")) {
+                    tablLesssons.getTabAt(0).getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
+                } else {
+                    tablLesssons.getTabAt(1).getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
+                }
 
                 Snackbar snackbar = Snackbar
                         .make(flLessons, "Item was removed from the list.", Snackbar.LENGTH_LONG);
@@ -165,6 +175,11 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
                     public void onClick(View view) {
 
                         lessonsAdapter.restoreItem(lesson, position);
+                        if (tablLesssons.getTabAt(tablLesssons.getSelectedTabPosition()).getText().toString().equals("Student")) {
+                            tablLesssons.getTabAt(0).getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
+                        } else {
+                            tablLesssons.getTabAt(1).getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
+                        }
                         rvLessons.scrollToPosition(position);
                     }
                 });
@@ -196,15 +211,30 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
     }
 
     @Override
-    public void onLessonChanged(@NonNull Lessons lesson) {doMatchStudents();}
+    public void onLessonChanged(@NonNull Lessons lesson) {
+        doMatchStudents();
+        // Dynamically collapsing the recycler view's height and then on onMatched resizing the height to wrap_content
+        Resources r = getResources();
+        int dp = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 277, r.getDisplayMetrics()));
+        rvLessons.getLayoutParams().height = dp;
+        rvLessons.setPadding(0,0,0,0);
+    }
 
     @Override
     public void onMatched(@NonNull Lessons lesson) {
         if (lesson.getStudentTutor() == null) {
             lessonsAdapter.makeMatchButtonVisible(instance.holder);
+            // Dynamically resizing the height to wrap_content
+            Resources r = getResources();
+            int dp = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 520, r.getDisplayMetrics()));
+            rvLessons.getLayoutParams().height = dp;
             return;
         }
         lessonsAdapter.setMatchStatus(instance.holder, lesson);
         lessonsAdapter.notifyDataSetChanged();
+        rvLessons.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        Resources r = getResources();
+        int dp = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 280, r.getDisplayMetrics()));
+        rvLessons.setPadding(0,0,0,dp);
     }
 }

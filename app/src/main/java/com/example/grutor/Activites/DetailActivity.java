@@ -32,9 +32,6 @@ import com.parse.SaveCallback;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Objects;
-
-import es.dmoral.toasty.Toasty;
 
 public class DetailActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -176,6 +173,8 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
                     }
                 });
             } else {
+                if (chip2 != null)
+                    chip2.setChecked(false);
                 cgNumProblem.setVisibility(View.GONE);
                 NUM_PROBLEM_KEY = "";
             }

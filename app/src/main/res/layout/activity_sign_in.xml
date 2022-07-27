@@ -51,6 +51,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="105dp"
         android:text="Sign In"
+        android:textColor="@color/whiter"
         app:layout_constraintStart_toStartOf="@+id/tvSignIn"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
 
