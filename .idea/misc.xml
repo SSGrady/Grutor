@@ -19,13 +19,13 @@
         <entry key="app/src/main/res/drawable/profile_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_shape_btn.xml" value="0.2105" />
         <entry key="app/src/main/res/drawable/round_shape_btn_tutor.xml" value="0.1455" />
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.1580246913580247" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.45" />
         <entry key="app/src/main/res/layout/activity_feed.xml" value="0.45" />
         <entry key="app/src/main/res/layout/activity_lesson.xml" value="0.4287037037037037" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.42775665399239543" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.7276923076923076" />
         <entry key="app/src/main/res/layout/activity_matching.xml" value="0.6675925925925926" />
-        <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.7536458333333333" />
+        <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.5768757687576875" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.4351851851851852" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.4351851851851852" />
         <entry key="app/src/main/res/layout/fragment_economics.xml" value="0.5175925925925926" />

@@ -107,21 +107,21 @@ public class OnboardingActivity extends AppCompatActivity {
 
         OnboardingItem itemSubjectCards = new OnboardingItem();
         itemSubjectCards.setTitle("Choose A Subject You Need Help With");
-        itemSubjectCards.setImage(R.drawable.onboarding_choose_a_subject);
+        itemSubjectCards.setImage(R.drawable.grutor_home_onboarding);
 
         OnboardingItem itemLessonDetails = new OnboardingItem();
         itemLessonDetails.setTitle("Add Lesson Details & Tap Confirm");
         // itemOnTheWay.setDescription("Simply add details and tap confirm");
-        itemLessonDetails.setImage(R.drawable.onboard_request_help);
+        itemLessonDetails.setImage(R.drawable.grutor_detail_activity_onboarding2);
 
         OnboardingItem itemMatchWithStudents = new OnboardingItem();
         itemMatchWithStudents.setTitle("Match With Other Students");
         itemMatchWithStudents.setDescription("Swipe left to delete a lesson");
-        itemMatchWithStudents.setImage(R.drawable.onboarding_matching);
+        itemMatchWithStudents.setImage(R.drawable.lessons_matching_onboarding);
 
         OnboardingItem itemMessageStudents = new OnboardingItem();
         itemMessageStudents.setTitle("Learn From Students Who Get It");
-        itemMessageStudents.setImage(R.drawable.onboard_messaging);
+        itemMessageStudents.setImage(R.drawable.grutor_messaging_onboarding);
 
         onboardingItems.add(itemSubjectCards);
         onboardingItems.add(itemLessonDetails);
