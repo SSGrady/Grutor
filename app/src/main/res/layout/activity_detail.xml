@@ -15,122 +15,235 @@
         android:layout_marginTop="35dp"
         android:text="@string/type_textview"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnHw"
-        android:layout_width="92dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/homework"
-        android:textColor="@color/white"
-        android:textSize="8sp"
-        app:layout_constraintStart_toEndOf="@+id/tvType"
-        app:layout_constraintTop_toBottomOf="@+id/tvType"
-        tools:ignore="SmallSp,TouchTargetSizeCheck" />
+    <!--    <Button-->
+<!--        android:id="@+id/btnHw"-->
+<!--        android:layout_width="92dp"-->
+<!--        android:layout_height="39dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="@string/homework"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="8sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvType"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvType"-->
+<!--        tools:ignore="SmallSp,TouchTargetSizeCheck" />-->
 
-    <Button
-        android:id="@+id/btnEssay"
-        android:layout_width="92dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="2dp"
-        android:text="@string/essay"
-        android:textColor="@color/white"
-        android:textSize="8sp"
-        app:layout_constraintStart_toStartOf="@+id/btnHw"
-        app:layout_constraintTop_toBottomOf="@+id/btnHw"
-        tools:ignore="SmallSp,TouchTargetSizeCheck" />
+<!--    <Button-->
+<!--        android:id="@+id/btnEssay"-->
+<!--        android:layout_width="92dp"-->
+<!--        android:layout_height="39dp"-->
+<!--        android:layout_marginTop="2dp"-->
+<!--        android:text="@string/essay"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="8sp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/btnHw"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btnHw"-->
+<!--        tools:ignore="SmallSp,TouchTargetSizeCheck" />-->
 
-    <Button
-        android:id="@+id/btnOther"
-        android:layout_width="92dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="70dp"
-        android:text="@string/other"
-        android:textColor="@color/white"
-        android:textSize="8sp"
-        app:layout_constraintStart_toEndOf="@+id/btnEssay"
-        app:layout_constraintTop_toTopOf="@+id/btnEssay"
-        tools:ignore="SmallSp,TouchTargetSizeCheck" />
+<!--    <Button-->
+<!--        android:id="@+id/btnOther"-->
+<!--        android:layout_width="92dp"-->
+<!--        android:layout_height="39dp"-->
+<!--        android:layout_marginStart="70dp"-->
+<!--        android:text="@string/other"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="8sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/btnEssay"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btnEssay"-->
+<!--        tools:ignore="SmallSp,TouchTargetSizeCheck" />-->
 
-    <Button
-        android:id="@+id/btnExam"
-        android:layout_width="92dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="70dp"
-        android:text="@string/exam"
-        android:textColor="@color/white"
-        android:textSize="8sp"
-        app:layout_constraintStart_toEndOf="@+id/btnHw"
-        app:layout_constraintTop_toTopOf="@+id/btnHw"
-        tools:ignore="SmallSp,TouchTargetSizeCheck" />
+<!--    <Button-->
+<!--        android:id="@+id/btnExam"-->
+<!--        android:layout_width="92dp"-->
+<!--        android:layout_height="39dp"-->
+<!--        android:layout_marginStart="70dp"-->
+<!--        android:text="@string/exam"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="8sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/btnHw"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btnHw"-->
+<!--        tools:ignore="SmallSp,TouchTargetSizeCheck" />-->
 
 
-    <TextView
-        android:id="@+id/tvProblem1"
-        android:layout_width="86dp"
-        android:layout_height="82dp"
-        android:layout_column="2"
-        android:layout_gravity="right|top"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="55dp"
-        android:background="@color/blueBlack_light"
-        android:clickable="true"
-        android:onClick="onClick"
-        android:padding="5dp"
-        android:text="@string/one_problem"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/white"
+<!--    <TextView-->
+<!--        android:id="@+id/tvProblem1"-->
+<!--        android:layout_width="86dp"-->
+<!--        android:layout_height="82dp"-->
+<!--        android:layout_column="2"-->
+<!--        android:layout_gravity="right|top"-->
+<!--        android:layout_marginStart="38dp"-->
+<!--        android:layout_marginTop="55dp"-->
+<!--        android:background="@color/blueBlack_light"-->
+<!--        android:clickable="true"-->
+<!--        android:onClick="onClick"-->
+<!--        android:padding="5dp"-->
+<!--        android:text="@string/one_problem"-->
+<!--        android:textAppearance="?android:attr/textAppearanceSmall"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btnEssay"-->
+<!--        tools:ignore="OnClick,RtlHardcoded" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvProblem2"-->
+<!--        android:layout_width="86dp"-->
+<!--        android:layout_height="82dp"-->
+<!--        android:layout_column="2"-->
+<!--        android:layout_gravity="right|top"-->
+<!--        android:layout_marginStart="38dp"-->
+<!--        android:background="@color/blueBlack_light"-->
+<!--        android:clickable="true"-->
+<!--        android:onClick="onClick"-->
+<!--        android:padding="5dp"-->
+<!--        android:text="@string/two_to_nineteen_problems"-->
+<!--        android:textAppearance="?android:attr/textAppearanceSmall"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvProblem1"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tvProblem1"-->
+<!--        tools:ignore="OnClick,RtlHardcoded" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvProblem3"-->
+<!--        android:layout_width="86dp"-->
+<!--        android:layout_height="82dp"-->
+<!--        android:layout_column="2"-->
+<!--        android:layout_gravity="right|top"-->
+<!--        android:layout_marginStart="38dp"-->
+<!--        android:background="@color/blueBlack_light"-->
+<!--        android:clickable="true"-->
+<!--        android:onClick="onClick"-->
+<!--        android:padding="5dp"-->
+<!--        android:text="@string/twenty_plus_problems"-->
+<!--        android:textAppearance="?android:attr/textAppearanceSmall"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvProblem2"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tvProblem2"-->
+<!--        tools:ignore="OnClick,RtlHardcoded" />-->
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgType"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvType"
+            app:singleSelection="true">
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cHomework"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="170dp"
+                    android:layout_height="75dp"
+                    android:checked="false"
+                    android:checkable="true"
+                    android:text="Homework"
+                    app:chipIcon="@drawable/icons8_pencil_64"
+                    app:chipIconSize="35dp"
+                    app:chipIconVisible="true" />
+
+                <com.google.android.material.chip.Chip
+                android:id="@+id/cEssay"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="170dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:checkable="true"
+                android:text="Essay"
+                app:chipIcon="@drawable/icons8_essay_64"
+                app:chipIconSize="37dp"
+                app:chipIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cExam"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="170dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:checkable="true"
+                android:text="Exam"
+                app:chipIcon="@drawable/icons8_exam_52"
+                app:chipIconSize="35dp"
+                app:chipIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cOther"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="170dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:checkable="true"
+                android:text="Other"
+                app:chipIcon="@drawable/icons8_other_52"
+                app:chipIconSize="35dp"
+                app:chipIconVisible="true"/>
+        </com.google.android.material.chip.ChipGroup>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEssay"
-        tools:ignore="OnClick,RtlHardcoded" />
+        app:layout_constraintTop_toBottomOf="@id/cgType">
 
-    <TextView
-        android:id="@+id/tvProblem2"
-        android:layout_width="86dp"
-        android:layout_height="82dp"
-        android:layout_column="2"
-        android:layout_gravity="right|top"
-        android:layout_marginStart="38dp"
-        android:background="@color/blueBlack_light"
-        android:clickable="true"
-        android:onClick="onClick"
-        android:padding="5dp"
-        android:text="@string/two_to_nineteen_problems"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/tvProblem1"
-        app:layout_constraintTop_toTopOf="@+id/tvProblem1"
-        tools:ignore="OnClick,RtlHardcoded" />
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgNumProblem"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:singleSelection="true"
+            android:visibility="gone">
 
-    <TextView
-        android:id="@+id/tvProblem3"
-        android:layout_width="86dp"
-        android:layout_height="82dp"
-        android:layout_column="2"
-        android:layout_gravity="right|top"
-        android:layout_marginStart="38dp"
-        android:background="@color/blueBlack_light"
-        android:clickable="true"
-        android:onClick="onClick"
-        android:padding="5dp"
-        android:text="@string/twenty_plus_problems"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/tvProblem2"
-        app:layout_constraintTop_toTopOf="@+id/tvProblem2"
-        tools:ignore="OnClick,RtlHardcoded" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cOneProblem"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="160dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:text="1 Problem"
+                app:chipIcon="@drawable/icons8_lightbulb_66"
+                app:chipIconSize="35dp"
+                app:chipIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cTwo_To_Nineteen"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="164dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:text="2 - 19 Problems"
+                app:chipIcon="@drawable/icons8_lightbulb_book_64"
+                app:chipIconSize="37dp"
+                app:chipIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cTwentyPlus"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="160dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:text="20+ Problems"
+                app:chipIcon="@drawable/icons8_brain_64"
+                app:chipIconSize="35dp"
+                app:chipIconVisible="true" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
 
     <TextView
         android:id="@+id/tvUrgency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="390dp"
         android:text="@string/urgency"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -143,13 +256,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="165dp"
-        android:layout_marginTop="340dp"
         android:text="@string/topic_textview"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/tvUrgency"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tvUrgency" />
 
     <Spinner
         android:id="@+id/spTopicsList"
@@ -165,7 +277,7 @@
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="80dp"
         android:text="@string/description"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -175,8 +287,8 @@
 
     <ScrollView
         android:id="@+id/svDescriptionScroller"
-        android:layout_width="302dp"
-        android:layout_height="wrap_content"
+        android:layout_width="288dp"
+        android:layout_height="100dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -193,16 +305,30 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnConfirm"
-        android:layout_width="wrap_content"
+<!--    <Button-->
+<!--        android:id="@+id/btnConfirm"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="12dp"-->
+<!--        android:layout_marginBottom="44dp"-->
+<!--        android:text="Confirm"-->
+<!--        android:textColor="@color/whiter"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvDescription" />-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/abtnConfirm"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="15sp"
+        app:cornerRadius="20dp"
         android:text="Confirm"
         android:textColor="@color/whiter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvDescription" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@null"
+        android:background="@drawable/round_shape_btn"/>
 
     <ImageButton
         android:id="@+id/ibCalendar"
