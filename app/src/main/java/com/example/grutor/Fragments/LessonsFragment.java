@@ -31,6 +31,7 @@ import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.example.grutor.Utility.SwipeToDeleteCallback;
 import com.example.grutor.Utility.StudentMatcher;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.parse.ParseException;
@@ -88,6 +89,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
         }
         lessonsAdapter = new LessonAdapter(getContext(), studentLessons);
         rvLessons.setAdapter(lessonsAdapter);
+        tablLesssons.getTabAt(0).getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
         tablLesssons.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -100,6 +102,9 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
                     tvLessonsTitle.setText(R.string.your_lessons);
                     lessonsAdapter = new LessonAdapter(getContext(), studentLessons);
                     rvLessons.setAdapter(lessonsAdapter);
+                    BadgeDrawable badge = tab.getOrCreateBadge();
+                    badge.setNumber(lessonsAdapter.getItemCount());
+                    enableSwipeToDeleteAndUndo(tab);
                 }
                 else if (tab.getText().toString().equals("Tutor")) {
                     // remove the matching results from tutor view
@@ -115,6 +120,9 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
                     }
                     tvLessonsTitle.setText(R.string.teach_lessons);
                     rvLessons.setAdapter(lessonsAdapter);
+                    BadgeDrawable badge = tab.getOrCreateBadge();
+                    badge.setNumber(lessonsAdapter.getItemCount());
+                    enableSwipeToDeleteAndUndo(tab);
                 }
             }
 
@@ -127,7 +135,6 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
 
             }
         });
-        enableSwipeToDeleteAndUndo();
     }
 
     // function that matches a student with a student tutor for the correct or desired lesson,
@@ -147,7 +154,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
         }
     }
 
-    private void enableSwipeToDeleteAndUndo() {
+    private void enableSwipeToDeleteAndUndo(TabLayout.Tab tab) {
         SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
@@ -157,6 +164,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
                 final Lessons lesson = lessonsAdapter.getData().get(position);
 
                 lessonsAdapter.removeItem(position);
+                tab.getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
 
                 Snackbar snackbar = Snackbar
                         .make(flLessons, "Item was removed from the list.", Snackbar.LENGTH_LONG);
@@ -165,6 +173,7 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
                     public void onClick(View view) {
 
                         lessonsAdapter.restoreItem(lesson, position);
+                        tab.getOrCreateBadge().setNumber(lessonsAdapter.getItemCount());
                         rvLessons.scrollToPosition(position);
                     }
                 });
