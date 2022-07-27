@@ -3,12 +3,14 @@ package com.example.grutor.Fragments;
 import static androidx.core.content.ContextCompat.getColor;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -209,15 +211,30 @@ public class LessonsFragment extends Fragment implements FeedActivity.onLessonCh
     }
 
     @Override
-    public void onLessonChanged(@NonNull Lessons lesson) {doMatchStudents();}
+    public void onLessonChanged(@NonNull Lessons lesson) {
+        doMatchStudents();
+        // Dynamically collapsing the recycler view's height and then on onMatched resizing the height to wrap_content
+        Resources r = getResources();
+        int dp = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 277, r.getDisplayMetrics()));
+        rvLessons.getLayoutParams().height = dp;
+        rvLessons.setPadding(0,0,0,0);
+    }
 
     @Override
     public void onMatched(@NonNull Lessons lesson) {
         if (lesson.getStudentTutor() == null) {
             lessonsAdapter.makeMatchButtonVisible(instance.holder);
+            // Dynamically resizing the height to wrap_content
+            Resources r = getResources();
+            int dp = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 520, r.getDisplayMetrics()));
+            rvLessons.getLayoutParams().height = dp;
             return;
         }
         lessonsAdapter.setMatchStatus(instance.holder, lesson);
         lessonsAdapter.notifyDataSetChanged();
+        rvLessons.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        Resources r = getResources();
+        int dp = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 280, r.getDisplayMetrics()));
+        rvLessons.setPadding(0,0,0,dp);
     }
 }
