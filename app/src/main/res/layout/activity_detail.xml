@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activites.DetailActivity">
+    tools:context=".Activites.DetailActivity"
+    android:id="@+id/clDetails">
 
 
     <TextView
@@ -19,112 +20,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!--    <Button-->
-<!--        android:id="@+id/btnHw"-->
-<!--        android:layout_width="92dp"-->
-<!--        android:layout_height="39dp"-->
-<!--        android:layout_marginStart="10dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:text="@string/homework"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="8sp"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/tvType"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tvType"-->
-<!--        tools:ignore="SmallSp,TouchTargetSizeCheck" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnEssay"-->
-<!--        android:layout_width="92dp"-->
-<!--        android:layout_height="39dp"-->
-<!--        android:layout_marginTop="2dp"-->
-<!--        android:text="@string/essay"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="8sp"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/btnHw"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btnHw"-->
-<!--        tools:ignore="SmallSp,TouchTargetSizeCheck" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnOther"-->
-<!--        android:layout_width="92dp"-->
-<!--        android:layout_height="39dp"-->
-<!--        android:layout_marginStart="70dp"-->
-<!--        android:text="@string/other"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="8sp"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/btnEssay"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/btnEssay"-->
-<!--        tools:ignore="SmallSp,TouchTargetSizeCheck" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnExam"-->
-<!--        android:layout_width="92dp"-->
-<!--        android:layout_height="39dp"-->
-<!--        android:layout_marginStart="70dp"-->
-<!--        android:text="@string/exam"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="8sp"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/btnHw"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/btnHw"-->
-<!--        tools:ignore="SmallSp,TouchTargetSizeCheck" />-->
-
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvProblem1"-->
-<!--        android:layout_width="86dp"-->
-<!--        android:layout_height="82dp"-->
-<!--        android:layout_column="2"-->
-<!--        android:layout_gravity="right|top"-->
-<!--        android:layout_marginStart="38dp"-->
-<!--        android:layout_marginTop="55dp"-->
-<!--        android:background="@color/blueBlack_light"-->
-<!--        android:clickable="true"-->
-<!--        android:onClick="onClick"-->
-<!--        android:padding="5dp"-->
-<!--        android:text="@string/one_problem"-->
-<!--        android:textAppearance="?android:attr/textAppearanceSmall"-->
-<!--        android:textColor="@color/white"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btnEssay"-->
-<!--        tools:ignore="OnClick,RtlHardcoded" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvProblem2"-->
-<!--        android:layout_width="86dp"-->
-<!--        android:layout_height="82dp"-->
-<!--        android:layout_column="2"-->
-<!--        android:layout_gravity="right|top"-->
-<!--        android:layout_marginStart="38dp"-->
-<!--        android:background="@color/blueBlack_light"-->
-<!--        android:clickable="true"-->
-<!--        android:onClick="onClick"-->
-<!--        android:padding="5dp"-->
-<!--        android:text="@string/two_to_nineteen_problems"-->
-<!--        android:textAppearance="?android:attr/textAppearanceSmall"-->
-<!--        android:textColor="@color/white"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/tvProblem1"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/tvProblem1"-->
-<!--        tools:ignore="OnClick,RtlHardcoded" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvProblem3"-->
-<!--        android:layout_width="86dp"-->
-<!--        android:layout_height="82dp"-->
-<!--        android:layout_column="2"-->
-<!--        android:layout_gravity="right|top"-->
-<!--        android:layout_marginStart="38dp"-->
-<!--        android:background="@color/blueBlack_light"-->
-<!--        android:clickable="true"-->
-<!--        android:onClick="onClick"-->
-<!--        android:padding="5dp"-->
-<!--        android:text="@string/twenty_plus_problems"-->
-<!--        android:textAppearance="?android:attr/textAppearanceSmall"-->
-<!--        android:textColor="@color/white"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/tvProblem2"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/tvProblem2"-->
-<!--        tools:ignore="OnClick,RtlHardcoded" />-->
-
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cgType"
@@ -305,16 +200,6 @@
 
     </ScrollView>
 
-<!--    <Button-->
-<!--        android:id="@+id/btnConfirm"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="12dp"-->
-<!--        android:layout_marginBottom="44dp"-->
-<!--        android:text="Confirm"-->
-<!--        android:textColor="@color/whiter"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/tvDescription" />-->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/abtnConfirm"
         android:layout_width="120dp"

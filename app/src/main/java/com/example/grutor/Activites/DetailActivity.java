@@ -24,6 +24,7 @@ import com.example.grutor.Modals.Lessons;
 import com.example.grutor.R;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.snackbar.Snackbar;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -31,6 +32,9 @@ import com.parse.SaveCallback;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
+
+import es.dmoral.toasty.Toasty;
 
 public class DetailActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -45,6 +49,7 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
     protected EditText etDescription;
     private ChipGroup cgType, cgNumProblem;
     private Chip chip, chip2;
+    private boolean hasTopic;
     public String NUM_PROBLEM_KEY, TYPE_OF_TUTORING_KEY, TUTORING_DESCRIPTION_KEY, URGENCY_KEY, TOPIC_KEY;
 
     @Override
@@ -66,6 +71,8 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
         tvDateSelected = findViewById(R.id.tvDateSelected);
         ibCalendar = findViewById(R.id.ibCalendar);
         etDescription = findViewById(R.id.etDescription);
+        URGENCY_KEY = "";
+        hasTopic = false;
         cgType = findViewById(R.id.cgType);
         cgNumProblem = findViewById(R.id.cgNumProblem);
         topicsListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -81,8 +88,10 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
         spTopicsList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!spTopicsList.getSelectedItem().toString().equals("Subject")) {
+
+                if (!spTopicsList.getSelectedItem().toString().equals("Topic")) {
                     TOPIC_KEY = spTopicsList.getSelectedItem().toString();
+                    hasTopic = true;
                 }
             }
 
@@ -100,14 +109,26 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
         });
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("CheckResult")
             @Override
             public void onClick(View v) {
-                lessonRequest();
+                if ((URGENCY_KEY.length() > 1 && hasTopic)) {
+                    if ((TYPE_OF_TUTORING_KEY.equals("Homework") || TYPE_OF_TUTORING_KEY.equals("Exam")) && !NUM_PROBLEM_KEY.isEmpty())
+                        lessonRequest();
+                    // if the number of problems is an optional field
+                    else if ((TYPE_OF_TUTORING_KEY.equals("Essay") || TYPE_OF_TUTORING_KEY.equals("Other")) && NUM_PROBLEM_KEY.isEmpty())
+                        lessonRequest();
+                    else
+                        Snackbar.make(findViewById(R.id.clDetails), R.string.tutoring_request, Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(findViewById(R.id.clDetails), R.string.tutoring_request, Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
 
     }
 
+    @SuppressLint("CheckResult")
     private void lessonRequest() {
         bundle.putString("type", TYPE_OF_TUTORING_KEY);
         bundle.putString("problem", NUM_PROBLEM_KEY);
@@ -142,12 +163,16 @@ public class DetailActivity extends AppCompatActivity implements DatePickerDialo
             TYPE_OF_TUTORING_KEY = chip.getText().toString();
             if (chip.getText().toString().equals("Homework") || chip.getText().toString().equals("Exam")) {
                 cgNumProblem.setVisibility(View.VISIBLE);
+                // this initialization is for edge case where user selects Homework or Exam then clicks the Confirm button
+                NUM_PROBLEM_KEY = "";
                 cgNumProblem.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
                     @Override
                     public void onCheckedChanged(@NonNull ChipGroup group2, @NonNull List<Integer> checkedIds) {
                         chip2 = group2.findViewById(group2.getCheckedChipId());
                         if (chip2 != null)
                             NUM_PROBLEM_KEY = chip2.getText().toString();
+                        else
+                            NUM_PROBLEM_KEY = "";
                     }
                 });
             } else {
