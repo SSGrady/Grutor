@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">780804901127-h8019kpb7icos3fld88n4ql4q9mmeq1t.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">780804901127</string>
+    <string name="google_api_key" translatable="false">AIzaSyD6P_M9GBgqzjx6_yfyXODT_IB8ZSBRriY</string>
+    <string name="google_app_id" translatable="false">1:780804901127:android:3b4d92409dbad523759da2</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD6P_M9GBgqzjx6_yfyXODT_IB8ZSBRriY</string>
+    <string name="google_storage_bucket" translatable="false">grutor-push-notifications.appspot.com</string>
+    <string name="project_id" translatable="false">grutor-push-notifications</string>
+</resources>

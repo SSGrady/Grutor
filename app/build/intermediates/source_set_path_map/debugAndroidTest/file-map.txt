@@ -1,0 +1,7 @@
+com.example.grutor.test.app-androidTest-0 /Users/stevengrady/Desktop/Grutor/app/build/generated/res/resValues/androidTest/debug
+com.example.grutor.test.app-androidTest-1 /Users/stevengrady/Desktop/Grutor/app/build/generated/res/rs/androidTest/debug
+com.example.grutor.test.app-mergeDebugAndroidTestResources-2 /Users/stevengrady/Desktop/Grutor/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.example.grutor.test.app-mergeDebugAndroidTestResources-3 /Users/stevengrady/Desktop/Grutor/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.example.grutor.test.app-merged_res-4 /Users/stevengrady/Desktop/Grutor/app/build/intermediates/merged_res/debugAndroidTest
+com.example.grutor.test.app-androidTest-5 /Users/stevengrady/Desktop/Grutor/app/src/androidTest/res
+com.example.grutor.test.app-androidTestDebug-6 /Users/stevengrady/Desktop/Grutor/app/src/androidTestDebug/res

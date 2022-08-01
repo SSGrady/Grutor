@@ -1,0 +1,77 @@
+# 2022-06-21T16:59:27.685Z:
+test_suite_meta_data {
+  scheduled_test_case_count: 1
+}
+test_status: ABORTED
+test_result {
+  test_case {
+    test_class: "ExampleInstrumentedTest"
+    test_package: "com.example.grutor"
+    test_method: "useAppContext"
+    start_time {
+      seconds: 1655830694
+      nanos: 483000000
+    }
+    end_time {
+      seconds: 1655830694
+      nanos: 513000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/stevengrady/Desktop/Grutor/app/build/outputs/androidTest-results/connected/Pixel_3_XL_API_32(AVD) - 12/logcat-com.example.grutor.ExampleInstrumentedTest-useAppContext.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/stevengrady/Desktop/Grutor/app/build/outputs/androidTest-results/connected/Pixel_3_XL_API_32(AVD) - 12/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/stevengrady/Desktop/Grutor/app/build/outputs/androidTest-results/connected/Pixel_3_XL_API_32(AVD) - 12/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/stevengrady/Desktop/Grutor/app/build/outputs/androidTest-results/connected/Pixel_3_XL_API_32(AVD) - 12/cpuinfo"
+    }
+  }
+}
+output_artifact {
+  label {
+    label: "test-results.log"
+    namespace: "com.google.testing.platform.runtime.android.driver.AndroidInstrumentationDriver"
+  }
+  source_path {
+    path: "/Users/stevengrady/Desktop/Grutor/app/build/outputs/androidTest-results/connected/Pixel_3_XL_API_32(AVD) - 12/testlog/test-results.log"
+  }
+  type: TEST_DATA
+  mime_type: "text/plain"
+}
+issue {
+  namespace {
+    namespace: "com.google.testing.platform.runtime.android.driver.AndroidInstrumentationDriver"
+  }
+  severity: SEVERE
+  code: 1
+  name: "INSTRUMENTATION_FAILED"
+  message: "Instrumentation did not complete:\nInstrumentation code: null\nInstrumentation result bundle: "
+}

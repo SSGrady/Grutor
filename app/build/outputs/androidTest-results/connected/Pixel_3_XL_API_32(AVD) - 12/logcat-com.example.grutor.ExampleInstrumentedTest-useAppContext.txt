@@ -1,0 +1,2 @@
+06-20 18:58:46.463 28183 28204 I TestRunner: started: useAppContext(com.example.grutor.ExampleInstrumentedTest)
+06-20 18:58:46.464 28183 28204 I TestRunner: finished: useAppContext(com.example.grutor.ExampleInstrumentedTest)

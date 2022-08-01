@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activites.DetailActivity"
+    android:id="@+id/clDetails">
+
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/type_textview"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgType"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvType"
+            app:singleSelection="true">
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cHomework"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="170dp"
+                    android:layout_height="75dp"
+                    android:checked="false"
+                    android:checkable="true"
+                    android:text="Homework"
+                    app:chipIcon="@drawable/icons8_pencil_64"
+                    app:chipIconSize="35dp"
+                    app:chipIconVisible="true" />
+
+                <com.google.android.material.chip.Chip
+                android:id="@+id/cEssay"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="170dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:checkable="true"
+                android:text="Essay"
+                app:chipIcon="@drawable/icons8_essay_64"
+                app:chipIconSize="37dp"
+                app:chipIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cExam"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="170dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:checkable="true"
+                android:text="Exam"
+                app:chipIcon="@drawable/icons8_exam_52"
+                app:chipIconSize="35dp"
+                app:chipIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cOther"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="170dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:checkable="true"
+                android:text="Other"
+                app:chipIcon="@drawable/icons8_other_52"
+                app:chipIconSize="35dp"
+                app:chipIconVisible="true"/>
+        </com.google.android.material.chip.ChipGroup>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cgType">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgNumProblem"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:singleSelection="true"
+            android:visibility="gone">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cOneProblem"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="160dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:text="1 Problem"
+                app:chipIcon="@drawable/icons8_lightbulb_66"
+                app:chipIconSize="35dp"
+                app:chipIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cTwo_To_Nineteen"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="164dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:text="2 - 19 Problems"
+                app:chipIcon="@drawable/icons8_lightbulb_book_64"
+                app:chipIconSize="37dp"
+                app:chipIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cTwentyPlus"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="160dp"
+                android:layout_height="75dp"
+                android:checked="false"
+                android:text="20+ Problems"
+                app:chipIcon="@drawable/icons8_brain_64"
+                app:chipIconSize="35dp"
+                app:chipIconVisible="true" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/tvUrgency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="390dp"
+        android:text="@string/urgency"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="165dp"
+        android:text="@string/topic_textview"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tvUrgency"
+        app:layout_constraintTop_toTopOf="@+id/tvUrgency" />
+
+    <Spinner
+        android:id="@+id/spTopicsList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTopic"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvUrgency"
+        app:layout_constraintTop_toBottomOf="@+id/tvUrgency" />
+
+    <ScrollView
+        android:id="@+id/svDescriptionScroller"
+        android:layout_width="288dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription">
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:gravity="top"
+            android:hint="@string/add_a_description"
+            android:inputType="text|textMultiLine"
+            android:minLines="4" />
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/abtnConfirm"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="15sp"
+        app:cornerRadius="20dp"
+        android:text="Confirm"
+        android:textColor="@color/whiter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@null"
+        android:background="@drawable/round_shape_btn"/>
+
+    <ImageButton
+        android:id="@+id/ibCalendar"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/icons8_calendar_48"
+        app:layout_constraintStart_toEndOf="@+id/tvUrgency"
+        app:layout_constraintTop_toTopOf="@+id/tvUrgency"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvDateSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvUrgency"
+        app:layout_constraintTop_toBottomOf="@+id/tvUrgency"
+        tools:text="Date selected" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/ivLessonIcon"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_student_lesson_tab"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabChat"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:elevation="16dp"
+            android:focusable="true"
+            android:visibility="gone"
+            app:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:pressedTranslationZ="12dp"
+            app:srcCompat="@drawable/messages_icon" />
+
+        <TextView
+            android:id="@+id/tvSubjectTopic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/ivLessonIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivLessonIcon"
+            tools:text="MATH - Algebra II" />
+
+        <TextView
+            android:id="@+id/tvTypeOfNumProblems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tvSubjectTopic"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubjectTopic"
+            tools:text="Homework: 2 - 10 problems" />
+
+        <TextView
+            android:id="@+id/tvNeedByUrgency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvSubjectTopic"
+            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfNumProblems"
+            tools:text="Need by: July 12, 2022" />
+
+        <dots.animation.textview.TextAndAnimationView
+            android:id="@+id/tvMatchStatusDots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:setText="h"
+            app:setTextSize="14"
+            app:numberOfDots="3"
+            android:textAlignment="viewEnd"
+            app:layout_constraintStart_toEndOf="@+id/tvMatchStatus"
+            app:layout_constraintTop_toBottomOf="@+id/tvNeedByUrgency"
+            />
+
+        <TextView
+            android:id="@+id/tvMatchStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Waiting for a matc"
+            android:textAlignment="viewEnd"
+            app:layout_constraintStart_toStartOf="@+id/tvSubjectTopic"
+            app:layout_constraintTop_toBottomOf="@+id/tvNeedByUrgency" />
+
+        <EditText
+            android:id="@+id/etTutoringDescription"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Description field"
+            android:inputType="textMultiLine"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/ivLessonIcon"
+            app:layout_constraintTop_toBottomOf="@+id/tvMatchStatus" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbtnMatch"
+            android:layout_width="85dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="2dp"
+            android:textSize="13sp"
+            android:text="@string/match"
+            android:textColor="@color/whiter"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTypeOfNumProblems" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
