@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <string-array name="grades">
+        <item>Grade</item>
+        <item>1st</item>
+        <item>2nd</item>
+        <item>3rd</item>
+        <item>4th</item>
+        <item>5th</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+        <item>9th</item>
+        <item>10th</item>
+        <item>11th</item>
+        <item>12th</item>
+    </string-array>
+    <string-array name="subjects">
+        <item>Subject</item>
+        <item>Math</item>
+        <item>English</item>
+        <item>Science</item>
+        <item>History</item>
+        <item>Government</item>
+        <item>Economics</item>
+    </string-array>
+    <string-array name="topic_economics">
+        <item>Topic</item>
+        <item>Macroeconomics</item>
+        <item>Microeconomics</item>
+    </string-array>
+    <string-array name="topic_english">
+        <item>Topic</item>
+        <item>Phonics</item>
+        <item>Elementary</item>
+        <item>Non-speakers</item>
+        <item>High School</item>
+        <item>University</item>
+    </string-array>
+    <string-array name="topic_government">
+        <item>Topic</item>
+        <item>Bill Writing</item>
+        <item>Three Branches</item>
+        <item>Civics</item>
+        <item>Electoral College</item>
+    </string-array>
+    <string-array name="topic_history">
+        <item>Topic</item>
+        <item>U.S. History</item>
+        <item>World History</item>
+    </string-array>
+    <string-array name="topic_math">
+        <item>Topic</item>
+        <item>Pre-Algebra</item>
+        <item>Geometry</item>
+        <item>Algebra I</item>
+        <item>Algebra II</item>
+        <item>Trigonometry</item>
+        <item>Calculus</item>
+    </string-array>
+    <string-array name="topic_science">
+        <item>Topic</item>
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>Physics</item>
+        <item>Geology</item>
+        <item>Marine Biology</item>
+    </string-array>
+    <color name="BEA_baby_blue">#C2E2F5</color>
+    <color name="BEA_blue">#0000FF</color>
+    <color name="BEA_blue_grotto">#4B7BF5</color>
+    <color name="BEA_cornflower">#79A9F5</color>
+    <color name="Background_Login">#abd3fb</color>
+    <color name="CobaltPalette">#2e5fa7</color>
+    <color name="OctopusDarkBlue">#0c1423</color>
+    <color name="OctopusGreen">#4babab</color>
+    <color name="OctopusWhite">#dcf5f4</color>
+    <color name="SkyPalette">#abdbfb</color>
+    <color name="black">#FF000000</color>
+    <color name="blacker">#111f28</color>
+    <color name="blueBlack">#111f28</color>
+    <color name="blueBlack_light">#6D111F28</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="gradient_pink">#e496fc</color>
+    <color name="gradient_purple">#9a38fc</color>
+    <color name="green">#4CAF50</color>
+    <color name="maroonPalette">#95373a</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="tanAccent">#e3cdb3</color>
+    <color name="teal_200">#9a38fc</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="whiter">#FFFFFF</color>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="lessons_recycler_view_height">277dp</dimen>
+    <string name="add_a_description">Add a description</string>
+    <string name="app_name">Grutor</string>
+    <string name="call_fab">Call</string>
+    <string name="default_web_client_id" translatable="false">780804901127-h8019kpb7icos3fld88n4ql4q9mmeq1t.apps.googleusercontent.com</string>
+    <string name="description">Description</string>
+    <string name="economics">Economics</string>
+    <string name="english">English</string>
+    <string name="essay">Essay</string>
+    <string name="exam">Exam</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="gcm_defaultSenderId" translatable="false">780804901127</string>
+    <string name="google_api_key" translatable="false">AIzaSyD6P_M9GBgqzjx6_yfyXODT_IB8ZSBRriY</string>
+    <string name="google_app_id" translatable="false">1:780804901127:android:3b4d92409dbad523759da2</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD6P_M9GBgqzjx6_yfyXODT_IB8ZSBRriY</string>
+    <string name="google_storage_bucket" translatable="false">grutor-push-notifications.appspot.com</string>
+    <string name="government">Government</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="history">History</string>
+    <string name="home">Home</string>
+    <string name="home_fragment_default">This is the Home fragment</string>
+    <string name="homework">Homework</string>
+    <string name="lesson_schedule">Lessons</string>
+    <string name="lessons">Your Lessons</string>
+    <string name="lessons_fragment_default">This is the Lessons fragment</string>
+    <string name="match">Match</string>
+    <string name="math">Math</string>
+    <string name="message_hint">Say anything</string>
+    <string name="messages">Messages</string>
+    <string name="messages_fab">Messages</string>
+    <string name="messages_fragment_default">This is the Messages fragment</string>
+    <string name="next">Next</string>
+    <string name="one_problem">\n\t\t\t\t 1\n\t\tProblem</string>
+    <string name="other">Other</string>
+    <string name="parse_application_id">44G4lceevcRvp0HJ8yammgYVuc797zfMNMNSEJOe</string>
+    <string name="parse_client_key">hm8Uh1GcvlYnuy5TMFNe7iv6umwi0MQw3vJvBurQ</string>
+    <string name="previous">Previous</string>
+    <string name="profile">Profile</string>
+    <string name="profile_fragment_default">This is the Profile fragment</string>
+    <string name="profile_me">My Profile Pic</string>
+    <string name="profile_other">Other profile pic</string>
+    <string name="project_id" translatable="false">grutor-push-notifications</string>
+    <string name="science">Science</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="send">Send</string>
+    <string name="teach_lessons">Teach Lessons To Other Students</string>
+    <string name="title_activity_matching">MatchingActivity</string>
+    <string name="topic_textview">Topic</string>
+    <string name="tutoring_request">Please enter more details to request a tutor!</string>
+    <string name="twenty_plus_problems">\n\t\t\t\t\t20+\n\t\tProblems</string>
+    <string name="two_to_nineteen_problems" ns1:ignore="TypographyDashes">\n\t\t\t\t2 - 19\n\t\tProblems</string>
+    <string name="type_textview">Type</string>
+    <string name="urgency">Urgency</string>
+    <string name="waiting_for_a_match">[waiting for a match] </string>
+    <string name="weatherbit_master_api_key">276c34fb7b4d4edf8efaf852546d4e2b</string>
+    <string name="your_lessons">Your Lessons</string>
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background</item>
+    </style>
+    <style name="Theme.Grutor" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        
+        <item name="colorPrimary">@color/BEA_blue_grotto</item>
+        <item name="colorPrimaryVariant">@color/OctopusGreen</item>
+        <item name="colorOnPrimary">@color/blueBlack</item>
+        
+        <item name="colorSecondary">@color/OctopusGreen</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">@color/Background_Login</item>
+        
+    </style>
+    <style name="Theme.Grutor.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.Grutor.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Grutor.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+</resources>

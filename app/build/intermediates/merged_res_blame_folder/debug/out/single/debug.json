@@ -1,0 +1,470 @@
+[
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_brain_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_brain_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_round_shape_btn_tutor.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/round_shape_btn_tutor.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_fragment_messages.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/fragment_messages.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_message_outgoing.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/message_outgoing.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_chemistry_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_chemistry_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_math_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_math_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_other_52.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_other_52.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_fragment_home.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_blackboard_63.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_blackboard_63.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_sunset_63.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_sunset_63.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_user_filled_24.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/user_filled_24.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_onboarding_matching.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/onboarding_matching.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_baseline_wb_cloudy_24.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_baseline_wb_cloudy_24.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_onboarding_indicator_inactive.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/onboarding_indicator_inactive.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_lessons_icon.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/lessons_icon.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_profile_icon.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/profile_icon.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_english_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_english_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_grade_v.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_grade_v.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_blackboard_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_blackboard_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_message_incoming.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/message_incoming.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_good_quality_48.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_good_quality_48.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_messages_icon.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/messages_icon.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_physics_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_physics_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_clock_48.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_clock_48.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_grutor_detail_activity_onboarding2.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/grutor_detail_activity_onboarding2.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_onboarding_choose_a_subject.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/onboarding_choose_a_subject.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_grutor_messaging_onboarding.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/grutor_messaging_onboarding.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_best_subject_v.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_best_subject_v.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_baseline_send_24.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_baseline_send_24.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_activity_lesson.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/activity_lesson.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_lessons_matching_onboarding.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/lessons_matching_onboarding.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_help_onboarding.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_help_onboarding.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_student_tab.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_student_tab.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_pencil_58.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_pencil_58.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_logo.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/logo.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_exam_52.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_exam_52.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_government_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_government_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_address_48.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_address_48.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_subject_card_grid_layout.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/subject_card_grid_layout.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_stock_share_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_stock_share_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_home_24.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_home_24.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icon8_2_19_problems.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icon8_2_19_problems.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_homework_62.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_homework_62.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_biology_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_biology_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_home_icon.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/home_icon.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_back_48_removebg.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_back_48_removebg.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_activity_onboarding.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/activity_onboarding.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_activity_sign_up.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_lightbulb_book_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_lightbulb_book_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_onboard_messaging.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/onboard_messaging.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_fragment_register.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/fragment_register.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_activity_sign_in.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/activity_sign_in.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_message_outgoing.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/message_outgoing.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_grutor_octopus.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/grutor_octopus.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_tutor_tab.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_tutor_tab.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_round_shape_btn.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/round_shape_btn.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_old_detail_activity.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/old_detail_activity.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_chat_bubble_50.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_chat_bubble_50.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/xml_backup_rules.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_note_62.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_note_62.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/anim_fab_rotate_clock.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/anim/fab_rotate_clock.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/menu_menu_bottom_navigation.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/menu/menu_bottom_navigation.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_background.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/background.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_student_lesson_tab.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_student_lesson_tab.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_lightbulb_66.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_lightbulb_66.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/anim_fab_open.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/anim/fab_open.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_fragment_profile.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_learn_66.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_learn_66.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_grutor_home_onboarding.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/grutor_home_onboarding.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_learn_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_learn_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/anim_fab_close.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/anim/fab_close.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_user_outline_24.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/user_outline_24.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_grutor_teach_other_students_onboarding.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/grutor_teach_other_students_onboarding.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_activity_login.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_baseline_add_24.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_baseline_add_24.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_pencil_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_pencil_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_activity_detail.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/activity_detail.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_essay_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_essay_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/xml_fileprovider.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/xml/fileprovider.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_activity_feed.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/activity_feed.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_onboarding_indicator_active.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/onboarding_indicator_active.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_delete_white_36.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_delete_white_36.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_dusk_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_dusk_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_baseline_videocam_24.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_baseline_videocam_24.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_activity_matching.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/activity_matching.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_calendar_48.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_calendar_48.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_onboard_request_help.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/onboard_request_help.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_girl_student_reading.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/girl_student_reading.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_history_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_history_64.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_chat_bubble_51.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_chat_bubble_51.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_message_incoming.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/message_incoming.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_home_25png.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_home_25png.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-pngs-53:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_item_container_onboarding.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/item_container_onboarding.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_backpack_48.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_backpack_48.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_gradient_card_textview.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/gradient_card_textview.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icon8_morning_icon.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icon8_morning_icon.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable_ic_zipcode_vector.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable/ic_zipcode_vector.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/layout_fragment_lessons.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/layout/fragment_lessons.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/anim_fab_rotate_anticlock.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/anim/fab_rotate_anticlock.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.grutor.app-merged_res-58:/layout_item_container_onboarding.xml.flat",
+        "source": "com.example.grutor.app-main-60:/layout/item_container_onboarding.xml"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_night_65.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_night_65.png"
+    },
+    {
+        "merged": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-merged_res-58:/drawable-v24_icons8_sun_64.png.flat",
+        "source": "/Users/stevengrady/.gradle/daemon/7.3.3/com.example.grutor.app-main-60:/drawable-v24/icons8_sun_64.png"
+    }
+]
